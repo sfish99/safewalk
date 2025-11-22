@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>הרשמת הולכת רגל - SafeWalk</title>
+
+    <link rel = "stylesheet" type = "text/css" href = "../CSS/register_walker.css">
+
+</head>
+
+<body>
+
+<div class="register-box">
+    <h2>הרשמת הולכת רגל</h2>
+
+    <form action="register_walker_form.php" method="POST" enctype="multipart/form-data">
+
+        <label>שם פרטי:</label>
+        <input type="text" name="first_name" required>
+
+        <label>שם משפחה:</label>
+        <input type="text" name="last_name" required>
+
+        <label>אימייל:</label>
+        <input type="email" name="email" required>
+
+        <label>טלפון:</label>
+        <input type="text" name="phone" required>
+
+        <label>סיסמה:</label>
+        <input type="password" name="password" required>
+
+        <label>תמונה של תעודה מזהה:</label>
+        <input type="file" name="id_card" accept="image/*" required>
+
+        <button type="submit">הרשמה</button>
+
+    </form>
+</div>
+
+</body>
+</html>
