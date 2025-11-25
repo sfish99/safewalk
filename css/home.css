@@ -1,0 +1,202 @@
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: "Calibri", sans-serif;
+  text-align: center;
+  background-color: #fff7fa;
+  display: flex;
+  flex-direction: column;
+}
+
+/* הגדרת גוף העבודה הממורכז */
+.shell {
+    width: 100%;
+    max-width: 420px; /* מגביל את רוחב התוכן הראשי לרוחב אפליקציה */
+    margin: 0 auto;
+    padding: 0 15px;
+    flex: 1; 
+}
+
+
+.header-dashboard {
+    background: linear-gradient(90deg, #f9a8d4, #c084fc);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: visible;
+    padding: 15px 0 60px 0; 
+    border-radius: 0 0 15px 15px; 
+    width: 100%;
+    height: 15%;
+}
+
+.dashboard-content-wrapper {
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+
+.logo {
+  position: static;
+  height: 150px;
+}
+
+.header-dashboard h1 {
+    font-size: 24px;
+    margin: 0;
+    color: inherit;
+}
+
+/* מתג התפקידים */
+.role-switch {
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    padding: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: relative;
+    top: 30px; 
+    width: 100%;
+}
+
+.role-btn-toggle { 
+    flex: 1;
+    padding: 10px 0;
+    border: none;
+    border-radius: 8px;
+    background-color: transparent;
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.role-btn-toggle.active {
+    background-color: white;
+    color: #c084fc; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.role-btn-toggle:not(.active):hover {
+    background-color: rgba(255, 255, 255, 0.1); /* הבהרה קלה */
+    color: #f1e9e9; /* ודא שהצבע לבן או משתנה */
+}
+
+.main-dashboard-content {
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* הגריד של הכרטיסים - 2 עמודות (2X2) */
+.grid-2x2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 עמודות תמיד */
+    gap: 25px;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.card {
+    background: #ffffff;
+    border: 1px solid #eee;
+    border-radius: 16px;
+    padding: 20px 10px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    min-height: 150px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.card-icon {
+    font-size: 24px;
+    color: #f472b6; 
+    line-height: 1;
+}
+
+.card p {
+    margin: 0;
+    font-weight: 700;
+    color: #07213a;
+    font-size: 20px;
+    line-height: 1.2;
+}
+
+.card small {
+    color: #777;
+    font-size: 15px;
+    line-height: 1;
+}
+
+
+.sos-btn {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    font-weight: 800;
+    font-size: 24px;
+    color: white;
+    background: radial-gradient(circle at 40% 35%, #ff287a, #ff4b4b);
+    box-shadow: 0 0 0 10px rgba(255, 75, 75, 0.2), 0 8px 30px rgba(255, 75, 75, 0.5);
+    border: none;
+    cursor: pointer;
+}
+
+/* FOOTER */
+.footer {
+  margin-top: 0;
+  color: #777;
+  font-size: 14px;
+}
+
+/* Media Query: כללים אלה יחולו רק כאשר רוחב המסך הוא 768 פיקסלים ומעלה. */
+@media (min-width: 768px) {
+    /* שינוי רוחב ה-shell כדי לאפשר יותר מקום לכרטיסים גדולים */
+    .shell {
+        max-width: 800px; 
+    }
+    
+    .card {
+        min-height: 250px; /* הגדלת גובה מינימלי למחשב */
+        padding: 40px 20px;
+    }
+    
+    .grid-2x2 {
+        gap: 40px; /* הגדלת המרווח בין הכרטיסים */
+    }
+
+    /* הגדלת הטקסט בכרטיס */
+    .card p {
+        font-size: 26px; /* הגדלת גודל הפונט */
+    }
+
+    .card small {
+        font-size: 18px; /* הגדלת טקסט קטן */
+    }
+
+    /* הגדלת אייקון */
+    .card-icon {
+        font-size: 36px;
+    }
+    
+    /* הגדלת כפתור ה-SOS */
+    .sos-btn {
+        width: 150px;
+        height: 150px;
+        font-size: 30px;
+    }
+}
