@@ -1,18 +1,8 @@
 <?php
 session_start();
 
-//Configuration Parameters
-$host = "localhost";       
-$dbUsername = "isshaharshi_safewalk_user";  
-$dbPassword = "180797Ss!";  
-$dbName = "isshaharshi_safewalk_db"; 
-
-//Create Connection
-$conn = new mysqli($host, $dbUsername, $dbPassword, $dbName);
-
-if ($conn->connect_error) {
-    die("שגיאה בחיבור לבסיס הנתונים");
-}
+//Connection to DB
+require "db_connect.php";
 
 //Get Data
 $first = $_POST['first_name'];

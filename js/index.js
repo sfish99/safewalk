@@ -7,5 +7,5 @@ function loginAsVolunteer() {
 }
 
 function goToRegister() {
-  window.location.href = "register.html";
+  window.location.href = "includes/register_volunteer.html";
 }
