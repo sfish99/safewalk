@@ -59,7 +59,7 @@ p {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
+  gap: 20px;
 }
 
 .role-button {
@@ -98,7 +98,6 @@ p {
   border-radius: 30px;
   font-size: 16px;
   cursor: pointer;
-  margin-top: 35px;
   width: 250px;
   font-weight: 600;
   transition: all 0.3s ease;
