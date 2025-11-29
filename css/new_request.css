@@ -1,0 +1,133 @@
+/* Reset בסיסי */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+/* גוף העמוד */
+body {
+  background-color: #fff7fa; /* ורוד very light */
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  background: linear-gradient(90deg, #f9a8d4, #c084fc);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column; /* לוגו מעל הכותרת */
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0; /* במקום height קבוע */
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  gap: 10px; /* רווח בין הלוגו לכותרת */
+}
+
+.logo {
+  height: 80px; /* מתאים גם למובייל */
+  width: auto;
+}
+
+.header h1 {
+  font-family: "Calibri", sans-serif;
+  font-size: 2.1rem;
+  color: white;
+  text-align: center;
+}
+
+
+/* תוכן ראשי */
+.support-options {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 20px;
+}
+
+/* תת כותרת */
+.subtitle {
+  font-size: 1.2rem;
+  color: #c084fc; /* סגול */
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+/* גריד של כרטיסי אפשרויות */
+.options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  width: 100%;
+  max-width: 500px;
+}
+
+/* כרטיס אפשרות */
+.option-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(196,132,252,0.2);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-align: center;
+}
+
+.option-card img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 10px;
+}
+
+.option-card span {
+  font-family: "Calibri", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #f472b6;
+}
+
+/* אפקט Hover */
+.option-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(196,132,252,0.35);
+}
+
+.sos-btn {
+  margin-top: 35px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    font-weight: 800;
+    font-size: 24px;
+    color: white;
+    background: radial-gradient(circle at 40% 35%, #ff287a, #ff4b4b);
+    box-shadow: 0 0 0 10px rgba(255, 75, 75, 0.2), 0 8px 30px rgba(255, 75, 75, 0.5);
+    border: none;
+    cursor: pointer;
+}
+
+.footer {
+  margin-top: auto; /* דוחף את ה-footer לתחתית */
+  color: #777;
+  font-size: 14px;
+  text-align: center; /* מרכז טקסט */
+  padding: 15px 0; /* מוסיף ריווח למעלה ולמטה */
+  width: 100%; /* תופס את רוחב המסך */
+}
+
+
+/* רספונסיביות למובייל */
+@media (max-width: 480px) {
+  .options-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}
