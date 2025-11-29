@@ -1,9 +1,9 @@
 function loginAsWalker() {
-  window.location.href = "login.html?role=walker";
+  window.location.href = "includes/login_walker.html";
 }
 
 function loginAsVolunteer() {
-  window.location.href = "login.html?role=volunteer";
+  window.location.href = "includes/login_volunteer.html";
 }
 
 function goToRegister(type) {
