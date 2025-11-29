@@ -24,6 +24,6 @@ if (!password_verify($password, $hashedPassword)) {
 $_SESSION['volunteer_id'] = $id;
 $_SESSION['volunteer_name'] = $name;
 
-header("Location: volunteer_dashboard.php");
+header("Location: Home_volunteer.php");
 exit;
 ?>
