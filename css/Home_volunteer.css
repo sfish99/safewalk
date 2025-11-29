@@ -1,4 +1,3 @@
-
 html, body {
   height: 100%;
   margin: 0;
@@ -21,16 +20,16 @@ html, body {
 
 .header-dashboard {
     background: linear-gradient(90deg, #f9a8d4, #c084fc);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  overflow: visible;
-    padding: 15px 0 60px 0; 
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: visible;
+    padding: 10px 0 30px 0; /* פחות padding למובייל */
     border-radius: 0 0 15px 15px; 
     width: 100%;
-    height: 15%;
+    height: auto; /* לא אחוז, אלא גובה גמיש */
 }
 
 .dashboard-content-wrapper {
@@ -44,10 +43,11 @@ html, body {
     flex: 1;
 }
 
-
 .logo {
-  position: static;
-  height: 150px;
+    height: 20vw; /* גובה משתנה לפי רוחב המסך */
+    max-height: 120px; /* מגבלה למחשבים גדולים */
+    width: auto;
+    margin-bottom: 15px;
 }
 
 .header-dashboard h1 {
@@ -58,27 +58,24 @@ html, body {
 
 /* מתג התפקידים */
 .role-switch {
-    display: flex;
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
-    padding: 5px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    position: relative;
-    top: 30px; 
-    width: 100%;
+    top: 5px; /* מתאם עם הגובה החדש */
+    width: 90%; /* גמיש לרוחב */
 }
 
 .role-btn-toggle { 
     flex: 1;
-    padding: 10px 0;
-    border: none;
+    padding: 15px 0;      /* גובה הכפתור */
+    min-width: 120px;     /* רוחב מינימום */
+    border: none;         /* נסיר אם רוצים קו גבול */
     border-radius: 8px;
     background-color: transparent;
     color: white;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 16px;
     cursor: pointer;
     transition: 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* צל כמו שהיה קודם */
+    border: 1px solid rgba(255,255,255,0.3); /* מסגרת שקופה כמו קודם */
 }
 
 .role-btn-toggle.active {
@@ -86,9 +83,10 @@ html, body {
     color: #c084fc; 
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
+
 .role-btn-toggle:not(.active):hover {
-    background-color: rgba(255, 255, 255, 0.1); /* הבהרה קלה */
-    color: #f1e9e9; /* ודא שהצבע לבן או משתנה */
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #f1e9e9;
 }
 
 .main-dashboard-content {
@@ -198,5 +196,22 @@ html, body {
         width: 150px;
         height: 150px;
         font-size: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        height: 25vw;
+    }
+
+    .role-switch {
+        top: 10px;
+        width: 90%;
+        font-size: 12px;
+    }
+     .role-btn-toggle {
+        font-size: 14px;
+        padding: 12px 0;
+        min-width: 100px;
     }
 }
