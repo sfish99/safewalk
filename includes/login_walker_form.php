@@ -24,6 +24,6 @@ if (!password_verify($password, $hashedPassword)) {
 $_SESSION['walker_id'] = $id;
 $_SESSION['walker_name'] = $name;
 
-header("Location: Home_walker.php.php");
+header("Location: Home_walker.php");
 exit;
 ?>
