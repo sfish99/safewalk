@@ -79,6 +79,8 @@ body {
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
   text-align: center;
+  text-decoration: none; /* מסיר קו תחתון */
+  color: inherit; 
 }
 
 .option-card img {

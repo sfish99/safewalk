@@ -4,6 +4,7 @@ let destinationMarker;
 let routeLine;
 const routeTolerance = 50; // מטרים מרוחק מהמטרה / מסלול
 
+
 function initMap() {
     map = L.map('map').setView([32.0853, 34.7818], 13);
 
