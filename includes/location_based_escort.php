@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+// Check if walker connected
+if (!isset($_SESSION['walker_id'])) {
+    header("Location: login_walker.html");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
@@ -5,7 +15,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ליווי במסלול - SafeWalk</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-<link rel="stylesheet" href="../css/Location-based-escort.css">
+<link rel="stylesheet" href="../css/location_based_escort.css">
 </head>
 <body>
 
