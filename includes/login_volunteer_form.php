@@ -30,6 +30,9 @@ $_SESSION['volunteer_name'] = $name;
 //$update->bind_param("i", $id);
 //$update->execute();
 
+// ********* הוסף/הוסיפי את השורה הזו *********
+echo "Success! Redirecting to Home_volunteer.php...";
+
 //Refer to home page
 header("Location: Home_volunteer.php");
 exit;
