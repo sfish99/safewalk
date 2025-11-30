@@ -21,9 +21,16 @@ if (!password_verify($password, $hashedPassword)) {
     die("סיסמה שגויה");
 }
 
+//create session
 $_SESSION['volunteer_id'] = $id;
 $_SESSION['volunteer_name'] = $name;
 
+// Update volunteer as online
+$update = $conn->prepare("UPDATE volunteers SET is_online = 1 WHERE id = ?");
+$update->bind_param("i", $id);
+$update->execute();
+
+//Refer to home page
 header("Location: Home_volunteer.php");
 exit;
 ?>
