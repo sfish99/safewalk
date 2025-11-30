@@ -1,6 +1,9 @@
 <?php
 session_start();
 
+//connect to DB
+require "db_connect.php";
+
 // if there is no session - send to log in page
 if (!isset($_SESSION['walker_id'])) {
     header("Location: login_walker.html");
