@@ -26,12 +26,10 @@ $_SESSION['volunteer_id'] = $id;
 $_SESSION['volunteer_name'] = $name;
 
 // Update volunteer as online
-//$update = $conn->prepare("UPDATE volunteers SET is_online = 1 WHERE id = ?");
-//$update->bind_param("i", $id);
-//$update->execute();
+$update = $conn->prepare("UPDATE volunteers SET is_online = 1 WHERE id = ?");
+$update->bind_param("i", $id);
+$update->execute();
 
-// ********* הוסף/הוסיפי את השורה הזו *********
-echo "Success! Redirecting to Home_volunteer.php...";
 
 //Refer to home page
 header("Location: Home_volunteer.php");
