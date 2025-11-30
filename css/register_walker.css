@@ -1,42 +1,131 @@
-       body {
-            font-family: Arial;
-            background: #f6f6f6;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            direction: rtl;
-        }
-        .register-box {
-            background: white;
-            padding: 25px;
-            border-radius: 10px;
-            width: 360px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            text-align: right;
-        }
-        .register-box h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        input, button {
-            width: 100%;
-            padding: 12px;
-            margin: 8px 0;
-            border-radius: 6px;
-            border: 1px solid #ddd;
-            font-size: 14px;
-        }
-        button {
-            background: #1e88e5;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        button:hover {
-            background: #1565c0;
-        }
-        label {
-            font-size: 14px;
-            font-weight: bold;
-        }
+/* רקע כללי */
+body {
+    font-family: 'Assistant', Arial, sans-serif;
+    background: #fff7fa;
+    margin: 0;
+    padding: 0;
+    direction: rtl;
+}
+
+.header {
+  background: linear-gradient(90deg, #f9a8d4, #c084fc);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column; /* לוגו מעל הכותרת */
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0; /* במקום height קבוע */
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  gap: 10px; /* רווח בין הלוגו לכותרת */
+}
+
+.logo {
+  height: 80px; /* מתאים גם למובייל */
+  width: auto;
+}
+
+.header h1 {
+  font-family: "Calibri", sans-serif;
+  font-size: 2.1rem;
+  color: white;
+  text-align: center;
+}
+
+.header-dashboard h1 {
+    color: white;
+    font-size: 26px;
+    margin: 0;
+}
+
+/* קופסת הרשמה מעוצבת */
+.register-box {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 420px;
+    margin: 40px auto;
+    box-shadow: 0 0 12px rgba(0,0,0,0.08);
+}
+
+/* כותרת */
+.register-box h2 {
+    text-align: center;
+    color: #c084fc;
+    margin-bottom: 25px;
+    font-size: 24px;
+ 
+}
+
+/* LABEL */
+label {
+    font-size: 14px;
+    color: #333;
+    font-weight: 600;
+}
+
+
+
+/* INPUTS */
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="file"] {
+    width: 100%;
+    padding: 12px;
+    padding-left: 12px;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    border-radius: 10px;
+    border: 1.5px solid #e6d7ff;
+    background: #faf7ff;
+    font-size: 15px;
+    transition: 0.2s;
+}
+
+input:focus {
+    border-color: #c084fc;
+    outline: none;
+    background: #fff;
+
+}
+
+/* כפתור */
+button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 10px;
+    background: linear-gradient(90deg, #f472b6, #c084fc);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 17px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+button:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+}
+
+.footer {
+  margin-top: auto; /* דוחף את ה-footer לתחתית */
+  color: #777;
+  font-size: 14px;
+  text-align: center; /* מרכז טקסט */
+  padding: 15px 0; /* מוסיף ריווח למעלה ולמטה */
+  width: 100%; /* תופס את רוחב המסך */
+}
+
+/* רספונסיביות מובייל */
+@media (max-width: 480px) {
+    .register-box {
+        padding: 20px;
+    }
+    .header-dashboard h1 {
+        font-size: 22px;
+    }
+}
