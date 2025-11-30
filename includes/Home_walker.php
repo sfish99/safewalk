@@ -36,7 +36,11 @@ $walkerName = $_SESSION['walker_name'];
     <div class="shell">
         <main class="main-dashboard-content">
             <div class="grid-2x2">
-                <button class="card"><div class="card-icon">✋</div><p>פתיחת קריאה</p><small>התחל קריאה חדשה</small></button>
+                <button class="card" onclick="window.location.href='../includes/new_request.html'">
+                    <div class="card-icon">✋</div>
+                    <p>פתיחת קריאה</p>
+                    <small>התחל קריאה חדשה</small>
+                </button>               
                 <button class="card"><div class="card-icon">📋</div><p>היסטוריית קריאות</p><small>צפה בקריאות קודמות</small></button>
                 <button class="card"><div class="card-icon">🤝</div><p>תמיכה </p><small>קבלת מידע ומענה על שאלות נפוצות</small></button>
                 <button class="card"><div class="card-icon">👤</div><p>פרופיל אישי</p><small>ניהול חשבון</small></button>
