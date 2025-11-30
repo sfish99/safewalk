@@ -36,7 +36,7 @@ $walkerName = $_SESSION['walker_name'];
     <div class="shell">
         <main class="main-dashboard-content">
             <div class="grid-2x2">
-                <button class="card" onclick="window.location.href='../includes/new_request.html'">
+                <button class="card" onclick="window.location.href='../includes/new_request.php'">
                     <div class="card-icon">✋</div>
                     <p>פתיחת קריאה</p>
                     <small>התחל קריאה חדשה</small>

@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+// Check if walker connected
+if (!isset($_SESSION['walker_id'])) {
+    header("Location: login_walker.html");
+    exit;
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
