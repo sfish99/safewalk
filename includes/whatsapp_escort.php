@@ -13,7 +13,7 @@ if (!isset($_SESSION['walker_id'])) {
 $walkerName = $_SESSION['walker_name'];
 
 // Check if volunteers availables ,if someone available it will take her from DB
-$stmt = $conn->prepare("SELECT first_name, last_name, phone_number FROM volunteers WHERE is_online = 1");
+$stmt = $conn->prepare("SELECT first_name, last_name, phone FROM volunteers WHERE is_online = 1");
 $stmt->execute();
 $result = $stmt->get_result();
 
