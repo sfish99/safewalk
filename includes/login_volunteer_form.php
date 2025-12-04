@@ -12,7 +12,7 @@ $stmt->store_result();
 
 if ($stmt->num_rows === 0) {
     $_SESSION['error'] = "האימייל לא נמצא במערכת";
-    header("Location: login_volunteer.html");
+    header("Location: login_volunteer.php");
     exit;
 
 }
@@ -22,7 +22,7 @@ $stmt->fetch();
 
 if (!password_verify($password, $hashedPassword)) {
     $_SESSION['error'] = "סיסמה שגויה";
-    header("Location: login_volunteer.html");
+    header("Location: login_volunteer.php");
     exit;
 }
 
