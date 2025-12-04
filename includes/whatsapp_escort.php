@@ -12,6 +12,19 @@ if (!isset($_SESSION['walker_id'])) {
 
 $walkerName = $_SESSION['walker_name'];
 
+// This function create the number for whatsApp
+function formatPhoneForWhatsApp($phone) {
+    //leave only digits
+    $num = preg_replace('/\D/', '', $phone);
+
+    // if begin with zero replace with 972
+    if (strpos($num, '0') === 0) {
+        $num = '972' . substr($num, 1);
+    }
+
+    return $num;
+}
+
 // Check if volunteers availables ,if someone available it will take her from DB
 $stmt = $conn->prepare("SELECT first_name, last_name, phone FROM volunteers WHERE is_online = 1");
 $stmt->execute();
@@ -45,7 +58,8 @@ while ($row = $result->fetch_assoc()) {
             <?php foreach ($volunteers as $volunteer): ?>
                 <div class="volunteer-box">
                     <span class="name"><?php echo htmlspecialchars($volunteer['first_name'] . ' ' . $volunteer['last_name']); ?></span>
-                    <a href="https://wa.me/<?php echo preg_replace('/\D/', '', $volunteer['phone']); ?>" target="_blank" class="btn">פתחי וואטסאפ</a>
+                    <a href="https://wa.me/<?php echo formatPhoneForWhatsApp($volunteer['phone']); ?>" target="_blank" class="btn"> פתחי וואטסאפ</a>
+
                 </div>
             <?php endforeach; ?>
         <?php endif; ?>
