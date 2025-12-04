@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
@@ -10,6 +13,15 @@
 
 <div class="login-box">
     <h2>התחברות הולכת רגל</h2>
+
+    <?php if (isset($_SESSION['error'])): ?>
+        <div class="error-msg">
+            <?php 
+                echo $_SESSION['error']; 
+                unset($_SESSION['error']); 
+            ?>
+        </div>
+    <?php endif; ?>
 
     <form action="login_walker_form.php" method="POST">
 
