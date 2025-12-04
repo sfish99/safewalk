@@ -1,15 +1,26 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <title>התחברות מתנדבת - SafeWalk</title>
-
     <link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
 
 <div class="login-box">
     <h2>התחברות מתנדבת</h2>
+
+    <?php if (isset($_SESSION['error'])): ?>
+        <div class="error-msg">
+            <?php 
+                echo $_SESSION['error']; 
+                unset($_SESSION['error']); 
+            ?>
+        </div>
+    <?php endif; ?>
 
     <form action="login_volunteer_form.php" method="POST">
 

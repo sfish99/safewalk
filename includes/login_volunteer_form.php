@@ -11,14 +11,19 @@ $stmt->execute();
 $stmt->store_result();
 
 if ($stmt->num_rows === 0) {
-    die("האימייל לא נמצא במערכת");
+    $_SESSION['error'] = "האימייל לא נמצא במערכת";
+    header("Location: login_volunteer.html");
+    exit;
+
 }
 
 $stmt->bind_result($id, $name, $hashedPassword);
 $stmt->fetch();
 
 if (!password_verify($password, $hashedPassword)) {
-    die("סיסמה שגויה");
+    $_SESSION['error'] = "סיסמה שגויה";
+    header("Location: login_volunteer.html");
+    exit;
 }
 
 //create session
