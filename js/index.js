@@ -1,5 +1,5 @@
 function loginAsWalker() {
-  window.location.href = "includes/login_walker.html";
+  window.location.href = "includes/login_walker.php";
 }
 
 function loginAsVolunteer() {
