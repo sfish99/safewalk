@@ -3,7 +3,7 @@ function loginAsWalker() {
 }
 
 function loginAsVolunteer() {
-  window.location.href = "includes/login_volunteer.html";
+  window.location.href = "includes/login_volunteer.php";
 }
 
 function goToRegister(type) {
