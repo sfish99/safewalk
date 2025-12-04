@@ -33,7 +33,6 @@ if (!isset($_SESSION['walker_id'])) {
   </div>
 
   <div id="map"></div>
-  <p id="status">מיקום: לא עודכן עדיין</p>
 </main>
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
