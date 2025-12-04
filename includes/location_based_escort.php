@@ -15,6 +15,7 @@ if (!isset($_SESSION['walker_id'])) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ליווי במסלול - SafeWalk</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
 <link rel="stylesheet" href="../css/location_based_escort.css">
 </head>
 <body>
@@ -37,6 +38,7 @@ if (!isset($_SESSION['walker_id'])) {
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script src="https://unpkg.com/leaflet-geometryutil"></script>
+<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
 <script src="../js/Location-based-escort.js"></script>
 
 </body>

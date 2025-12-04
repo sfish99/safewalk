@@ -12,6 +12,7 @@ function initMap() {
         attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
 
+
     if (navigator.geolocation) {
         navigator.geolocation.watchPosition(updatePosition, showError, {
             enableHighAccuracy: true,
@@ -53,7 +54,14 @@ function initMap() {
             });
         });
     });
-}
+
+    
+        L.Control.geocoder({
+            defaultMarkGeocode: false
+        }).on('markgeocode', function(e) {
+            const center = e.geocode.center;
+            setDestinationCoordinates(center.lat, center.lng); // מחובר למסלול
+        }).addTo(map);
 
 // עדכון מיקום המשתמשת
 function updatePosition(position) {
@@ -121,5 +129,6 @@ function showError(error) {
 
 // להוסיף Leaflet.GeometryUtil
 // <script src="https://unpkg.com/leaflet-geometryutil"></script>
+
 
 window.onload = initMap;
