@@ -45,7 +45,7 @@ while ($row = $result->fetch_assoc()) {
             <?php foreach ($volunteers as $volunteer): ?>
                 <div class="volunteer-box">
                     <span class="name"><?php echo htmlspecialchars($volunteer['first_name'] . ' ' . $volunteer['last_name']); ?></span>
-                    <a href="https://wa.me/<?php echo preg_replace('/\D/', '', $volunteer['phone_number']); ?>" target="_blank" class="btn">פתחי וואטסאפ</a>
+                    <a href="https://wa.me/<?php echo preg_replace('/\D/', '', $volunteer['phone']); ?>" target="_blank" class="btn">פתחי וואטסאפ</a>
                 </div>
             <?php endforeach; ?>
         <?php endif; ?>

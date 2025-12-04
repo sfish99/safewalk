@@ -21,7 +21,7 @@ $stmt->fetch();
 
 if (!password_verify($password, $hashedPassword)) {
      $_SESSION['error'] = "סיסמה שגויה";
-    header("Location: login_'walker.php");
+    header("Location: login_walker.php");
     exit;
 }
 
