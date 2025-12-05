@@ -6,7 +6,7 @@ require "db_connect.php";
 
 // if there is no session - send to log in page
 if (!isset($_SESSION['walker_id'])) {
-    header("Location: login_walker.html");
+    header("Location: login_walker.php");
     exit;
 }
 
