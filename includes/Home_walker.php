@@ -24,12 +24,8 @@ $walkerName = $_SESSION['walker_name'];
     <header class="header-dashboard">
         <div class="dashboard-content-wrapper">
                 <img src="../images/logo.png" alt="SafeWalk Logo" class="logo">
-          
-            
-                       <div class="role-switch" role="tablist">
-                <button class="role-btn-toggle walker active">הולכת רגל</button>
-                <button class="role-btn-toggle volunteer">מתנדבת</button>
-            </div>
+
+                 <h2 class="welcome-text">שלום <?php echo htmlspecialchars($walkerName); ?> 🌟</h2>
         </div>
     </header>
 
