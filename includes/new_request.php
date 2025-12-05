@@ -53,7 +53,7 @@ if (!isset($_SESSION['walker_id'])) {
 </div>
 
    <div class="sos-wrap">
-     <button class="sos-btn">S.O.S</button>
+    <a href="tel:100" class="sos-btn">S.O.S</a>
    </div>
 
 </main>

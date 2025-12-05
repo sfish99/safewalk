@@ -45,6 +45,11 @@ while ($row = $result->fetch_assoc()) {
 </head>
 <body>
 
+<header class="header">
+    <img src="../images/logo.png" alt="SafeWalk Logo" class="logo">
+    <h1>ליווי בוואטסאפ</h1>
+</header>
+
 <div class="container">
     <h1>שלום <?php echo htmlspecialchars($walkerName); ?> 🌟</h1>
     <h2>בחרי מתנדבת זמינה לוואטסאפ</h2>
@@ -67,6 +72,10 @@ while ($row = $result->fetch_assoc()) {
 
     <a href="Home_walker.php" class="back">חזרה לדף הבית</a>
 </div>
+
+<footer class="footer">
+    <p>© 2025 SafeWalk</p>
+</footer>
 
 </body>
 </html>

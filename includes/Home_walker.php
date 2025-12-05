@@ -47,7 +47,7 @@ $walkerName = $_SESSION['walker_name'];
             </div>
 
             <div class="sos-wrap">
-                <button class="sos-btn">S.O.S</button>
+                <a href="tel:100" class="sos-btn">S.O.S</a>
             </div>
         </main>
 
