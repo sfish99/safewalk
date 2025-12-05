@@ -35,7 +35,7 @@ if (!isset($_SESSION['walker_id'])) {
     <span>ליווי בווטסאפ</span>
   </a>
 
-  <a href="phone-escort.html" class="option-card">
+  <a href="phone_call_escort.php" class="option-card">
     <img src="../images/phone.png" alt="שיחת טלפון">
     <span>ליווי בשיחת טלפון</span>
   </a>
