@@ -1,0 +1,146 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: "Calibri", sans-serif;
+    background-color: #fff7fa;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.shell {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 0 15px;
+    flex: 1;
+}
+
+.header-dashboard {
+    background: linear-gradient(90deg, #f9a8d4, #c084fc);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0 30px;
+    border-radius: 0 0 15px 15px;
+}
+
+.dashboard-content-wrapper {
+    max-width: 400px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo {
+    height: 20vw;
+    max-height: 120px;
+    margin-bottom: 15px;
+}
+
+.support-content {
+    padding: 20px 0;
+}
+
+.section-title {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #5a4fa3;
+    font-weight: 800;
+}
+
+/* FAQ */
+.faq-item {
+    background: #ffffff;
+    border-radius: 14px;
+    margin-bottom: 15px;
+    border: 1px solid #eee;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    overflow: hidden;
+}
+
+.faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: right;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.faq-question:hover {
+    background: #fdf0f6;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding: 0 15px;
+}
+
+.faq-answer p {
+    text-align: right;
+    font-size: 16px;
+    color: #444;
+}
+
+.support-call-btn {
+    display: block;
+    width: 100%;
+    background: #c084fc;
+    color: white;
+    padding: 14px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 30px;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(192,132,252,0.4);
+}
+
+.back-btn {
+    width: 100%;
+    padding: 14px;
+    margin-top: 20px;
+    background: #f9a8d4;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.back-btn:hover {
+    opacity: 0.9;
+}
+
+.footer {
+    margin-top: 20px;
+    color: #777;
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    .shell {
+        max-width: 780px;
+    }
+
+    .faq-question {
+        font-size: 22px;
+    }
+
+    .faq-answer p {
+        font-size: 18px;
+    }
+
+    .support-call-btn, .back-btn {
+        font-size: 20px;
+        padding: 18px;
+    }
+}
