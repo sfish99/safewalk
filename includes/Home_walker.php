@@ -17,7 +17,7 @@ $walkerName = $_SESSION['walker_name'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SafeWalk - דף ראשי מתנדבת</title>
-    <link rel="stylesheet" href="../css/Home_walker.css">
+    <link rel="stylesheet" href="../css/home_walker.css">
 </head>
 <body>
 

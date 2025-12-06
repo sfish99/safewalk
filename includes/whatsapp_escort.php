@@ -70,7 +70,7 @@ while ($row = $result->fetch_assoc()) {
         <?php endif; ?>
     </div>
 
-    <a href="Home_walker.php" class="back">חזרה לדף הבית</a>
+    <a href="home_walker.php" class="back">חזרה לדף הבית</a>
 </div>
 
 <footer class="footer">
