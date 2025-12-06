@@ -13,12 +13,12 @@ document.addEventListener('DOMContentLoaded', () => {
         // אם נלחץ כפתור "הולכת רגל"
         if (clickedButton.classList.contains('walker')) {
             // נווט לדף הראשי של הולכת רגל
-            window.location.href = 'home.html';
+            window.location.href = 'home_walker.php';
         } 
         // אם נלחץ כפתור "מתנדבת"
         else if (clickedButton.classList.contains('volunteer')) {
             // נווט לדף הראשי של מתנדבת
-            window.location.href = 'Home - volunteer.html';
+            window.location.href = 'home_volunteer.php';
         }
     }
 

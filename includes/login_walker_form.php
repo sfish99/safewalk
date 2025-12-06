@@ -28,6 +28,6 @@ if (!password_verify($password, $hashedPassword)) {
 $_SESSION['walker_id'] = $id;
 $_SESSION['walker_name'] = $name;
 
-header("Location: Home_walker.php");
+header("Location: home_walker.php");
 exit;
 ?>

@@ -37,6 +37,6 @@ $update->execute();
 
 
 //Refer to home page
-header("Location: Home_volunteer.php");
+header("Location: home_volunteer.php");
 exit;
 ?>
