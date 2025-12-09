@@ -69,9 +69,11 @@ $walkerName = $_SESSION['walker_name'];
 
         <h3 class="section-title">📞 צריכה עוד עזרה?</h3>
 
-        <a href="tel:0500000000" class="support-call-btn">התקשרי לתמיכה</a>
+        <div class="btn-row">
+            <a href="tel:0500000000" class="support-action-btn">התקשרי לתמיכה</a>
+            <button class="support-action-btn" onclick="window.location.href='home_walker.php'">⬅ חזרה לדף הבית</button>
+        </div>
 
-        <button class="back-btn" onclick="window.location.href='home_walker.php'">⬅ חזרה לדף הבית</button>
     </main>
 </div>
 
