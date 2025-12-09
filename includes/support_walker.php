@@ -16,7 +16,7 @@ $walkerName = $_SESSION['walker_name'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SafeWalk - תמיכה ושאלות נפוצות</title>
-    <link rel="stylesheet" href="../css/support_walker.css">
+    <link rel="stylesheet" href="../css/support.css">
 </head>
 <body>
 
@@ -79,7 +79,7 @@ $walkerName = $_SESSION['walker_name'];
     <p>© 2025 SafeWalk</p>
 </footer>
 
-<script src="../js/support_walker.js"></script>
+<script src="../js/support.js"></script>
 
 
 </body>

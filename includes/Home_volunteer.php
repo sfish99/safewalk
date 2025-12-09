@@ -3,7 +3,7 @@ session_start();
 
 // if there is no session - send to log in page
 if (!isset($_SESSION['volunteer_id'])) {
-    header("Location: login_volunteer.html");
+    header("Location: login_volunteer.php");
     exit;
 }
 
@@ -40,7 +40,11 @@ $volName = $_SESSION['volunteer_name'];
             <div class="grid-2x2">
                 <button class="card"><div class="card-icon">✋</div><p>הושטת יד</p><small>ענה לקריאה חדשה</small></button>
                 <button class="card"><div class="card-icon">📋</div><p>היסטוריית קריאות</p><small>צפה בקריאות קודמות</small></button>
-                <button class="card"><div class="card-icon">🤝</div><p>שאלות נפוצות </p><small>קבלת מידע ומענה על שאלות נפוצות</small></button>
+                <button class="card" onclick="window.location.href='support_volunteer.php'">
+                    <div class="card-icon">🤝</div>
+                    <p>תמיכה </p>
+                    <small>קבלת מידע ומענה על שאלות נפוצות</small>
+                </button>
                 <button class="card"><div class="card-icon">👤</div><p>פרופיל אישי</p><small>ניהול חשבון</small></button>
             </div>
 
