@@ -1,3 +1,4 @@
+/* GENERAL PAGE SETUP */
 html, body {
     height: 100%;
     margin: 0;
@@ -16,6 +17,7 @@ html, body {
     flex: 1;
 }
 
+/* HEADER */
 .header-dashboard {
     background: linear-gradient(90deg, #f9a8d4, #c084fc);
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -37,9 +39,23 @@ html, body {
 .logo {
     height: 20vw;
     max-height: 120px;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
+.welcome-text {
+    margin: 0;
+    font-size: 22px;
+    font-weight: bold;
+    color: #4a3d8f;
+}
+
+.subtext {
+    margin-top: 4px;
+    font-size: 16px;
+    color: #555;
+}
+
+/* CONTENT */
 .support-content {
     padding: 20px 0;
 }
@@ -51,7 +67,7 @@ html, body {
     font-weight: 800;
 }
 
-/* FAQ */
+/* FAQ BOXES */
 .faq-item {
     background: #ffffff;
     border-radius: 14px;
@@ -89,43 +105,42 @@ html, body {
     color: #444;
 }
 
-.support-call-btn {
-    display: block;
-    width: 100%;
-    background: #c084fc;
-    color: white;
-    padding: 14px;
-    border-radius: 10px;
-    font-size: 18px;
-    font-weight: 700;
-    margin-top: 30px;
-    text-decoration: none;
-    box-shadow: 0 4px 12px rgba(192,132,252,0.4);
+/* BUTTON ROW (2 BUTTONS SAME SIZE) */
+.btn-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 25px;
 }
 
-.back-btn {
+.support-action-btn {
+    flex: 1;
+    display: block;
+    text-decoration: none;
+    text-align: center;
     width: 100%;
     padding: 14px;
-    margin-top: 20px;
-    background: #f9a8d4;
+    background: #c084fc;
     color: white;
     border: none;
     border-radius: 10px;
     font-size: 18px;
-    font-weight: bold;
+    font-weight: 700;
+    box-sizing: border-box;
     cursor: pointer;
 }
 
-.back-btn:hover {
-    opacity: 0.9;
+.support-action-btn:hover {
+    opacity: 0.92;
 }
 
+/* FOOTER */
 .footer {
     margin-top: 20px;
     color: #777;
     font-size: 14px;
 }
 
+/* RESPONSIVE */
 @media (min-width: 768px) {
     .shell {
         max-width: 780px;
@@ -139,7 +154,7 @@ html, body {
         font-size: 18px;
     }
 
-    .support-call-btn, .back-btn {
+    .support-action-btn {
         font-size: 20px;
         padding: 18px;
     }
