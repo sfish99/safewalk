@@ -43,7 +43,11 @@ $walkerName = $_SESSION['walker_name'];
                     <p>תמיכה </p>
                     <small> קבלת מידע ומענה על שאלות נפוצות</small>
                 </button>
-                <button class="card"><div class="card-icon">👤</div><p>פרופיל אישי</p><small>ניהול חשבון</small></button>
+                <button class="card" onclick="window.location.href='profile_walker.php'">
+                    <div class="card-icon">👤</div>
+                    <p>פרופיל אישי</p>
+                    <small>ניהול חשבון</small>
+                </button>
             </div>
 
             <div class="sos-wrap">
