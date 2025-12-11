@@ -13,7 +13,7 @@ if (!isset($_SESSION['walker_id'])) {
 $walkerName = $_SESSION['walker_name'];
 
 // Check online volunteers
-$stmt = $conn->prepare("SELECT first_name, last_name, phone FROM volunteers WHERE is_online = 1");
+$stmt = $conn->prepare("SELECT first_name, last_name, phone, profile_image FROM volunteers WHERE is_online = 1");
 $stmt->execute();
 $result = $stmt->get_result();
 
@@ -49,15 +49,15 @@ while ($row = $result->fetch_assoc()) {
         <?php else: ?>
             <?php foreach ($volunteers as $volunteer): ?>
                 <div class="volunteer-box">
+                    <img src="../uploads/profile_images/<?= $volunteer['profile_image'] ?: 'default.png' ?>" class="mini-profile">
+    
                     <span class="name">
-                        <?php echo htmlspecialchars($volunteer['first_name'] . ' ' . $volunteer['last_name']); ?>
+                    <?= htmlspecialchars($volunteer['first_name'] . ' ' . $volunteer['last_name']); ?>
                     </span>
 
-                    <a href="tel:<?php echo preg_replace('/\D/', '', $volunteer['phone']); ?>" 
-                       class="btn call-btn">
-                        התקשרי
-                    </a>
+                    <a href="tel:<?= preg_replace('/\D/', '', $volunteer['phone']); ?>" class="btn call-btn"> התקשרי</a>
                 </div>
+
             <?php endforeach; ?>
         <?php endif; ?>
     </div>
