@@ -26,7 +26,7 @@ function formatPhoneForWhatsApp($phone) {
 }
 
 // Check if volunteers availables ,if someone available it will take her from DB
-$stmt = $conn->prepare("SELECT first_name, last_name, phone FROM volunteers WHERE is_online = 1");
+$stmt = $conn->prepare("SELECT first_name, last_name, phone, profile_image FROM volunteers WHERE is_online = 1");
 $stmt->execute();
 $result = $stmt->get_result();
 
@@ -62,11 +62,18 @@ while ($row = $result->fetch_assoc()) {
         <?php else: ?>
             <?php foreach ($volunteers as $volunteer): ?>
                 <div class="volunteer-box">
-                    <span class="name"><?php echo htmlspecialchars($volunteer['first_name'] . ' ' . $volunteer['last_name']); ?></span>
-                    <a href="https://wa.me/<?php echo formatPhoneForWhatsApp($volunteer['phone']); ?>" target="_blank" class="btn"> פתחי וואטסאפ</a>
 
-                </div>
-            <?php endforeach; ?>
+                <img src="../uploads/profile_images/<?= $volunteer['profile_image'] ?: 'default.png' ?>" class="mini-profile">
+
+                <span class="name">
+                    <?= htmlspecialchars($volunteer['first_name'] . ' ' . $volunteer['last_name']); ?>
+                </span>
+
+                <a href="https://wa.me/<?= formatPhoneForWhatsApp($volunteer['phone']); ?>" target="_blank" class="btn">פתחי וואטסאפ</a>
+
+    </div>
+<?php endforeach; ?>
+
         <?php endif; ?>
     </div>
 
