@@ -100,6 +100,18 @@ body {
   text-decoration: underline;
 }
 
+/* תמונה קטנה ליד השם */
+.mini-profile {
+    width: 40px;             /* גודל קטן */
+    height: 40px;
+    border-radius: 50%;      /* עיגול מלא */
+    object-fit: cover;       /* שומרת על יחס תמונה */
+    border: 2px solid #3b82f6;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    flex-shrink: 0;          /* מונע מהתמונה להצטמצם */
+    margin-left: 10px;       /* רווח בין התמונה לשם */
+}
+
 /* FOOTER */
 .footer {
   margin-top: auto;
@@ -114,9 +126,15 @@ body {
   .volunteer-box {
     flex-direction: column;
     gap: 10px;
+    align-items: center; /* מרכז הכל */
+  }
+
+  .mini-profile {
+    margin-left: 0;
   }
 
   .call-btn {
     width: 100%;
   }
 }
+
