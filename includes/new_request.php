@@ -46,7 +46,7 @@ if (!isset($_SESSION['walker_id'])) {
   </a>
 
   <a href="video-escort.html" class="option-card">
-    <img src="../images/ai.png" alt="בינה מלאכותית">
+    <img src="../images/ai.jfif" alt="בינה מלאכותית">
     <span>ליווי מבוסס בינה מלאכותית</span>
   </a>
 
