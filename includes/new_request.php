@@ -32,7 +32,7 @@ if (!isset($_SESSION['walker_id'])) {
 
   <a href="whatsapp_escort.php" class="option-card">
     <img src="../images/whatsapp.png" alt="WhatsApp">
-    <span>ליווי בווטסאפ</span>
+    <span>ליווי בווטסאפ + וידאו</span>
   </a>
 
   <a href="phone_call_escort.php" class="option-card">
@@ -46,8 +46,8 @@ if (!isset($_SESSION['walker_id'])) {
   </a>
 
   <a href="video-escort.html" class="option-card">
-    <img src="../images/video call.png" alt="וידאו">
-    <span>ליווי בשיחת וידאו</span>
+    <img src="../images/ai.png" alt="בינה מלאכותית">
+    <span>ליווי מבוסס בינה מלאכותית</span>
   </a>
 
 </div>
