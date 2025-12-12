@@ -18,7 +18,7 @@ $walkId = $_SESSION['current_walk_id'];
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>הליכה בזמן אמת</title>
 <link rel="stylesheet" href="../css/walker_walk_map.css">
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4797KA2grZRJK0NiNgVsLykPATAiHi04"></script>
 </head>
 <body>
 
