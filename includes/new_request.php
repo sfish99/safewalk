@@ -40,7 +40,7 @@ if (!isset($_SESSION['walker_id'])) {
     <span>ליווי בשיחת טלפון</span>
   </a>
 
-    <a href="location_based_escort.php" class="option-card">
+    <a href="walker_start_walk.php" class="option-card">
     <img src="../images/location.png" alt="שיתוף מיקום">
     <span>שיתוף מיקום</span>
   </a>
