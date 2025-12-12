@@ -11,18 +11,32 @@ $walkerId = $_SESSION['walker_id'];
 $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $destination_lat = $_POST['destination_lat'];
-    $destination_lng = $_POST['destination_lng'];
+    $address = $_POST['address'];
 
-    $stmt = $conn->prepare("INSERT INTO walk_requests (walker_id, destination_lat, destination_lng, status, started_at) VALUES (?, ?, ?, 'active', NOW())");
-    $stmt->bind_param("idd", $walkerId, $destination_lat, $destination_lng);
-    if ($stmt->execute()) {
-        $walkId = $stmt->insert_id;
-        $_SESSION['current_walk_id'] = $walkId;
-        header("Location: walker_walk_map.php");
-        exit;
+    // Geocoding עם Google API
+    $apiKey = "AIzaSyD4797KA2grZRJK0NiNgVsLykPATAiHi04";
+    $addressUrl = urlencode($address);
+    $url = "https://maps.googleapis.com/maps/api/geocode/json?address=$addressUrl&key=$apiKey";
+
+    $resp_json = file_get_contents($url);
+    $resp = json_decode($resp_json, true);
+
+    if($resp['status'] == 'OK') {
+        $lat = $resp['results'][0]['geometry']['location']['lat'];
+        $lng = $resp['results'][0]['geometry']['location']['lng'];
+
+        $stmt = $conn->prepare("INSERT INTO walk_requests (walker_id, destination_lat, destination_lng, status, started_at) VALUES (?, ?, ?, 'active', NOW())");
+        $stmt->bind_param("idd", $walkerId, $lat, $lng);
+        if ($stmt->execute()) {
+            $walkId = $stmt->insert_id;
+            $_SESSION['current_walk_id'] = $walkId;
+            header("Location: walker_walk_map.php");
+            exit;
+        } else {
+            $error = "שגיאה ביצירת ההליכה";
+        }
     } else {
-        $error = "שגיאה ביצירת ההליכה";
+        $error = "כתובת לא חוקית, נסי שוב";
     }
 }
 ?>
@@ -39,10 +53,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <?php if($error) echo "<p style='color:red;'>$error</p>"; ?>
 
 <form method="POST">
-    <label>קו רוחב (latitude):</label>
-    <input type="text" name="destination_lat" required><br>
-    <label>קו אורך (longitude):</label>
-    <input type="text" name="destination_lng" required><br>
+    <label>כתובת יעד:</label>
+    <input type="text" name="address" required><br>
     <button type="submit">התחל הליכה</button>
 </form>
 </body>
