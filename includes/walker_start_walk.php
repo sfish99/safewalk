@@ -1,6 +1,7 @@
 <?php
 session_start();
 require "db_connect.php";
+require_once "../../config.php";
 
 if (!isset($_SESSION['walker_id'])) {
     header("Location: login_walker.php");
@@ -14,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $address = $_POST['address'];
 
     // Geocoding עם Google API
-    $apiKey = "AIzaSyD4797KA2grZRJK0NiNgVsLykPATAiHi04";
+    $apiKey = "GOOGLE_MAPS_API_KEY";
     $addressUrl = urlencode($address);
     $url = "https://maps.googleapis.com/maps/api/geocode/json?address=$addressUrl&key=$apiKey";
 
