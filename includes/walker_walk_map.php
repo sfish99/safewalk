@@ -1,6 +1,7 @@
 <?php
 session_start();
 require "db_connect.php";
+require_once "../../config.php";
 
 if (!isset($_SESSION['walker_id']) || !isset($_SESSION['current_walk_id'])) {
     header("Location: walker_start_walk.php");
@@ -18,7 +19,9 @@ $walkId = $_SESSION['current_walk_id'];
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>הליכה בזמן אמת</title>
 <link rel="stylesheet" href="../css/walker_walk_map.css">
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4797KA2grZRJK0NiNgVsLykPATAiHi04"></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<?php echo GOOGLE_MAPS_API_KEY; ?>&callback=initMap" async defer></script>
+
 </head>
 <body>
 
@@ -42,7 +45,7 @@ function initMap() {
     if (navigator.geolocation) {
         navigator.geolocation.watchPosition(sendPosition, showError, {enableHighAccuracy:true});
     } else {
-        alert("דפדפן זה אינו תומך ב-GPS");
+        alert("הדפדפן לא תומך ב-GPS");
     }
 }
 
@@ -56,15 +59,20 @@ function sendPosition(position) {
     fetch('walker_send_location.php', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({walk_id: <?php echo $walkId; ?>, latitude: lat, longitude: lng})
-    });
+        body: JSON.stringify({
+            walk_id: <?php echo $walkId; ?>,
+            latitude: lat,
+            longitude: lng
+        })
+    })
+    .then(r => r.text())
+    .then(console.log)
+    .catch(console.error);
 }
 
 function showError(error) {
     console.error(error);
 }
-
-window.onload = initMap;
 </script>
 
 </body>
