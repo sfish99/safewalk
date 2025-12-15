@@ -33,7 +33,7 @@ exit;
 
 // אימות: שה־walk_id שייך להולכת הרגל הזאת (מניעת זיוף)
 $stmt = $conn->prepare("SELECT walker_id FROM walk_requests WHERE id = ?");
-$stmt->bind_param("i", $walk_id);
+$stmt->bind_param("i", $walker_id);
 $stmt->execute();
 $res = $stmt->get_result();
 if ($row = $res->fetch_assoc()) {
@@ -48,7 +48,7 @@ if ($row = $res->fetch_assoc()) {
 
 // הוספה לטבלת walk_locations
 $stmt = $conn->prepare("INSERT INTO walk_locations (walker_id, latitude, longitude) VALUES (?, ?, ?)");
-$stmt->bind_param("idd", $walk_id, $lat, $lng);
+$stmt->bind_param("idd", $walker_id, $lat, $lng);
 if ($stmt->execute()) {
     echo json_encode(['success' => true]);
 } else {

@@ -5,9 +5,9 @@ require_once __DIR__ . '/../../config.php'; // תתאם את הנתיב
 
 header('Content-Type: application/json');
 
-$walk_id = isset($_GET['walk_id']) ? (int)$_GET['walk_id'] : 0;
-if (!$walk_id) {
-    echo json_encode(['success' => false, 'error' => 'missing_walk_id']);
+$walker_id = isset($_GET['walker_id']) ? (int)$_GET['walker_id'] : 0;
+if (!$walker_id) {
+    echo json_encode(['success' => false, 'error' => 'missing_walker_id']);
     exit;
 }
 
@@ -17,7 +17,7 @@ FROM walk_locations
 ORDER BY created_at DESC
 LIMIT 1
 ");
-$stmt->bind_param("i", $walk_id);
+$stmt->bind_param("i", $walker_id);
 $stmt->execute();
 $res = $stmt->get_result();
 
