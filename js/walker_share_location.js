@@ -3,7 +3,7 @@ let map, marker;
 let watchId = null;
 let sendIntervalId = null;
 let lastPosition = null;
-const SEND_INTERVAL_MS = 5000; // כל 5 שניות
+const SEND_INTERVAL_MS = 5000; // שליחת מיקום כל 5 שניות
 
 function initMapInitial() {
   map = new google.maps.Map(document.getElementById('map'), {
@@ -23,16 +23,20 @@ function startSharing() {
   }
 
   // watchPosition עדכוני מיקום רציפים
-  watchId = navigator.geolocation.watchPosition((pos) => {
-    lastPosition = pos.coords;
-    const lat = pos.coords.latitude;
-    const lng = pos.coords.longitude;
-    marker.setPosition({ lat, lng });
-    map.setCenter({ lat, lng });
-  }, (err) => {
-    console.error('Geolocation error', err);
-    alert('לא ניתן לקבל מיקום - ודא שהמכשיר מאפשר שיתוף מיקום');
-  }, { enableHighAccuracy: true, maximumAge: 2000 });
+  watchId = navigator.geolocation.watchPosition(
+    (pos) => {
+      lastPosition = pos.coords;
+      const lat = pos.coords.latitude;
+      const lng = pos.coords.longitude;
+      marker.setPosition({ lat, lng });
+      map.setCenter({ lat, lng });
+    },
+    (err) => {
+      console.error('Geolocation error', err);
+      alert('לא ניתן לקבל מיקום - ודא שהמכשיר מאפשר שיתוף מיקום');
+    },
+    { enableHighAccuracy: true, maximumAge: 2000 }
+  );
 
   // שליחת מיקום כל X שניות לפי lastPosition
   sendIntervalId = setInterval(() => {
@@ -63,11 +67,11 @@ function sendLocationToServer(lat, lng) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
+      walker_id: WALKER_ID,
       latitude: lat,
       longitude: lng
     })
-  });
-
+  })
   .then(res => res.json())
   .then(data => {
     if (!data || !data.success) {
