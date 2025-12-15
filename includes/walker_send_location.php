@@ -23,14 +23,13 @@ if (!$data) {
     exit;
 }
 
-$walk_id = isset($data['walk_id']) ? (int)$data['walk_id'] : null;
+
 $lat = isset($data['latitude']) ? (float)$data['latitude'] : null;
 $lng = isset($data['longitude']) ? (float)$data['longitude'] : null;
 
-if (!$walk_id || !$lat || !$lng) {
-    echo json_encode(['success' => false, 'error' => 'missing_parameters']);
-    exit;
-}
+if ($lat === null || $lng === null) {
+    echo json_encode(['success' => false, 'error' => 'missing_coordinates']);
+exit;
 
 // אימות: שה־walk_id שייך להולכת הרגל הזאת (מניעת זיוף)
 $stmt = $conn->prepare("SELECT walker_id FROM walk_requests WHERE id = ?");
@@ -48,7 +47,7 @@ if ($row = $res->fetch_assoc()) {
 }
 
 // הוספה לטבלת walk_locations
-$stmt = $conn->prepare("INSERT INTO walk_locations (walk_id, latitude, longitude) VALUES (?, ?, ?)");
+$stmt = $conn->prepare("INSERT INTO walk_locations (walker_id, latitude, longitude) VALUES (?, ?, ?)");
 $stmt->bind_param("idd", $walk_id, $lat, $lng);
 if ($stmt->execute()) {
     echo json_encode(['success' => true]);
