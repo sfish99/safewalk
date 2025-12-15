@@ -1,7 +1,8 @@
 <?php
 session_start();
 require "db_connect.php";
-require_once __DIR__ . '/../../config.php'; // תתאים את הנתיב אם צריך
+require_once '../../config.php';
+
 
 // בדיקת סשן הולכת רגל
 if (!isset($_SESSION['walker_id'])) {

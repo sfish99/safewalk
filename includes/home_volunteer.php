@@ -38,13 +38,20 @@ $volName = $_SESSION['volunteer_name'];
     <div class="shell">
         <main class="main-dashboard-content">
             <div class="grid-2x2">
-                <button class="card"><div class="card-icon">✋</div><p>הושטת יד</p><small>ענה לקריאה חדשה</small></button>
+                <button class="card" onclick="window.location.href='volunteer_live_map.php'">
+                    <div class="card-icon">✋</div>
+                    <p>הושטת יד</p>
+                    <small>ענה לקריאה חדשה</small>
+                </button>
+                
                 <button class="card"><div class="card-icon">📋</div><p>היסטוריית קריאות</p><small>צפה בקריאות קודמות</small></button>
+               
                 <button class="card" onclick="window.location.href='support_volunteer.php'">
                     <div class="card-icon">🤝</div>
                     <p>תמיכה </p>
                     <small>קבלת מידע ומענה על שאלות נפוצות</small>
                 </button>
+                
                 <button class="card" onclick="window.location.href='profile_volunteer.php'">
                     <div class="card-icon">👤</div>
                     <p>פרופיל אישי</p>

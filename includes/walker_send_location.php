@@ -1,7 +1,8 @@
 <?php
 session_start();
 require "db_connect.php";
-require_once __DIR__ . '/../../config.php'; // תתאים אם צריך
+require_once '../../config.php';
+
 
 header('Content-Type: application/json');
 
