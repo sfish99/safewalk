@@ -63,11 +63,11 @@ function sendLocationToServer(lat, lng) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      walk_id: WALK_ID,
       latitude: lat,
       longitude: lng
     })
-  })
+  });
+
   .then(res => res.json())
   .then(data => {
     if (!data || !data.success) {

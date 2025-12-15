@@ -10,11 +10,7 @@ if (!isset($_SESSION['volunteer_id'])) {
 }
 
 $volunteerName = $_SESSION['first_name'] ?? ($_SESSION['volunteer_name'] ?? 'מתנדבת');
-$walkId = isset($_GET['walk_id']) ? (int)$_GET['walk_id'] : 0;
-if (!$walkId) {
-    echo "יש לספק walk_id ב-URL";
-    exit;
-}
+
 ?>
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
@@ -42,7 +38,7 @@ if (!$walkId) {
 
 <footer class="footer">© SafeWalk</footer>
 
-<script>const WATCHED_WALK_ID = <?php echo $walkId; ?>;</script>
+
 <script src="../js/volunteer_live_map.js"></script>
 </body>
 </html>

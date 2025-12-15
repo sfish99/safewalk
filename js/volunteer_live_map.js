@@ -19,7 +19,7 @@ function initVolunteerMap() {
 }
 
 function fetchAndUpdate() {
-  fetch(`get_walker_location.php?walk_id=${encodeURIComponent(WATCHED_WALK_ID)}`)
+  fetch(`get_walker_location.php`)
     .then(res => res.json())
     .then(data => {
       const statusText = document.getElementById('statusText');

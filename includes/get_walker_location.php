@@ -12,7 +12,11 @@ if (!$walk_id) {
 }
 
 // מחזיר את העדכון האחרון מהטבלה walk_locations
-$stmt = $conn->prepare("SELECT latitude, longitude, created_at FROM walk_locations WHERE walk_id = ? ORDER BY created_at DESC LIMIT 1");
+$stmt = $conn->prepare("SELECT latitude, longitude, created_at
+FROM walk_locations
+ORDER BY created_at DESC
+LIMIT 1
+");
 $stmt->bind_param("i", $walk_id);
 $stmt->execute();
 $res = $stmt->get_result();
