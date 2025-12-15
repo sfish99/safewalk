@@ -1,5 +1,6 @@
 // volunteer_live_map.js
-let map, marker;
+let map;
+const markers = {};
 const POLL_INTERVAL_MS = 5000;
 
 function initVolunteerMap() {
@@ -8,45 +9,49 @@ function initVolunteerMap() {
     center: { lat: 32.0853, lng: 34.7818 }
   });
 
-  marker = new google.maps.Marker({
-    map: map,
-    title: 'מיקום ההולכת רגל'
-  });
-
-  // התחלת poll
   fetchAndUpdate();
   setInterval(fetchAndUpdate, POLL_INTERVAL_MS);
 }
 
 function fetchAndUpdate() {
-  fetch(`get_walker_location.php`)
+  fetch('get_active_walkers.php')
     .then(res => res.json())
     .then(data => {
-      const statusText = document.getElementById('statusText');
-      if (!data || !data.success) {
-        statusText.textContent = 'אין מיקום זמין כרגע';
-        return;
-      }
-      const lat = parseFloat(data.latitude);
-      const lng = parseFloat(data.longitude);
-      marker.setPosition({ lat, lng });
-      map.setCenter({ lat, lng });
-      statusText.textContent = 'מעדכן... ' + new Date(data.updated_at).toLocaleTimeString();
+      if (!data || !Array.isArray(data)) return;
+
+      const walkerIds = data.map(w => w.walker_id);
+
+      // עדכון או יצירת markers
+      data.forEach(w => {
+        const lat = parseFloat(w.latitude);
+        const lng = parseFloat(w.longitude);
+        if (markers[w.walker_id]) {
+          markers[w.walker_id].setPosition({ lat, lng });
+        } else {
+          markers[w.walker_id] = new google.maps.Marker({
+            map: map,
+            position: { lat, lng },
+            title: w.first_name
+          });
+        }
+      });
+
+      // הסרת markers שלא קיימים יותר
+      Object.keys(markers).forEach(id => {
+        if (!walkerIds.includes(parseInt(id))) {
+          markers[id].setMap(null);
+          delete markers[id];
+        }
+      });
     })
-    .catch(err => {
-      console.error('Error fetching location', err);
-      document.getElementById('statusText').textContent = 'שגיאת רשת';
-    });
+    .catch(err => console.error('Error fetching walkers', err));
 }
 
-// אתחול המפה לאחר טעינה - Google Maps JS קורא ל־initVolunteerMap בעזרת callback
+// אתחול המפה לאחר טעינה
 window.addEventListener('load', () => {
-  // אם הספריה נטענה כבר (יתעלה בהמשך על callback), נסה לאתחל עם השהייה קלה
   if (typeof google !== 'undefined' && google.maps) {
-    // הספרייה נטענה - אתחל
     setTimeout(initVolunteerMap, 500);
   } else {
-    // אם הספריה עדיין לא נטענה, היא תאתחל לאחר מכן; כאן נסתמך על טעינה רגילה
     setTimeout(initVolunteerMap, 1000);
   }
 });
