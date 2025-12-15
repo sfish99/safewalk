@@ -48,9 +48,9 @@ $walkId = $_SESSION['current_walk_id'] ?? null;
 <footer class="footer">© SafeWalk</footer>
 
 <script>
-  // זמני: העברה של walkId מ-PHP ל־JS
-  const WALK_ID = <?php echo ($walkId ? (int)$walkId : 'null'); ?>;
+  const WALKER_ID = <?php echo (int)$walkerId; ?>;
 </script>
+
 <script src="../js/walker_share_location.js"></script>
 </body>
 </html>
