@@ -232,4 +232,8 @@ html, body {
         padding: 12px 0;
         min-width: 100px;
     }
+      .logout-btn {
+        padding: 8px 14px;
+        font-size: 14px;
+    }
 }

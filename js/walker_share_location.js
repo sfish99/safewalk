@@ -62,24 +62,23 @@ function stopSharing() {
 }
 
 function sendLocationToServer(lat, lng) {
-  // POST JSON ל־walker_send_location.php
   fetch('walker_send_location.php', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      walker_id: WALKER_ID,
       latitude: lat,
       longitude: lng
     })
   })
   .then(res => res.json())
   .then(data => {
-    if (!data || !data.success) {
+    if (!data?.success) {
       console.warn('Send location failed', data);
     }
   })
   .catch(err => console.error('Fetch send location error', err));
 }
+
 
 window.addEventListener('load', () => {
   initMapInitial();
