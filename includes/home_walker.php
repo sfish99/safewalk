@@ -18,6 +18,8 @@ $walkerName = $_SESSION['walker_name'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SafeWalk - דף ראשי הולכת רגל </title>
     <link rel="stylesheet" href="../css/home_walker.css">
+    
+    <a href="logout_walker.php" class="logout-btn">התנתקות</a>
 </head>
 <body>
 

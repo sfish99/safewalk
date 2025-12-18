@@ -12,8 +12,7 @@ if (!isset($_SESSION['walker_id'])) {
 
 $walkerId = $_SESSION['walker_id'];
 
-// בדיקה: האם יש walk פעיל? (לא חובה, אפשר ליצור walk דרך start_walk.php - אם אין כזה ניתן להוסיף כאן יצירת walk)
-$walkId = $_SESSION['current_walk_id'] ?? null;
+
 ?>
 <!DOCTYPE html>
 <html lang="he" dir="rtl">

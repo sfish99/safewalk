@@ -38,7 +38,7 @@ $volName = $_SESSION['volunteer_name'];
     <div class="shell">
         <main class="main-dashboard-content">
             <div class="grid-2x2">
-                <button class="card" onclick="window.location.href='volunteer_live_map.php'">
+                <button class="card" onclick="window.location.href='online_walkers.php'">
                     <div class="card-icon">✋</div>
                     <p>הושטת יד</p>
                     <small>ענה לקריאה חדשה</small>

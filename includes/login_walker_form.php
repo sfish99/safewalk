@@ -24,9 +24,14 @@ if (!password_verify($password, $hashedPassword)) {
     header("Location: login_walker.php");
     exit;
 }
-
+//create session
 $_SESSION['walker_id'] = $id;
 $_SESSION['walker_name'] = $name;
+
+// Mark walker as online
+$update = $conn->prepare("UPDATE walkers SET is_online = 1 WHERE id = ?");
+$update->bind_param("i", $id);
+$update->execute();
 
 header("Location: home_walker.php");
 exit;
