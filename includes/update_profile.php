@@ -22,7 +22,7 @@ $stmt->execute();
 // טיפול בתמונה
 if (!empty($_FILES['profile_image']['name'])) {
 
-    $target_dir = "../../uploads/profile_images/";
+    $target_dir = "../uploads/profile_images/";
     $ext = pathinfo($_FILES['profile_image']['name'], PATHINFO_EXTENSION);
     $new_filename = $user_type . "_" . $id . "." . $ext;
     $target_file = $target_dir . $new_filename;
