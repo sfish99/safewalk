@@ -41,7 +41,7 @@ $volName = $_SESSION['volunteer_name'];
                 <button class="card" onclick="window.location.href='online_walkers.php'">
                     <div class="card-icon">✋</div>
                     <p>הושטת יד</p>
-                    <small>ענה לקריאה חדשה</small>
+                    <small>צפייה במיקום הולכות רגל</small>
                 </button>
                 
                 <button class="card"><div class="card-icon">📋</div><p>היסטוריית קריאות</p><small>צפה בקריאות קודמות</small></button>
