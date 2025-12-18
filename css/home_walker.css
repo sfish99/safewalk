@@ -230,12 +230,12 @@ html, body {
         width: 90%;
         font-size: 12px;
     }
-     .role-btn-toggle {
+    .role-btn-toggle {
         font-size: 14px;
         padding: 12px 0;
         min-width: 100px;
     }
-      .logout-btn {
+    .logout-btn {
         padding: 8px 14px;
         font-size: 14px;
     }
