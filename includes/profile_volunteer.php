@@ -30,7 +30,7 @@ $result = $stmt->get_result()->fetch_assoc();
     <h2 class="profile-title">הפרופיל שלי</h2>
 
     <div class="profile-image-wrapper">
-        <img src="../uploads/profile_images/<?= $result['profile_image'] ?: 'default.png' ?>" class="profile-image">
+        <img src="../../uploads/profile_images/<?= $result['profile_image'] ?: 'default.png' ?>" class="profile-image">
         <form action="update_profile.php" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="user_type" value="volunteer">
             <input type="file" name="profile_image" class="file-input">
