@@ -10,6 +10,10 @@ session_start();
     <link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
+<header class="header">
+  <img src="../images/logo.png" alt="SafeWalk Logo" class="logo">
+
+</header>
 
 <div class="login-box">
     <h2>התחברות הולכת רגל</h2>
@@ -37,4 +41,9 @@ session_start();
 </div>
 
 </body>
+
+<footer class="footer">
+      <p>© 2025 SafeWalk</p>
+  </footer>
+
 </html>
