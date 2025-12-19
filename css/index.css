@@ -15,20 +15,25 @@ html, body {
   background: linear-gradient(90deg, #f9a8d4, #c084fc);
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   display: flex;
+  flex-direction: column; /* logo above possible title */
   justify-content: center;
   align-items: center;
-  height: 120px; /* גובה קבוע */
-  position: relative;
+  padding: 20px 0; /* instead of fixed height */
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  gap: 10px; /* space between logo and possible title */
+  position: relative; /* remove absolute positioning of logo */
+  height: auto; /* let padding control the height */
   overflow: visible;
 }
 
 .logo {
-  height: 100px; /* לוגו גדול יותר */
+  height: 80px; /* smaller, fits mobile */
   width: auto;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  position: static; /* remove absolute positioning */
+  transform: none; /* remove transform */
 }
+
 
 /* MAIN */
 .main-content {
