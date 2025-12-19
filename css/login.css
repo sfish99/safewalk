@@ -62,17 +62,18 @@ body {
 /* Inputs */
 .login-box input[type="email"],
 .login-box input[type="password"] {
-    width: 100%;
-    padding: 12px;
-    padding-left: 12px;
-    margin-top: 6px;
-    margin-bottom: 16px;
+    width: 90%;             /* smaller than full width to look nicer */
+    max-width: 350px;       /* prevent too wide inputs on large screens */
+    padding: 12px;          /* uniform padding */
+    margin: 6px auto 16px auto; /* top/bottom margin + center horizontally */
+    display: block;         /* needed for margin auto to work */
     border-radius: 10px;
     border: 1.5px solid #e6d7ff;
     background: #faf7ff;
     font-size: 15px;
     transition: 0.2s;
 }
+
 
 .login-box input:focus {
     border-color: #c084fc;
