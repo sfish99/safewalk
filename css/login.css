@@ -1,3 +1,4 @@
+/* Base styles */
 body {
     font-family: Arial, sans-serif;
     background-color: #fdeef3;
@@ -5,6 +6,21 @@ body {
     padding: 0;
 }
 
+/* Header styles */
+.header {
+  background: linear-gradient(90deg, #f9a8d4, #c084fc);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column; /* logo above title */
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0; /* instead of fixed height */
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  gap: 10px; /* space between logo and title */
+}
+
+/* Login box styles */
 .login-box {
     width: 350px;
     margin: 100px auto;
@@ -31,7 +47,6 @@ body {
     width: 100%;
     padding: 12px;
     margin-top: 20px;
-
     background: linear-gradient(90deg, #ff5fa2, #ff8acb);
     color: white;
     border: none;
@@ -40,6 +55,7 @@ body {
     cursor: pointer;
 }
 
+/* Error message styles */
 .error-msg {
     background-color: #ffcccc;
     color: #a10000;
@@ -48,4 +64,42 @@ body {
     margin-bottom: 15px;
     font-size: 15px;
     border: 1px solid #ff8a8a;
+}
+
+/* Footer styles */
+.footer {
+  margin-top: auto; /* pushes footer to bottom */
+  color: #777;
+  font-size: 14px;
+  text-align: center; /* center text */
+  padding: 15px 0; /* adds padding top & bottom */
+  width: 100%; /* full width */
+}
+
+/* Responsive styles for mobile devices */
+@media screen and (max-width: 480px) {
+    .login-box {
+        width: 90%; /* full width minus small margins */
+        margin: 50px auto; /* less top margin */
+        padding: 20px;
+    }
+
+    .login-box input {
+        padding: 10px;
+    }
+
+    .login-box button {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .header {
+        padding: 15px 0;
+        gap: 5px;
+    }
+
+    .footer {
+        font-size: 12px;
+        padding: 10px 0;
+    }
 }
