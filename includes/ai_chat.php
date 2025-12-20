@@ -14,6 +14,7 @@ if ($method !== 'POST') {
     exit;
 }
 
+// נקרא את ה-JSON שהגיע מה-JS
 $raw = file_get_contents('php://input');
 $data = json_decode($raw, true) ?: [];
 
@@ -26,6 +27,7 @@ if (!$userMessage) {
     exit;
 }
 
+// נוודא שיש לנו API key
 $apiKey = defined('OPENAI_API_KEY') ? OPENAI_API_KEY : '';
 
 // אם אין מפתח – מחזירים תשובה מדומיינת כדי שלא יישבר בקורס
@@ -93,10 +95,21 @@ curl_setopt_array($ch, [
 
 $response = curl_exec($ch);
 $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-curl_close($ch);
+$curlError = curl_error($ch);
 
-if ($httpCode !== 200 || !$response) {
-    echo json_encode(['error' => 'api_error'], JSON_UNESCAPED_UNICODE);
+// אין צורך יותר ב-curl_close ב-PHP 8.0+
+// ואם את רוצה, אפשר לכתוב עם @ כדי לא לראות אזהרה:
+// @curl_close($ch);
+
+if ($httpCode !== 200 || $response === false) {
+    $fallbackReply = 'אני פה איתך, גם אם כרגע יש בעיה בחיבור ל-AI. '
+        . 'תזכרי שאת לא לבד, ואם את מרגישה לא בטוח – אפשר לפנות לחברה קרובה או למוקד חירום.';
+    echo json_encode([
+        'error'      => 'api_error',
+        'http_code'  => $httpCode,
+        'curl_error' => $curlError,
+        'reply'      => $fallbackReply
+    ], JSON_UNESCAPED_UNICODE);
     exit;
 }
 
