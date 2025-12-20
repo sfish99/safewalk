@@ -3,9 +3,14 @@ header('Content-Type: application/json; charset=utf-8');
 
 // אפשרי: קובץ config רק במכונה שלך (לא ב-GitHub!)
 // מכיל define('OPENAI_API_KEY', 'XXXX');
-$configPath = __DIR__ . '/config.php';
+$configPath = __DIR__ . '/../../config.php';
 if (file_exists($configPath)) {
     require_once $configPath;
+}
+//בדיקה, למחוק אחר כך
+if (!defined('OPENAI_API_KEY')) {
+    echo json_encode(['error' => 'OPENAI_API_KEY not loaded']);
+    exit;
 }
 
 $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
