@@ -60,7 +60,7 @@ $volunteerName = $_SESSION['volunteer_name'];
         </div>
 
         <div class="faq-item">
-            <button class="faq-question"מתי נדרש ללחוץ על כפתור ה‑SOS? 🆘</button>
+            <button class="faq-question"> מתי נדרש ללחוץ על כפתור ה‑SOS? 🆘</button>
             <div class="faq-answer">
                 <p>לחצי על כפתור ה-SOS כאשר עולה חשש לשלום המשתמשת, אם היא נשמעת במצוקה, מפסיקה להגיב באמצע שיחה או התכתבות, או אם המיקום נכבה ללא התרעה ולא ניתן ליצור איתה קשר בשום אופן..</p>
             </div>

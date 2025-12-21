@@ -2,8 +2,8 @@
 body {
     font-family: 'Assistant', Arial, sans-serif;
     background: #fff7fa;
-    margin: 0;
-    padding: 0;
+  display: flex;
+  flex-direction: column;
     direction: rtl;
 }
 
