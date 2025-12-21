@@ -116,6 +116,8 @@ body {
   margin-top: 0;
   color: #777;
   font-size: 14px;
+  text-align: center;
+  align-self: center;
 }
 
 /* Mobile responsiveness */
