@@ -111,14 +111,11 @@ body {
     border: 1px solid #ff8a8a;
 }
 
-/* Footer */
+/* FOOTER */
 .footer {
-  margin-top: auto; /* push footer to bottom */
+  margin-top: 0;
   color: #777;
   font-size: 14px;
-  text-align: center;
-  padding: 15px 0;
-  width: 100%;
 }
 
 /* Mobile responsiveness */
