@@ -43,6 +43,15 @@ html, body {
     display: block;
 }
 
+.welcome-text {
+    width: 100%;
+    margin: 0;
+    font-size: 22px;
+    font-weight: bold;
+    color: #07213a;
+    text-align: center;
+}
+
 .logout-btn {
     position: absolute;
     top: 15px;
