@@ -26,12 +26,7 @@ $volName = $_SESSION['volunteer_name'];
          <a href="logout_volunteer.php" class="logout-btn">התנתקות</a>
         <div class="dashboard-content-wrapper">
                 <img src="../images/logo.png" alt="SafeWalk Logo" class="logo">
-          
-            
-            <div class="role-switch" role="tablist">
-                <button class="role-btn-toggle walker">הולכת רגל</button>
-                <button class="role-btn-toggle volunteer active">מתנדבת</button>
-            </div>
+        
         </div>
     </header>
 
