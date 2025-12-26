@@ -1,113 +1,138 @@
-/* ===== Base layout ===== */
-html, body {
-  height: 100%;
-  margin: 0;
-  font-family: "Calibri", sans-serif;
-  background-color: #fff7fa;
+/* General background */
+body {
+    font-family: 'Assistant', Arial, sans-serif;
+    background: #fff7fa;
   display: flex;
   flex-direction: column;
+    direction: rtl;
 }
 
-/* ===== Header ===== */
+/* Header styles */
 .header {
   background: linear-gradient(90deg, #f9a8d4, #c084fc);
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   display: flex;
-  flex-direction: column; /* logo above possible title */
+  flex-direction: column; /* logo above title */
   justify-content: center;
   align-items: center;
-  padding: 20px 0; /* instead of fixed height */
+  padding: 20px 0;
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
-  gap: 10px; /* space between logo and possible title */
-  position: relative; /* remove absolute positioning of logo */
-  height: auto; /* let padding control the height */
-  overflow: visible;
+  gap: 10px;
 }
 
 .logo {
-  height: 80px; /* smaller, fits mobile */
+  height: 80px;
   width: auto;
-  position: static; /* remove absolute positioning */
-  transform: none; /* remove transform */
 }
 
-/* ===== Main content ===== */
-.main-content {
-  flex: 1;
-  display: flex;
+.header h2 {
+  font-family: "Calibri", sans-serif;
+  font-size: 2rem;
+  color: white;
+  text-align: center;
+  margin: 0;
 }
 
-/* ===== Login screen ===== */
+/* Login box */
 .login-box {
-  background: white;
-  flex: 1;
-  padding: 32px 22px;
-  border-radius: 32px 32px 0 0;
-  box-shadow: 0 -10px 30px rgba(0,0,0,0.08);
-  display: flex;
-  flex-direction: column;
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 420px;
+    margin: 50px auto;
+    box-shadow: 0 0 12px rgba(0,0,0,0.08);
+    text-align: center;
 }
 
-/* ===== Title ===== */
 .login-box h2 {
-  color: #c084fc;
-  font-size: 26px;
-  margin-bottom: 28px;
+    color: #c084fc;
+    margin-bottom: 25px;
+    font-size: 24px;
 }
 
-/* ===== Labels ===== */
+/* Labels */
 .login-box label {
-  display: block;
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 6px;
-  text-align: right;
+    font-size: 14px;
+    color: #333;
+    font-weight: 600;
 }
 
-/* ===== Inputs ===== */
+/* Inputs */
 .login-box input[type="email"],
 .login-box input[type="password"] {
-  width: 100%;
-  padding: 18px;
-  font-size: 18px;
-  border-radius: 16px;
-  border: 1.5px solid #e6d7ff;
-  background: #faf7ff;
-  margin-bottom: 22px;
+    width: 90%;             /* smaller than full width to look nicer */
+    max-width: 350px;       /* prevent too wide inputs on large screens */
+    padding: 12px;          /* uniform padding */
+    margin: 6px auto 16px auto; /* top/bottom margin + center horizontally */
+    display: block;         /* needed for margin auto to work */
+    border-radius: 10px;
+    border: 1.5px solid #e6d7ff;
+    background: #faf7ff;
+    font-size: 15px;
+    transition: 0.2s;
 }
+
 
 .login-box input:focus {
-  outline: none;
-  border-color: #c084fc;
-  background: #fff;
+    border-color: #c084fc;
+    outline: none;
+    background: #fff;
 }
 
-/* ===== Button ===== */
+/* Button */
 .login-box button {
-  width: 100%;
-  padding: 18px;
-  font-size: 20px;
-  border-radius: 18px;
-  background: linear-gradient(90deg, #f472b6, #c084fc);
-  color: white;
-  border: none;
-  cursor: pointer;
+    width: 100%;
+    padding: 14px;
+    margin-top: 10px;
+    background: linear-gradient(90deg, #f472b6, #c084fc);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 17px;
+    cursor: pointer;
+    transition: 0.25s;
 }
 
-/* ===== Error ===== */
+.login-box button:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+}
+
+/* Error message */
 .error-msg {
-  background: #ffcccc;
-  color: #a10000;
-  padding: 14px;
-  border-radius: 12px;
-  margin-bottom: 18px;
+    background-color: #ffcccc;
+    color: #a10000;
+    padding: 12px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    font-size: 15px;
+    border: 1px solid #ff8a8a;
 }
 
-/* ===== Footer ===== */
+/* FOOTER */
 .footer {
-  font-size: 12px;
+  margin-top: 0;
   color: #777;
+  font-size: 14px;
   text-align: center;
-  padding: 10px 0;
+  align-self: center;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+    .login-box {
+        padding: 20px;
+        margin: 30px auto;
+    }
+
+    .header h2 {
+        font-size: 22px;
+    }
+
+    .login-box button {
+        font-size: 16px;
+        padding: 12px;
+    }
 }
