@@ -19,45 +19,66 @@ $result = $stmt->get_result()->fetch_assoc();
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>הפרופיל שלי - SafeWalk</title>
     <link rel="stylesheet" href="../css/profile.css">
 </head>
 
 <body>
 
-<div class="profile-container">
+    <header class="header-dashboard">
+        <div class="dashboard-content-wrapper">
+            <img src="../images/logo.png" alt="SafeWalk Logo" class="logo">
+        </div>
+    </header>
 
-    <h2 class="profile-title">הפרופיל שלי</h2>
+    <div class="shell">
+        <div class="profile-container">
+            <h2 class="profile-title">הפרופיל שלי</h2>
 
-    <div class="profile-image-wrapper">
-        <img src="../uploads/profile_images/<?= $result['profile_image'] ?: 'default.png' ?>" class="profile-image">
-        <form action="update_profile.php" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="user_type" value="walker">
-            <input type="file" name="profile_image" class="file-input">
+            <div class="profile-image-section">
+                <img src="../uploads/profile_images/<?= $result['profile_image'] ?: 'default.png' ?>" class="profile-image">
+                
+                <form action="update_profile.php" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="user_type" value="walker">
+                    <div class="file-upload-wrapper">
+                        <label for="profile_image" class="custom-file-upload">שינוי תמונת פרופיל</label>
+                        <input type="file" id="profile_image" name="profile_image" class="file-input">
+                    </div>
+            </div>
+
+            <div class="profile-form">
+                <div class="input-group">
+                    <label>שם פרטי</label>
+                    <input type="text" name="first_name" value="<?= htmlspecialchars($result['first_name']) ?>">
+                </div>
+
+                <div class="input-group">
+                    <label>שם משפחה</label>
+                    <input type="text" name="last_name" value="<?= htmlspecialchars($result['last_name']) ?>">
+                </div>
+
+                <div class="input-group">
+                    <label>אימייל</label>
+                    <input type="email" name="email" value="<?= htmlspecialchars($result['email']) ?>">
+                </div>
+
+                <div class="input-group">
+                    <label>טלפון</label>
+                    <input type="text" name="phone" value="<?= htmlspecialchars($result['phone']) ?>">
+                </div>
+
+                <button class="save-btn" type="submit">שמירת שינויים</button>
+                </form>
+
+                <button class="back-btn" onclick="window.location.href='home_walker.php'">חזרה לתפריט</button>
+            </div>
+        </div>
     </div>
 
-    <div class="profile-form">
-
-        <label>שם פרטי</label>
-        <input type="text" name="first_name" value="<?= $result['first_name'] ?>">
-
-        <label>שם משפחה</label>
-        <input type="text" name="last_name" value="<?= $result['last_name'] ?>">
-
-        <label>אימייל</label>
-        <input type="email" name="email" value="<?= $result['email'] ?>">
-
-        <label>טלפון</label>
-        <input type="text" name="phone" value="<?= $result['phone'] ?>">
-
-        <button class="save-btn" type="submit">שמירה</button>
-        </form>
-
-        <button class="back-btn" onclick="window.location.href='home_walker.php'">חזרה</button>
-
-    </div>
-
-</div>
+    <footer class="footer">
+        <p>© 2025 SafeWalk</p>
+    </footer>
 
 </body>
 </html>
