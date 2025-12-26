@@ -18,12 +18,12 @@ $volName = $_SESSION['volunteer_name'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SafeWalk - דף ראשי מתנדבת</title>
     <link rel="stylesheet" href="../css/home_volunteer.css">
-    <a href="logout_volunteer.php" class="logout-btn">התנתקות</a>
 
 </head>
 <body>
 
     <header class="header-dashboard">
+         <a href="logout_volunteer.php" class="logout-btn">התנתקות</a>
         <div class="dashboard-content-wrapper">
                 <img src="../images/logo.png" alt="SafeWalk Logo" class="logo">
           

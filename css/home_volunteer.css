@@ -22,14 +22,14 @@ html, body {
     background: linear-gradient(90deg, #f9a8d4, #c084fc);
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     position: relative;
     overflow: visible;
-    padding: 10px 0 30px 0; /* פחות padding למובייל */
+    padding: 45px 0 25px 0; /* פחות padding למובייל */
     border-radius: 0 0 15px 15px; 
-    width: 100%;
-    height: auto; /* לא אחוז, אלא גובה גמיש */
+   border-bottom-left-radius: 25px;
+   border-bottom-right-radius: 25px
 }
 
 .dashboard-content-wrapper {
@@ -44,10 +44,10 @@ html, body {
 }
 
 .logo {
-    height: 20vw; /* גובה משתנה לפי רוחב המסך */
-    max-height: 120px; /* מגבלה למחשבים גדולים */
+    height: 80px; 
     width: auto;
     margin-bottom: 15px;
+};
 }
 
 .header-dashboard h1 {
@@ -161,13 +161,13 @@ html, body {
     position: absolute;
     top: 15px;
     left: 15px;
-    padding: 10px 18px;
+    padding: 8px 18px;
     background-color: #c0392b;
     color: white;
     text-decoration: none;
-    border-radius: 8px;
+    border-radius: 20px;
     font-weight: bold;
-    z-index: 1000;
+    z-index: 10;
 }
 
 .logout-btn:hover {
