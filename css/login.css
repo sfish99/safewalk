@@ -21,6 +21,15 @@ body {
   gap: 10px;
 }
 
+.header a {
+    display: inline-block;
+    transition: transform 0.2s;
+}
+
+.header a:hover {
+    transform: scale(1.05); /* אפקט קטן כשנוגעים/עוברים עם העכבר */
+}
+
 .logo {
   height: 80px;
   width: auto;
