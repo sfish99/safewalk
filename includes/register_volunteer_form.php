@@ -58,7 +58,7 @@ $stmt->bind_param("ssssss",
 
 if ($stmt->execute()) {
     echo "ההרשמה בוצעה בהצלחה!<br>";
-    echo "<a href='login_volunteer.html'>למעבר למסך התחברות</a>";
+    echo "<a href='login_volunteer.php'>למעבר למסך התחברות</a>";
 } else {
     echo "שגיאה בהוספת המשתמש";
 }
