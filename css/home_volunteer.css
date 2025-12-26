@@ -1,22 +1,18 @@
+* {
+    box-sizing: border-box;
+}
+
 html, body {
-  height: 100%;
-  margin: 0;
-  font-family: "Calibri", sans-serif;
-  text-align: center;
-  background-color: #fff7fa;
-  display: flex;
-  flex-direction: column;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: "Calibri", sans-serif;
+    text-align: center;
+    background-color: #fff7fa;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden; /* Prevents horizontal scroll/cut */
 }
-
-/* הגדרת גוף העבודה הממורכז */
-.shell {
-    width: 100%;
-    max-width: 420px; /* מגביל את רוחב התוכן הראשי לרוחב אפליקציה */
-    margin: 0 auto;
-    padding: 0 15px;
-    flex: 1; 
-}
-
 
 .header-dashboard {
     background: linear-gradient(90deg, #f9a8d4, #c084fc);
@@ -27,83 +23,80 @@ html, body {
     align-items: center;
     justify-content: center;
     position: relative;
-    padding: 60px 0 30px 0px;
-    border-radius: 0 0 15px 15px; 
+    padding: 65px 15px 25px 15px; /* Extra top padding for the absolute button */
     border-radius: 0 0 25px 25px;
-    box-sizing: border-box;
     margin: 0;
 }
 
 .dashboard-content-wrapper {
-width: 100%; 
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 0 20px; 
-    box-sizing: border-box;
 }
 
 .logo {
-    height: 80px; 
+    height: 80px;
     width: auto;
     margin-bottom: 15px;
-};
-
-
-.header-dashboard h1 {
-    font-size: 24px;
-    margin: 0;
-    color: inherit;
+    display: block;
 }
 
-/* מתג התפקידים */
+.logout-btn {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 8px 16px;
+    background-color: #c0392b;
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    z-index: 100;
+}
+
 .role-switch {
-    top: 5px; /* מתאם עם הגובה החדש */
-    width: 90%; /* גמיש לרוחב */
+    width: 100%;
+    max-width: 300px;
+    display: flex;
+    gap: 5px;
+    justify-content: center;
 }
 
 .role-btn-toggle { 
     flex: 1;
-    padding: 15px 0;      /* גובה הכפתור */
-    min-width: 120px;     /* רוחב מינימום */
-    border: none;         /* נסיר אם רוצים קו גבול */
+    padding: 12px 0;
     border-radius: 8px;
     background-color: transparent;
     color: white;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 15px;
     cursor: pointer;
     transition: 0.2s ease;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* צל כמו שהיה קודם */
-    border: 1px solid rgba(255,255,255,0.3); /* מסגרת שקופה כמו קודם */
+    border: 1px solid rgba(255,255,255,0.3);
 }
 
 .role-btn-toggle.active {
     background-color: white;
     color: #c084fc; 
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.role-btn-toggle:not(.active):hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: #f1e9e9;
+.shell {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 20px 15px;
+    flex: 1;
 }
 
-.main-dashboard-content {
-    padding: 20px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* הגריד של הכרטיסים - 2 עמודות (2X2) */
 .grid-2x2 {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* 2 עמודות תמיד */
-    gap: 25px;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
     width: 100%;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
 .card {
@@ -111,132 +104,21 @@ width: 100%;
     border: 1px solid #eee;
     border-radius: 16px;
     padding: 20px 10px;
-    text-align: center;
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    min-height: 150px; 
+    min-height: 140px; 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    border: none;
 }
 
 .card-icon {
     font-size: 24px;
-    color: #f472b6; 
-    line-height: 1;
+    margin-bottom: 8px;
 }
 
 .card p {
     margin: 0;
-    font-weight: 700;
-    color: #07213a;
-    font-size: 20px;
-    line-height: 1.2;
-}
-
-.card small {
-    color: #777;
-    font-size: 15px;
-    line-height: 1;
-}
-
-
-.sos-btn {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    font-weight: 800;
-    font-size: 24px;
-    color: white;
-    background: radial-gradient(circle at 40% 35%, #ff287a, #ff4b4b);
-    box-shadow: 0 0 0 10px rgba(255, 75, 75, 0.2), 0 8px 30px rgba(255, 75, 75, 0.5);
-    border: none;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.logout-btn {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    padding: 18px 18px;
-    background-color: #c0392b;
-    color: white;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: bold;
-    z-index: 10;
-}
-
-.logout-btn:hover {
-    background-color: #a93226;
-}
-
-/* FOOTER */
-.footer {
-  margin-top: 0;
-  color: #777;
-  font-size: 14px;
-}
-
-/* Media Query: כללים אלה יחולו רק כאשר רוחב המסך הוא 768 פיקסלים ומעלה. */
-@media (min-width: 768px) {
-    /* שינוי רוחב ה-shell כדי לאפשר יותר מקום לכרטיסים גדולים */
-    .shell {
-        max-width: 800px; 
-    }
-    
-    .card {
-        min-height: 250px; /* הגדלת גובה מינימלי למחשב */
-        padding: 40px 20px;
-    }
-    
-    .grid-2x2 {
-        gap: 40px; /* הגדלת המרווח בין הכרטיסים */
-    }
-
-    /* הגדלת הטקסט בכרטיס */
-    .card p {
-        font-size: 26px; /* הגדלת גודל הפונט */
-    }
-
-    .card small {
-        font-size: 18px; /* הגדלת טקסט קטן */
-    }
-
-    /* הגדלת אייקון */
-    .card-icon {
-        font-size: 36px;
-    }
-    
-    /* הגדלת כפתור ה-SOS */
-    .sos-btn {
-        width: 150px;
-        height: 150px;
-        font-size: 30px;
-    }
-}
-
-@media (max-width: 480px) {
-    .logo {
-        height: 25vw;
-    }
-
-    .role-switch {
-        top: 10px;
-        width: 90%;
-        font-size: 12px;
-    }
-    .role-btn-toggle {
-        font-size: 14px;
-        padding: 12px 0;
-        min-width: 100px;
-    }
-    .logout-btn {
-        padding: 8px 14px;
-        font-size: 14px;
-    }
-}
+    font-weight: 700
