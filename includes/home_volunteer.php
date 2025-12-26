@@ -66,7 +66,6 @@ $volName = $_SESSION['volunteer_name'];
       <p>© 2025 SafeWalk</p>
       </footer>
 
-     <script src="../js/switch-role.js"></script>
-
+    
 </body>
 </html>
