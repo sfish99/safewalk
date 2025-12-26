@@ -19,6 +19,7 @@ $result = $stmt->get_result()->fetch_assoc();
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>פרופיל מתנדבת - SafeWalk</title>
     <link rel="stylesheet" href="../css/profile.css">
 </head>
