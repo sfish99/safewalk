@@ -2,8 +2,8 @@
 body {
     font-family: 'Assistant', Arial, sans-serif;
     background: #fff7fa;
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
     direction: rtl;
 }
 
@@ -120,19 +120,64 @@ body {
   align-self: center;
 }
 
-/* Mobile responsiveness */
-@media (max-width: 480px) {
-    .login-box {
-        padding: 20px;
-        margin: 30px auto;
-    }
+/* ===== Mobile Fix ===== */
+@media (max-width: 600px) {
 
-    .header h2 {
-        font-size: 22px;
-    }
+  body {
+    min-height: 100vh;
+  }
 
-    .login-box button {
-        font-size: 16px;
-        padding: 12px;
-    }
+  /* Header */
+  .header {
+    padding: 25px 10px;
+    border-bottom-left-radius: 18px;
+    border-bottom-right-radius: 18px;
+  }
+
+  .logo {
+    height: 95px; /* bigger logo on mobile */
+  }
+
+  /* Login box */
+  .login-box {
+    width: 92%;
+    margin: 25px auto;
+    padding: 22px 18px;
+  }
+
+  .login-box h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  /* Labels */
+  .login-box label {
+    font-size: 15px;
+  }
+
+  /* Inputs */
+  .login-box input[type="email"],
+  .login-box input[type="password"] {
+    width: 100%;
+    max-width: 100%;
+    padding: 14px;
+  }
+
+  /* Button */
+  .login-box button {
+    font-size: 18px;
+    padding: 15px;
+    border-radius: 14px;
+  }
+
+  /* Error message */
+  .error-msg {
+    font-size: 14px;
+  }
+
+  /* Footer */
+  .footer {
+    font-size: 13px;
+    margin-top: 15px;
+  }
 }
