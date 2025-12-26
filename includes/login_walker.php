@@ -10,10 +10,12 @@ session_start();
     <link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
+
   <header class="header">
     <a href="../index.html">
         <img src="../images/logo.png" alt="SafeWalk Logo" class="logo">
     </a>
+    </header>
 
 <div class="login-box">
     <h2>התחברות הולכת רגל</h2>
