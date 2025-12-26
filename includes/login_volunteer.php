@@ -12,7 +12,7 @@ session_start();
 <body>
 
     <header class="header">
-    <a href="../index.php">
+    <a href="../index.html">
         <img src="../images/logo.png" alt="SafeWalk Logo" class="logo">
     </a>
 
