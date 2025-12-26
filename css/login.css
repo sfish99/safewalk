@@ -1,197 +1,102 @@
-/* General background */
+/* ===== Base layout ===== */
 html, body {
   height: 100%;
   margin: 0;
   font-family: "Calibri", sans-serif;
-  text-align: center;
   background-color: #fff7fa;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
 }
 
-/* Header styles */
+/* ===== Header ===== */
 .header {
   background: linear-gradient(90deg, #f9a8d4, #c084fc);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   display: flex;
-  flex-direction: column; /* logo above title */
   justify-content: center;
   align-items: center;
   padding: 20px 0;
-  border-bottom-left-radius: 25px;
-  border-bottom-right-radius: 25px;
-  gap: 10px;
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
 }
 
 .logo {
-  height: 80px;
-  width: auto;
+  height: 90px;
 }
 
-.header h2 {
-  font-family: "Calibri", sans-serif;
-  font-size: 2rem;
-  color: white;
-  text-align: center;
-  margin: 0;
+/* ===== Main content ===== */
+.main-content {
+  flex: 1;
+  display: flex;
 }
 
-/* Login box */
+/* ===== Login screen ===== */
 .login-box {
-    background: white;
-    padding: 25px;
-    border-radius: 20px;
-    width: 90%;
-    max-width: 420px;
-    margin: 50px auto;
-    box-shadow: 0 0 12px rgba(0,0,0,0.08);
-    text-align: center;
+  flex: 1;
+  background: white;
+  padding: 32px 22px;
+  border-radius: 28px 28px 0 0;
+  text-align: center;
 }
 
+/* ===== Title ===== */
 .login-box h2 {
-    color: #c084fc;
-    margin-bottom: 25px;
-    font-size: 24px;
+  color: #c084fc;
+  font-size: 26px;
+  margin-bottom: 28px;
 }
 
-/* Labels */
+/* ===== Labels ===== */
 .login-box label {
-    font-size: 14px;
-    color: #333;
-    font-weight: 600;
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  text-align: right;
 }
 
-/* Inputs */
+/* ===== Inputs ===== */
 .login-box input[type="email"],
 .login-box input[type="password"] {
-    width: 90%;             /* smaller than full width to look nicer */
-    max-width: 350px;       /* prevent too wide inputs on large screens */
-    padding: 12px;          /* uniform padding */
-    margin: 6px auto 16px auto; /* top/bottom margin + center horizontally */
-    display: block;         /* needed for margin auto to work */
-    border-radius: 10px;
-    border: 1.5px solid #e6d7ff;
-    background: #faf7ff;
-    font-size: 15px;
-    transition: 0.2s;
+  width: 100%;
+  padding: 18px;
+  font-size: 18px;
+  border-radius: 16px;
+  border: 1.5px solid #e6d7ff;
+  background: #faf7ff;
+  margin-bottom: 22px;
 }
-
 
 .login-box input:focus {
-    border-color: #c084fc;
-    outline: none;
-    background: #fff;
+  outline: none;
+  border-color: #c084fc;
+  background: #fff;
 }
 
-/* Button */
+/* ===== Button ===== */
 .login-box button {
-    width: 100%;
-    padding: 14px;
-    margin-top: 10px;
-    background: linear-gradient(90deg, #f472b6, #c084fc);
-    color: white;
-    border: none;
-    border-radius: 12px;
-    font-size: 17px;
-    cursor: pointer;
-    transition: 0.25s;
+  width: 100%;
+  padding: 18px;
+  font-size: 20px;
+  border-radius: 18px;
+  background: linear-gradient(90deg, #f472b6, #c084fc);
+  color: white;
+  border: none;
+  cursor: pointer;
 }
 
-.login-box button:hover {
-    opacity: 0.9;
-    transform: scale(1.02);
-}
-
-/* Error message */
+/* ===== Error ===== */
 .error-msg {
-    background-color: #ffcccc;
-    color: #a10000;
-    padding: 12px;
-    border-radius: 12px;
-    margin-bottom: 15px;
-    font-size: 15px;
-    border: 1px solid #ff8a8a;
+  background: #ffcccc;
+  color: #a10000;
+  padding: 14px;
+  border-radius: 12px;
+  margin-bottom: 18px;
 }
 
-/* FOOTER */
+/* ===== Footer ===== */
 .footer {
-  margin-top: 0;
+  font-size: 12px;
   color: #777;
-  font-size: 14px;
   text-align: center;
-  align-self: center;
-}
-
-@media (max-width: 600px) {
-
-  body {
-    background: #fff7fa;
-    justify-content: flex-start;
-  }
-
-  /* HEADER */
-  .header {
-    height: 22vh;
-    padding: 15px;
-    border-radius: 0 0 22px 22px;
-  }
-
-  .logo {
-    height: 110px;
-  }
-
-  /* LOGIN CONTAINER */
-  .login-box {
-    flex: 1;
-    width: 100%;
-    max-width: none;
-    margin: -20px 0 0 0;
-    border-radius: 25px 25px 0 0;
-    padding: 30px 22px;
-    box-shadow: none;
-  }
-
-  .login-box h2 {
-    font-size: 26px;
-    margin-bottom: 30px;
-  }
-
-  /* LABELS */
-  .login-box label {
-    font-size: 16px;
-    margin-bottom: 6px;
-    display: block;
-  }
-
-  /* INPUTS – APP STYLE */
-  .login-box input[type="email"],
-  .login-box input[type="password"] {
-    width: 100%;
-    padding: 18px;
-    font-size: 18px;
-    border-radius: 16px;
-    margin-bottom: 22px;
-  }
-
-  /* BUTTON – BIG CTA */
-  .login-box button {
-    width: 100%;
-    padding: 18px;
-    font-size: 20px;
-    border-radius: 18px;
-    margin-top: 20px;
-  }
-
-  /* ERROR */
-  .error-msg {
-    font-size: 15px;
-    padding: 14px;
-  }
-
-  /* FOOTER – LOW PRIORITY */
-  .footer {
-    font-size: 12px;
-    padding: 10px 0;
-  }
+  padding: 10px 0;
 }

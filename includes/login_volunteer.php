@@ -10,39 +10,42 @@ session_start();
 </head>
 <body>
 
-<header class="header">
-  <img src="../images/logo.png" alt="SafeWalk Logo" class="logo">
+    <header class="header">
+    <img src="../images/logo.png" alt="SafeWalk Logo" class="logo">
 
-</header>
+    </header>
 
-<div class="login-box">
-    <h2>התחברות מתנדבת</h2>
+    <main class="main-content">
+    <div class="login-box">
+            <h2>התחברות מתנדבת</h2>
 
-    <?php if (isset($_SESSION['error'])): ?>
-        <div class="error-msg">
-            <?php 
-                echo $_SESSION['error']; 
-                unset($_SESSION['error']); 
-            ?>
+            <?php if (isset($_SESSION['error'])): ?>
+                <div class="error-msg">
+                    <?php 
+                        echo $_SESSION['error']; 
+                        unset($_SESSION['error']); 
+                    ?>
+                </div>
+            <?php endif; ?>
+
+            <form action="login_volunteer_form.php" method="POST">
+
+                <label>אימייל:</label>
+                <input type="email" name="email" required>
+
+                <label>סיסמה:</label>
+                <input type="password" name="password" required>
+
+                <button type="submit">התחברי</button>
+
+            </form>
         </div>
-    <?php endif; ?>
 
-    <form action="login_volunteer_form.php" method="POST">
+    </main>
 
-        <label>אימייל:</label>
-        <input type="email" name="email" required>
-
-        <label>סיסמה:</label>
-        <input type="password" name="password" required>
-
-        <button type="submit">התחברי</button>
-
-    </form>
-</div>
+        <footer class="footer">
+            <p>© 2025 SafeWalk</p>
+        </footer>
 
 </body>
-<footer class="footer">
-      <p>© 2025 SafeWalk</p>
-</footer>
-
 </html>
