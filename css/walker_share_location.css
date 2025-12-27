@@ -10,44 +10,44 @@ body {
     flex-direction: column;
 }
 
-/* Header */
 .header {
     background: linear-gradient(90deg, #f9a8d4, #c084fc);
     width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: center; /* מרכוז אופקי של כל התוכן */
+    flex-direction: column; /* גורם ללוגו ולטקסט להיות אחד מעל השני */
+    align-items: center;    /* מרכוז אופקי מושלם */
     justify-content: center;
-    padding: 30px 15px; /* הגדלת הריפוד למראה מאוורר כמו בתמונה */
-    border-radius: 0 0 25px 25px; /* פינות מעוגלות סימטריות */
+    padding: 30px 0;        /* נותן גובה ל-Header */
+    border-radius: 0 0 25px 25px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    box-sizing: border-box;
+    margin: 0;
 }
 
+/* מוודא שהמעטפת הפנימית לא מגבילה את המרכוז */
 .dashboard-content-wrapper {
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center; /* מוודא שגם הלוגו וגם ה-H2 במרכז */
+    align-items: center;
     text-align: center;
 }
 
-/* Logo - Large & Centered */
+/* הגדרות הלוגו */
 .logo {
-    height: 80px; /* גודל אחיד לכל האתר */
+    height: 80px; /* גודל בולט כמו בשאר הדפים */
     width: auto;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     display: block;
 }
 
+/* הגדרות הטקסט בתוך ה-Header */
 .header h2 {
     margin: 0;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: bold;
-    color: #ffffff; /* או #4a3d8f אם את רוצה את הסגול הכהה */
-    width: 100%;
+    color: white;
+    padding: 0 15px; /* מונע מהטקסט להיצמד לקצוות המסך */
 }
-
 /* Main container */
 .shell {
     width: 100%;
