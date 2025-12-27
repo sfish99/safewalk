@@ -32,8 +32,7 @@ $walkerName = $_SESSION['walker_name'];
         <h3 class="section-title">❓ שאלות נפוצות</h3>
 
              <div class="faq-item">
-            <button class="faq-question">מה הוא אתר Safewalk? ℹ️</button>
-            <div class="faq-answer">
+                <button class="faq-question">מה הוא אתר <span dir="ltr">SafeWalk</span>? ℹ️</button>            <div class="faq-answer">
                 <p> SafeWalk מציעה ליווי בזמן הליכה באמצעות שיחה טלפונית, וידאו, שיתוף מיקום, WhatsApp או ליווי AI, להגברת תחושת הביטחון. </p>
             </div>
         </div>
