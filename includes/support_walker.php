@@ -31,10 +31,17 @@ $walkerName = $_SESSION['walker_name'];
 
         <h3 class="section-title">❓ שאלות נפוצות</h3>
 
+             <div class="faq-item">
+            <button class="faq-question">מה הוא אתר Safewalk? ℹ️</button>
+            <div class="faq-answer">
+                <p> SafeWalk מציעה ליווי בזמן הליכה באמצעות שיחה טלפונית, וידאו, שיתוף מיקום, WhatsApp או ליווי AI, להגברת תחושת הביטחון. </p>
+            </div>
+        </div>
+
         <div class="faq-item">
             <button class="faq-question">איך פותחים קריאה חדשה? 📋</button>
             <div class="faq-answer">
-                <p>במסך הבית לחצי על “פתיחת קריאה”, מלאי את היעד שלך ושמרי. המתנדבת תקבל את הקריאה ותחזור אלייך בהקדם.</p>
+                <p> במסך הבית לחצי על פתיחת קריאה ובחרי את סוג הליווי הרצוי. בליווי אנושי תוצג רשימת מתנדבות זמינות, ממנה תוכלי לבחור מתנדבת ולהתחיל איתה שיחה. בליווי מבוסס מיקום המתנדבת תתחבר למיקום שלך ותוכל לעקוב אחרייך עד ההגעה ליעד. בליווי AI השיחה מתחילה באופן מיידי עם מלווה קולי חכם, המלווה אותך בעל־פה לאורך ההליכה. </p>
             </div>
         </div>
 
@@ -46,9 +53,9 @@ $walkerName = $_SESSION['walker_name'];
         </div>
 
         <div class="faq-item">
-            <button class="faq-question">איך מבטלים קריאה? 🚫</button>
+            <button class="faq-question">מה קורה אם אף מתנדבת לא זמינה? 🚫</button>
             <div class="faq-answer">
-                <p>יש להיכנס להיסטוריית הקריאות ולבחור קריאה פעילה. שם אפשר לבצע ביטול.</p>
+                <p>  במידה ואין מתנדבת זמינה לליווי אנושי, ניתן לבחור בליווי AI  שמתחיל שיחה קולית באופן מיידי ומלווה אותך לאורך ההליכה. </p>
             </div>
         </div>
 
@@ -64,13 +71,6 @@ $walkerName = $_SESSION['walker_name'];
             <div class="faq-answer">
                 <p>לא. השירות ניתן בהתנדבות מלאה ע"י קהילת SafeWalk.</p>
             </div>
-        </div>
-
-        <h3 class="section-title">📞 צריכה עוד עזרה?</h3>
-
-        <div class="btn-row">
-            <a href="tel:0500000000" class="support-action-btn">התקשרי לתמיכה</a>
-            <button class="support-action-btn" onclick="window.location.href='home_walker.php'">⬅ חזרה לדף הבית</button>
         </div>
 
     </main>
