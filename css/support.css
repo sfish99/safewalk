@@ -1,12 +1,14 @@
 /* GENERAL PAGE SETUP */
 html, body {
     height: 100%;
+    width: 100%;
     margin: 0;
     font-family: "Calibri", sans-serif;
     background-color: #fff7fa;
     display: flex;
     flex-direction: column;
     text-align: center;
+    overflow-x: hidden;
 }
 
 .shell {
@@ -15,6 +17,7 @@ html, body {
     margin: 0 auto;
     padding: 0 15px;
     flex: 1;
+    box-sizing: border-box;
 }
 
 /* HEADER */
