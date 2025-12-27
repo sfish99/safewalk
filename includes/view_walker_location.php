@@ -38,6 +38,8 @@ $location = $res->fetch_assoc();
 <html lang="he" dir="rtl">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>מיקום הולכת רגל - SafeWalk</title>
 <link rel="stylesheet" href="../css/view_walker_location.css">
 <script src="https://maps.googleapis.com/maps/api/js?key=<?php echo GOOGLE_MAPS_API_KEY; ?>" async defer></script>
