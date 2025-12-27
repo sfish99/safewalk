@@ -90,7 +90,7 @@ $volunteerName = $_SESSION['volunteer_name'];
         </div>
 
             <div class="bottom-actions">
-        <button class="back-home-btn" onclick="window.location.href='home_walker.php'">
+        <button class="back-home-btn" onclick="window.location.href='home_volunteer.php'">
             ⬅ חזרה לדף הבית
         </button>
     </div>

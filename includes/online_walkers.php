@@ -27,6 +27,8 @@ while ($row = $result->fetch_assoc()) {
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>הולכות רגל מחוברות - SafeWalk</title>
     <link rel="stylesheet" href="../css/online_walkers.css">
 </head>
