@@ -57,9 +57,11 @@ $stmt->bind_param("ssssss",
 );
 
 if ($stmt->execute()) {
-    echo "ההרשמה בוצעה בהצלחה!<br>";
-    echo "<a href='login_walker.html'>למעבר למסך התחברות</a>";
+    header("Location: register_success.php");
+    exit();
 } else {
-    echo "שגיאה בהוספת המשתמש";
+    header("Location: register_error.php");
+    exit();
 }
+
 ?>
