@@ -122,10 +122,10 @@ body {
 }
 
 .back-home-btn {
-    display: block;      /* מאפשר שימוש ב-margin auto */
-    margin: 30px auto;   /* ה-auto הזה הוא מה שמרכז את הכפתור אופקית */
-    width: 90%;
-    max-width: 300px;
+    display: block;      /* הופך את הכפתור לאלמנט שניתן למרכז עם margin */
+    margin: 30px auto;   /* 30 פיקסלים רווח מלמעלה, ומרכוז אוטומטי בצדדים */
+    width: 90%;          /* תופס כמעט את כל הרוחב במובייל */
+    max-width: 300px;    /* מגביל את הרוחב במסכים גדולים */
     padding: 15px;
     background-color: #c084fc;
     color: white;
@@ -135,7 +135,8 @@ body {
     font-weight: bold;
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(192, 132, 252, 0.2);
-    transition: opacity 0.2s;
+    text-align: center;  /* מרכז את הטקסט בתוך הכפתור */
+}
 
 .back-home-btn:hover {
   opacity: 0.9;

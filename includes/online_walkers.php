@@ -27,8 +27,7 @@ while ($row = $result->fetch_assoc()) {
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>הולכות רגל מחוברות - SafeWalk</title>
     <link rel="stylesheet" href="../css/online_walkers.css">
 </head>
@@ -69,12 +68,11 @@ while ($row = $result->fetch_assoc()) {
             <?php endforeach; ?>
         <?php endif; ?>
     </div>
-
-  <button class="back-home-btn" onclick="window.location.href='home_walker.php'">
-     חזרה לדף הבית
-   </button>
-
 </div>
+
+<button class="back-home-btn" onclick="window.location.href='home_volunteer.php'">
+    חזרה לדף הבית
+</button>
 
 
 <footer class="footer">
