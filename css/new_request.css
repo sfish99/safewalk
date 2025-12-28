@@ -7,6 +7,14 @@
 }
 
 /* גוף העמוד */
+body {
+  background-color: #fff7fa; /* ורוד very light */
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 html, body {
     width: 100%;
     margin: 0;
@@ -14,6 +22,8 @@ html, body {
     overflow-x: hidden;
     font-family: "Calibri", sans-serif;
 }
+
+
 
 .header {
     background: linear-gradient(90deg, #f9a8d4, #c084fc);
@@ -77,6 +87,7 @@ html, body {
   gap: 20px;
   width: 100%;
   max-width: 500px;
+  margin-bottom: 30px;
 }
 
 /* כרטיס אפשרות */
