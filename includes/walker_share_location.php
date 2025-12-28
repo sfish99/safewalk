@@ -4,7 +4,7 @@ require "db_connect.php";
 require_once '../../config.php';
 
 
-// בדיקת סשן הולכת רגל
+
 if (!isset($_SESSION['walker_id'])) {
     header("Location: login_walker.php");
     exit;
@@ -18,10 +18,9 @@ $walkerId = $_SESSION['walker_id'];
 <html lang="he" dir="rtl">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>שיתוף מיקום - הולכת רגל</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>שיתוף מיקום - הולכת רגל</title>
 <link rel="stylesheet" href="../css/walker_share_location.css">
-<!-- מפה + הרחבה של Places לא נחוצה כאן כי לא עושים גיאוקודינג -->
+
 <script src="https://maps.googleapis.com/maps/api/js?key=<?php echo GOOGLE_MAPS_API_KEY; ?>" async defer></script>
 </head>
 <body>
