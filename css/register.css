@@ -147,18 +147,6 @@ button:hover {
         margin: 30px auto;
     }
 
-    .logo {
-        height: 48px; /* במקום 80 */
-    }
-
-    .header {
-        padding: 10px 0;
-    }
-
-    .header h1, .header-dashboard h1 {
-        font-size: 22px;
-    }
-
     button {
         font-size: 16px;
         padding: 12px;
