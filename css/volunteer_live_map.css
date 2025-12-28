@@ -19,20 +19,18 @@ body {
     text-align: center;
 }
 
-/* Main content wrapper */
+
 .dashboard-content-wrapper {
     max-width: 420px;
     margin: 0 auto;
 }
 
-/* Logo */
 .logo {
     height: 48px;
     vertical-align: middle;
     margin-bottom: 6px;
 }
 
-/* Page shell */
 .shell {
     width: 100%;
     max-width: 420px;
@@ -43,7 +41,6 @@ body {
     flex-direction: column;
 }
 
-/* Map container */
 #map {
     height: 70vh;
     border-radius: 12px;
@@ -51,13 +48,11 @@ body {
     overflow: hidden;
 }
 
-/* Info section */
 .info {
     margin-top: 12px;
     text-align: center;
 }
 
-/* Footer */
 .footer {
     font-size: 13px;
     color: #777;
