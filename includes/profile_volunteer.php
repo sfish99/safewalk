@@ -71,7 +71,7 @@ $result = $stmt->get_result()->fetch_assoc();
                 <button class="save-btn" type="submit">שמירת שינויים</button>
                 </form>
 
-                <button class="back-btn" onclick="window.location.href='home_volunteer.php'">חזרה לתפריט</button>
+                <button class="back-btn" onclick="window.location.href='home_volunteer.php'">חזרה לדף הבית</button>
             </div>
         </div>
     </div>
