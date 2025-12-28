@@ -17,55 +17,41 @@ $volName = $_SESSION['volunteer_name'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SafeWalk - דף ראשי מתנדבת</title>
-    <link rel="stylesheet" href="../css/new_request.css">
+    <link rel="stylesheet" href="../css/home_volunteer.css">
 
 </head>
 <body>
 
     <header class="header-dashboard">
-       
+         <a href="logout_volunteer.php" class="logout-btn">התנתקות</a>
         <div class="dashboard-content-wrapper">
                 <img src="../images/logo.png" alt="SafeWalk Logo" class="logo">
         
         </div>
     </header>
 
-    <header class="header">
-        <a href="logout_volunteer.php" class="logout-btn">התנתקות</a>
-        <div class="dashboard-content-wrapper">
-        <img src="../images/logo.png" alt="SafeWalk Logo" class="logo">
-        </div>
-    </header>
-
-    <main class="support-options">
-
-              <div class="options-grid">
-                    <a href="online_walkers.php" class="option-card">
+    <div class="shell">
+        <main class="main-dashboard-content">
+            <div class="grid-2x2">
+                <button class="card" onclick="window.location.href='online_walkers.php'">
                     <div class="card-icon">📍</div>
-                    <span>מעקב מיקום</span>
+                    <p>מעקב מיקום</p>
                     <small>צפייה במיקום הולכות רגל</small>
-                </a>
-
-                   <div class="options-grid">
-                    <a href="support_volunteer..php" class="option-card">
+                </button>
+                
+                <button class="card"><div class="card-icon">📋</div><p>היסטוריית קריאות</p><small>צפה בקריאות קודמות</small></button>
+               
+                <button class="card" onclick="window.location.href='support_volunteer.php'">
                     <div class="card-icon">🤝</div>
-                    <span> תמיכה</span>
+                    <p>תמיכה </p>
                     <small>קבלת מידע ומענה על שאלות נפוצות</small>
-                </a>
-            
-                   <div class="options-grid">
-                    <a href="" class="option-card">
-                    <div class="card-icon">📋</div>
-                    <span> היסטוריית קריאות</span>
-                    <small>צפייה בקריאות קודמות</small>
-                </a>
-
-                <div class="options-grid">
-                    <a href=" " class="option-card">
+                </button>
+                
+                <button class="card" onclick="window.location.href='profile_volunteer.php'">
                     <div class="card-icon">👤</div>
-                    <span> פרופיל אישי </span>
+                    <p>פרופיל אישי</p>
                     <small>ניהול חשבון</small>
-                </a>
+                </button>
 
             </div>
 
