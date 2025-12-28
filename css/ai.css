@@ -1,10 +1,10 @@
 :root {
-  --bg: #fff7fa;         /* רקע כללי ורוד very light */
-  --primary: #f472b6;    /* ורוד עיקרי */
-  --accent: #c084fc;     /* סגול */
-  --card-bg: #ffffff;    /* רקע כרטיסים */
-  --muted: #555;         /* טקסט קטן/משני */
-  --danger: #ff4b4b;     /* SOS */
+  --bg: #fff7fa;        
+  --primary: #f472b6;   
+  --accent: #c084fc;    
+  --card-bg: #ffffff;    
+  --muted: #555;       
+  --danger: #ff4b4b;  
   --glass: rgba(255,255,255,0.8);
   --shadow: 0 6px 18px rgba(79,91,117,0.08);
   --soft-shadow: 0 4px 10px rgba(249,168,212,0.3);
@@ -165,7 +165,6 @@ button {
   background: #e5e7eb;
 }
 
-/* צ'אט */
 .log {
   max-height: 220px;
   overflow-y: auto;
@@ -195,7 +194,7 @@ button {
   align-self: flex-end;
 }
 
-/* טופס צ'אט */
+
 .chat-form {
   margin-top: 8px;
   display: flex;
@@ -252,7 +251,7 @@ button {
   justify-content: center;
 }
 
-/* SOS */
+
 .sos-wrap {
   margin-top: 6px;
   display: flex;
@@ -276,13 +275,11 @@ button {
   transform: scale(.97);
 }
 
-/* נגישות */
 button:focus, input:focus {
   outline: 3px solid rgba(244,114,182,0.35);
   outline-offset: 2px;
 }
 
-/* Desktop */
 @media (min-width: 900px) {
   .shell { max-width: 900px; }
 }

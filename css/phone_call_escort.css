@@ -1,4 +1,4 @@
-/* RESET */
+
 * {
   margin: 0;
   padding: 0;
@@ -14,7 +14,6 @@ body {
   min-height: 100vh;
 }
 
-/* HEADER */
 .header {
   background: linear-gradient(90deg, #f9a8d4, #c084fc);
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -38,7 +37,6 @@ body {
   font-size: 1.9rem;
 }
 
-/* CONTAINER */
 .container {
   width: 90%;
   max-width: 550px;
@@ -72,7 +70,6 @@ body {
   font-weight: bold;
 }
 
-/* CALL BUTTON */
 .call-btn {
   background: #3b82f6;
   color: white;
@@ -87,7 +84,6 @@ body {
   background: #2563eb;
 }
 
-/* BACK */
 .back {
   display: block;
   margin-top: 25px;
@@ -100,19 +96,17 @@ body {
   text-decoration: underline;
 }
 
-/* תמונה קטנה ליד השם */
 .mini-profile {
-    width: 40px;             /* גודל קטן */
+    width: 40px;             
     height: 40px;
-    border-radius: 50%;      /* עיגול מלא */
-    object-fit: cover;       /* שומרת על יחס תמונה */
+    border-radius: 50%;     
+    object-fit: cover;      
     border: 2px solid #3b82f6;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    flex-shrink: 0;          /* מונע מהתמונה להצטמצם */
-    margin-left: 10px;       /* רווח בין התמונה לשם */
+    flex-shrink: 0;          
+    margin-left: 10px;       
 }
 
-/* FOOTER */
 .footer {
   margin-top: auto;
   text-align: center;
@@ -121,12 +115,11 @@ body {
   font-size: 14px;
 }
 
-/* MOBILE */
 @media (max-width: 480px) {
   .volunteer-box {
     flex-direction: column;
     gap: 10px;
-    align-items: center; /* מרכז הכל */
+    align-items: center; 
   }
 
   .mini-profile {

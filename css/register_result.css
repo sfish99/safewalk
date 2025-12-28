@@ -7,7 +7,6 @@ body {
     direction: rtl;
 }
 
-/* Header */
 .header {
     background: linear-gradient(90deg, #f9a8d4, #c084fc);
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -23,7 +22,6 @@ body {
     height: 80px;
 }
 
-/* Main */
 .main-content {
     flex: 1;
     display: flex;
@@ -31,7 +29,7 @@ body {
     align-items: center;
 }
 
-/* Result box */
+
 .result-box {
     background: white;
     padding: 30px;
@@ -42,13 +40,12 @@ body {
     text-align: center;
 }
 
-/* Titles */
+
 .result-box h2 {
     margin-bottom: 15px;
     font-size: 24px;
 }
 
-/* Text */
 .result-box p {
     color: #555;
     font-size: 15px;
@@ -56,7 +53,7 @@ body {
     margin-bottom: 25px;
 }
 
-/* Buttons */
+
 .action-btn {
     display: block;
     width: 100%;
@@ -77,17 +74,17 @@ body {
     transform: scale(1.02);
 }
 
-/* Success */
+
 .success h2 {
     color: #16a34a;
 }
 
-/* Error */
+
 .error h2 {
     color: #dc2626;
 }
 
-/* Footer */
+
 .footer {
     color: #777;
     font-size: 14px;
@@ -95,7 +92,7 @@ body {
     padding: 10px 0;
 }
 
-/* Mobile */
+
 @media (max-width: 480px) {
     .result-box {
         padding: 22px;

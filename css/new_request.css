@@ -1,4 +1,3 @@
-/* Reset בסיסי */
 * {
   margin: 0;
   padding: 0;
@@ -6,9 +5,9 @@
   font-family: 'Arial', sans-serif;
 }
 
-/* גוף העמוד */
+
 body {
-  background-color: #fff7fa; /* ורוד very light */
+  background-color: #fff7fa; 
   color: #333;
   display: flex;
   flex-direction: column;
@@ -33,7 +32,7 @@ html, body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 65px 15px 25px 15px; /* הגובה המדויק מדף הבית */
+    padding: 65px 15px 25px 15px; 
     border-radius: 0 0 25px 25px;
     margin: 0;
 }
@@ -57,13 +56,13 @@ html, body {
     width: 100%;
     margin: 0;
     font-family: "Calibri", sans-serif;
-    font-size: 22px; /* זהה לדף הבית */
+    font-size: 22px; 
     font-weight: bold;
-    color: white; /* בדף הבית זה כהה, פה לבן נראה יותר טוב על הגרדיאנט */
+    color: white; 
     text-align: center;
 }
 
-/* תוכן ראשי */
+
 .support-options {
   flex: 1;
   display: flex;
@@ -72,15 +71,15 @@ html, body {
   padding: 30px 20px;
 }
 
-/* תת כותרת */
+
 .subtitle {
   font-size: 1.2rem;
-  color: #c084fc; /* סגול */
+  color: #c084fc; 
   margin-bottom: 25px;
   text-align: center;
 }
 
-/* גריד של כרטיסי אפשרויות */
+
 .options-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -90,7 +89,7 @@ html, body {
   margin-bottom: 30px;
 }
 
-/* כרטיס אפשרות */
+
 .option-card {
   display: flex;
   flex-direction: column;
@@ -102,7 +101,7 @@ html, body {
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
   text-align: center;
-  text-decoration: none; /* מסיר קו תחתון */
+  text-decoration: none; 
   color: inherit; 
 }
 
@@ -119,7 +118,6 @@ html, body {
   color: #f472b6;
 }
 
-/* אפקט Hover */
 .option-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 20px rgba(196,132,252,0.35);
@@ -143,20 +141,20 @@ html, body {
 }
 
 .footer {
-  margin-top: auto; /* דוחף את ה-footer לתחתית */
+  margin-top: auto; 
   color: #777;
   font-size: 14px;
-  text-align: center; /* מרכז טקסט */
-  padding: 15px 0; /* מוסיף ריווח למעלה ולמטה */
-  width: 100%; /* תופס את רוחב המסך */
+  text-align: center; 
+  padding: 15px 0; 
+  width: 100%; 
 }
 
 .back-home-btn {
   width: 100%;
-  max-width: 300px; /* שלא יהיה רחב מדי במסכים גדולים */
+  max-width: 300px; 
   margin-top: 30px;
   padding: 15px;
-  background-color: #c084fc; /* הסגול של SafeWalk */
+  background-color: #c084fc; 
   color: white;
   border: none;
   border-radius: 15px;
@@ -172,7 +170,6 @@ html, body {
 }
 
 
-/* רספונסיביות למובייל */
 @media (max-width: 480px) {
   .options-grid {
     grid-template-columns: 1fr;

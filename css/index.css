@@ -1,4 +1,3 @@
-/* HTML + BODY מלאים לגובה מלא */
 html, body {
   height: 100%;
   margin: 0;
@@ -10,35 +9,34 @@ html, body {
   min-height: 100vh;
 }
 
-/* HEADER */
+
 .header {
   background: linear-gradient(90deg, #f9a8d4, #c084fc);
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   display: flex;
-  flex-direction: column; /* logo above possible title */
+  flex-direction: column; 
   justify-content: center;
   align-items: center;
-  padding: 20px 0; /* instead of fixed height */
+  padding: 20px 0;
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
-  gap: 10px; /* space between logo and possible title */
-  position: relative; /* remove absolute positioning of logo */
-  height: auto; /* let padding control the height */
+  gap: 10px; 
+  position: relative; 
+  height: auto;
   overflow: visible;
 }
 
 .logo {
-  height: 80px; /* smaller, fits mobile */
+  height: 80px; 
   width: auto;
-  position: static; /* remove absolute positioning */
-  transform: none; /* remove transform */
+  position: static; 
+  transform: none;
 }
 
 
-/* MAIN */
 .main-content {
   padding: 40px 20px;
-  flex: 1; /* ממלא את השטח הזמין ודוחף את ה-footer למטה */
+  flex: 1;
 }
 
 .intro-box {
@@ -59,7 +57,7 @@ p {
   color: #555;
 }
 
-/* כפתורים */
+
 .buttons {
   display: flex;
   flex-direction: column;
@@ -80,7 +78,7 @@ p {
 }
 
 .walker {
-  background-color: #f472b6; /* ורוד */
+  background-color: #f472b6;
 }
 
 .walker:hover {
@@ -88,7 +86,7 @@ p {
 }
 
 .volunteer {
-  background-color: #c084fc; /* סגול */
+  background-color: #c084fc;
 }
 
 .volunteer:hover {
@@ -97,8 +95,8 @@ p {
 
 .register-btn {
   background-color: transparent;
-  border: 2px solid #f9a8d4; /* ורוד עדין */
-  color: #a855f7; /* טקסט סגול רך */
+  border: 2px solid #f9a8d4;
+  color: #a855f7; 
   padding: 12px 30px;
   border-radius: 30px;
   font-size: 16px;
@@ -115,7 +113,7 @@ p {
   box-shadow: 0 4px 10px rgba(249, 168, 212, 0.5);
 }
 
-/* FOOTER */
+
 .footer {
   margin-top: 0;
   color: #777;
