@@ -59,7 +59,7 @@ html, body {
 
 .shell {
     width: 100%;
-    max-width: 420px;
+    max-width: 500px; 
     margin: 0 auto;
     padding: 20px 15px;
     flex: 1;
@@ -75,22 +75,26 @@ html, body {
 
 .card {
     background: #ffffff;
-    border: 1px solid #eee;
-    border-radius: 16px;
-    padding: 20px 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    min-height: 140px; 
-    display: flex;
+    border-radius: 20px; 
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(196,132,252,0.2); 
+    aspect-ratio: 1 / 1; 
     flex-direction: column;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     border: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(196,132,252,0.35);
 }
 
 .card-icon {
-    font-size: 24px;
-    margin-bottom: 8px;
+    font-size: 32px; 
+    margin-bottom: 10px;
 }
 
 .card p {
