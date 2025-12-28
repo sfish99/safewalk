@@ -7,39 +7,51 @@
 }
 
 /* גוף העמוד */
-body {
-  background-color: #fff7fa; /* ורוד very light */
-  color: #333;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: "Calibri", sans-serif;
 }
 
 .header {
-  background: linear-gradient(90deg, #f9a8d4, #c084fc);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  display: flex;
-  flex-direction: column; /* לוגו מעל הכותרת */
-  justify-content: center;
-  align-items: center;
-  padding: 20px 0; /* במקום height קבוע */
-  border-bottom-left-radius: 25px;
-  border-bottom-right-radius: 25px;
-  gap: 10px; /* רווח בין הלוגו לכותרת */
+    background: linear-gradient(90deg, #f9a8d4, #c084fc);
+    width: 100%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 65px 15px 25px 15px; /* הגובה המדויק מדף הבית */
+    border-radius: 0 0 25px 25px;
+    margin: 0;
+}
+
+.dashboard-content-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .logo {
-  height: 80px; /* מתאים גם למובייל */
-  width: auto;
+    height: 80px;
+    width: auto;
+    margin-bottom: 15px;
+    display: block;
 }
 
-.header h1 {
-  font-family: "Calibri", sans-serif;
-  font-size: 2.1rem;
-  color: white;
-  text-align: center;
+.welcome-text {
+    width: 100%;
+    margin: 0;
+    font-family: "Calibri", sans-serif;
+    font-size: 22px; /* זהה לדף הבית */
+    font-weight: bold;
+    color: white; /* בדף הבית זה כהה, פה לבן נראה יותר טוב על הגרדיאנט */
+    text-align: center;
 }
-
 
 /* תוכן ראשי */
 .support-options {
