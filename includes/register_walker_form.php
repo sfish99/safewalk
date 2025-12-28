@@ -38,7 +38,8 @@ $check->execute();
 $check->store_result();
 
 if ($check->num_rows > 0) {
-    die("האימייל כבר קיים במערכת");
+    header("Location: register_error.php");
+    exit();
 }
 
 // הוספת המשתמש לטבלה
