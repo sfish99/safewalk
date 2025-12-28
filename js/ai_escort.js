@@ -159,10 +159,6 @@ if (startBtn && stopBtn && muteBtn && aiStatusEl) {
 if (simulateKeywordBtn && emergencyStatusEl) {
   simulateKeywordBtn.addEventListener("click", () => {
     emergencyStatusEl.textContent = 'זוהתה מילת מצוקה ("עזרה"). מומלץ ליצור קשר עם מוקד חירום.';
-    addMessage(
-      "ai",
-      "אני איתך. נשמע שקשה לך. אם את מרגישה לא בטוח, אפשר לפנות למוקד חירום או לאדם שאת סומכת עליו."
-    );
     sendToServer("המשתמשת ביקשה עזרה או נשמעת במצוקה.", { simulatedEmergency: true });
   });
 }
