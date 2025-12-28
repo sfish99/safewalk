@@ -122,20 +122,20 @@ body {
 }
 
 .back-home-btn {
-  width: 100%;
-  max-width: 300px; /* שלא יהיה רחב מדי במסכים גדולים */
-  margin-top: 30px;
-  padding: 15px;
-  background-color: #c084fc; /* הסגול של SafeWalk */
-  color: white;
-  border: none;
-  border-radius: 15px;
-  font-size: 1.1rem;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(192, 132, 252, 0.2);
-  transition: opacity 0.2s;
-}
+    display: block;      /* מאפשר שימוש ב-margin auto */
+    margin: 30px auto;   /* ה-auto הזה הוא מה שמרכז את הכפתור אופקית */
+    width: 90%;
+    max-width: 300px;
+    padding: 15px;
+    background-color: #c084fc;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(192, 132, 252, 0.2);
+    transition: opacity 0.2s;
 
 .back-home-btn:hover {
   opacity: 0.9;

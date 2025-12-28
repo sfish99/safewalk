@@ -69,11 +69,13 @@ while ($row = $result->fetch_assoc()) {
             <?php endforeach; ?>
         <?php endif; ?>
     </div>
-</div>
 
   <button class="back-home-btn" onclick="window.location.href='home_walker.php'">
      חזרה לדף הבית
    </button>
+
+</div>
+
 
 <footer class="footer">
     <p>© 2025 SafeWalk</p>
