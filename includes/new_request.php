@@ -47,7 +47,7 @@ if (!isset($_SESSION['walker_id'])) {
     <span>שיתוף מיקום</span>
   </a>
 
-  <a href="video-escort.html" class="option-card">
+  <a href="ai_escort.html" class="option-card">
     <img src="../images/ai.jfif" alt="בינה מלאכותית">
     <span>ליווי מבוסס בינה מלאכותית</span>
   </a>
