@@ -26,7 +26,7 @@ session_start();
         </p>
 
         <a href="../index.html" class="action-btn">
-            חזרה למסך פתיחה
+            מעבר למסך פתיחה
         </a>
     </div>
 </main>

@@ -61,13 +61,17 @@ body {
     display: block;
     width: 100%;
     padding: 14px;
+    box-sizing: border-box; 
+    
     background: linear-gradient(90deg, #f472b6, #c084fc);
     color: white;
     text-decoration: none;
     border-radius: 12px;
     font-size: 17px;
     transition: 0.25s;
+    text-align: center;
 }
+
 
 .action-btn:hover {
     opacity: 0.9;
