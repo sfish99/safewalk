@@ -1,9 +1,11 @@
 // Voice over escort + speach to text (if browser supports it) + AI escorting chat
 
 const API_URL = "../includes/ai_chat.php"; // PHP talks to chatGPT
+const TTS_URL = "../includes/tts.php";
 
 let chatHistory = [];
 let voiceEnabled = true;
+let currentAudio = null;
 let recognition = null;
 let recognizing = false;
 
@@ -54,15 +56,24 @@ function escapeHtml(str) {
     .replace(/>/g, "&gt;");
 }
 
-// Text to Speech
-function speak(text) {
-  if (!("speechSynthesis" in window)) return;
-  const utter = new SpeechSynthesisUtterance(text);
-  utter.lang = "he-IL";
-  utter.pitch = 0.9;
-  utter.rate = 1.0;
-  window.speechSynthesis.cancel();
-  window.speechSynthesis.speak(utter);
+async function speak(text) {
+  if (!voiceEnabled) return;
+
+  const res = await fetch(TTS_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ text }),
+  });
+
+  if (!res.ok) return;
+
+  const blob = await res.blob();
+  const url = URL.createObjectURL(blob);
+
+  if (currentAudio) currentAudio.pause();
+  currentAudio = new Audio(url);
+  currentAudio.onended = () => URL.revokeObjectURL(url);
+  currentAudio.play();
 }
 
 // sending message to the server
