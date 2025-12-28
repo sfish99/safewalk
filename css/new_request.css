@@ -81,29 +81,28 @@ html, body {
 
 
 .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    width: 100%;
-    max-width: 500px;
-    margin-bottom: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 30px;
 }
 
+
 .option-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; 
-    background-color: white;
-    border-radius: 20px;
-    padding: 20px;
-    aspect-ratio: 1 / 1; 
-    box-shadow: 0 4px 15px rgba(196,132,252,0.2);
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-    text-align: center;
-    text-decoration: none; 
-    color: inherit; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(196,132,252,0.2);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-align: center;
+  text-decoration: none; 
+  color: inherit; 
 }
 
 .option-card img {
