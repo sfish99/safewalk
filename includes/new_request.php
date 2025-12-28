@@ -56,6 +56,10 @@ if (!isset($_SESSION['walker_id'])) {
     <a href="tel:100" class="sos-btn">S.O.S</a>
    </div>
 
+   <button class="back-home-btn" onclick="window.location.href='home_walker.php'">
+     חזרה לדף הבית
+   </button>
+
 </main>
 
  <footer class="footer">
