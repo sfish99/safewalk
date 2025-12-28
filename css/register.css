@@ -6,8 +6,12 @@ body {
     background: #fff7fa;
     margin: 0;
     padding: 0;
-    direction: rtl; /* Right-to-left text */
+    direction: rtl;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
+
 
 /* ============================= */
 /* Header styles */
