@@ -20,8 +20,10 @@ if (!isset($_SESSION['walker_id'])) {
 <body>
 
 <header class="header">
-  <img src="../images/logo.png" alt="SafeWalk Logo" class="logo">
-  <h1>בחירת סוג ליווי</h1>
+    <div class="dashboard-content-wrapper">
+        <img src="../images/logo.png" alt="SafeWalk Logo" class="logo">
+        <h2 class="welcome-text">בחירת סוג ליווי</h2>
+    </div>
 </header>
 
 <main class="support-options">
