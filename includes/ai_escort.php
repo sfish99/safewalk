@@ -8,14 +8,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- CSS file for designing AI escorting page -->
-   <link rel="stylesheet" href="../css/header.css"/>
   <link rel="stylesheet" href="../css/ai.css"/>
 </head>
 
 <body>
 
-  <!-- Header -->
-  <?php include 'header_walker.php'; ?>
+<?php include '../includes/header.php'; ?>
 
   <div class="shell">
     <main>
@@ -56,4 +54,43 @@
         <div class="buttons">
           <button id="startAiBtn" type="button">התחלי ליווי AI</button>
           <button id="stopAiBtn" type="button" disabled>עצורי ליווי</button>
-          <button id="muteAi
+          <button id="muteAiBtn" type="button" disabled>השתקה</button>
+        </div>
+
+        <div id="aiStatus" class="status">
+          ליווי AI כבוי כרגע.
+        </div>
+
+        <!-- הודעות צ'אט -->
+        <div id="aiMessages" class="log">
+          <div class="msg msg-ai">
+            <strong>המלווה:</strong> שלום, אני איתך. נתחיל ליווי עכשיו 💗
+          </div>
+        </div>
+
+        <!-- קלט צ'אט -->
+        <form id="chatForm" class="chat-form">
+          <input
+            id="userMessage"
+            type="text"
+            placeholder="ספרי לי איך את מרגישה עכשיו…"
+            autocomplete="off"
+          />
+          <button type="submit">שלחי</button>
+          <button type="button" id="voiceInputBtn" title="דיבור למלל">🎤</button>
+        </form>
+      </section>
+
+      <!-- SOS button -->
+      <div class="sos-wrap">
+        <button type="button" class="sos" id="sosBtn">SOS</button>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- JS for AI escort -->
+  <script src="../js/ai_escort.js"></script>
+
+</body>
+</html>
