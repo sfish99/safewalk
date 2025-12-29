@@ -1,15 +1,16 @@
 <?php
 session_start();
+//connect to DB
 require "db_connect.php";
+// API key folder
 require_once '../../config.php';
 
-
-
+// if there is no session - send to log in page
 if (!isset($_SESSION['walker_id'])) {
     header("Location: login_walker.php");
     exit;
 }
-
+// Get walker id from session
 $walkerId = $_SESSION['walker_id'];
 
 
@@ -17,11 +18,12 @@ $walkerId = $_SESSION['walker_id'];
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>שיתוף מיקום - הולכת רגל</title>
-<link rel="stylesheet" href="../css/walker_share_location.css">
-
-<script src="https://maps.googleapis.com/maps/api/js?key=<?php echo GOOGLE_MAPS_API_KEY; ?>" async defer></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>שיתוף מיקום - הולכת רגל</title>
+  <link rel="stylesheet" href="../css/walker_share_location.css">
+  <!-- Google Maps JavaScript API -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=<?php echo GOOGLE_MAPS_API_KEY; ?>" async defer></script>
 </head>
 <body>
 <header class="header">
@@ -33,6 +35,7 @@ $walkerId = $_SESSION['walker_id'];
 
 <main class="shell">
   <div class="map-wrap">
+    <!-- Google Map will be rendered here -->
     <div id="map"></div>
   </div>
 
@@ -45,10 +48,12 @@ $walkerId = $_SESSION['walker_id'];
 
 <footer class="footer">© SafeWalk</footer>
 
+<!-- Pass walker ID from PHP to JavaScript -->
 <script>
   const WALKER_ID = <?php echo (int)$walkerId; ?>;
 </script>
 
+<!-- Main JavaScript file that handles map and location sharing -->
 <script src="../js/walker_share_location.js"></script>
 </body>
 </html>
