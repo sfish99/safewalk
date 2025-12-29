@@ -122,11 +122,19 @@ if (chatForm && userInput) {
 
 // on/off button switch
 if (toggleVoiceBtn && voiceStatusEl) {
+  // מצב התחלתי
+  voiceStatusEl.classList.toggle("voice-on", voiceEnabled);
+  voiceStatusEl.classList.toggle("voice-off", !voiceEnabled);
+
   toggleVoiceBtn.addEventListener("click", () => {
     voiceEnabled = !voiceEnabled;
-    voiceStatusEl.textContent = voiceEnabled ? "קריאה בקול: פעיל" : "קריאה בקול: כבוי";
+
+    voiceStatusEl.textContent = voiceEnabled ? "פעיל" : "כבוי";
+    voiceStatusEl.classList.toggle("voice-on", voiceEnabled);
+    voiceStatusEl.classList.toggle("voice-off", !voiceEnabled);
   });
 }
+
 
 // הפעלת ליווי AI
 if (startBtn && stopBtn && muteBtn && aiStatusEl) {
@@ -150,7 +158,9 @@ if (startBtn && stopBtn && muteBtn && aiStatusEl) {
     voiceEnabled = !voiceEnabled;
     muteBtn.textContent = voiceEnabled ? "השתקה" : "בטלי השתקה";
     if (voiceStatusEl) {
-      voiceStatusEl.textContent = voiceEnabled ? "קריאה בקול: פעיל" : "קריאה בקול: כבוי";
+      voiceStatusEl.textContent = voiceEnabled ? "פעיל" : "כבוי";
+      voiceStatusEl.classList.toggle("voice-on", voiceEnabled);
+      voiceStatusEl.classList.toggle("voice-off", !voiceEnabled);
     }
   });
 }
