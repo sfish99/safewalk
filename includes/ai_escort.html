@@ -1,3 +1,6 @@
+<?php include 'walker_connected.php'; ?>
+
+
 <!doctype html>
 <html lang="he" dir="rtl">
 <head>
@@ -6,22 +9,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- CSS file for designing AI escorting page-->
+  <link rel="stylesheet" href="../css/header.css"/>
   <link rel="stylesheet" href="../css/ai.css"/>
 </head>
 
 <body>
   <!-- כאן ייטען ה-header -->
   <div id="header-container">
+    <?php include 'header_walker.php'; ?>
 
-    <header class="header-dashboard">
-      <a href="../index.html" class="back-btn">חזרה לדף הבית</a>
-      <a href="../index.html" class="logout-btn">התנתקות</a>
-
-  <div class="dashboard-content-wrapper">
-    <img src="../images/logo.png" alt="SafeWalk Logo" class="logo">
-    <h2 class="welcome-text">✨ שלום שרון</h2>
-  </div>
-</header>
   </div>
   <div class="shell">
 

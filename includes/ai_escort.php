@@ -1,12 +1,5 @@
-<?php
-session_start();
+<?php include 'walker_connected.php'; ?>
 
-/*
-  התאימי את המפתח לפי מה שאת שומרת אצלך ב-session.
-  דוגמאות נפוצות: walkerName / walker_name / username / full_name
-*/
-$walkerName = $_SESSION['walkerName'] ?? $_SESSION['walker_name'] ?? $_SESSION['username'] ?? 'שרון';
-?>
 <!doctype html>
 <html lang="he" dir="rtl">
 <head>
@@ -15,21 +8,14 @@ $walkerName = $_SESSION['walkerName'] ?? $_SESSION['walker_name'] ?? $_SESSION['
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- CSS file for designing AI escorting page -->
+   <link rel="stylesheet" href="../css/header.css"/>
   <link rel="stylesheet" href="../css/ai.css"/>
 </head>
 
 <body>
 
   <!-- Header -->
-  <header class="header-dashboard">
-    <a href="home_walker.php" class="back-btn">חזרה לדף הבית</a>
-    <a href="logout_walker.php" class="logout-btn">התנתקות</a>
-
-    <div class="dashboard-content-wrapper">
-      <img src="../images/logo.png" alt="SafeWalk Logo" class="logo">
-      <h2 class="welcome-text">✨ שלום <?php echo htmlspecialchars($walkerName); ?></h2>
-    </div>
-  </header>
+  <?php include 'header_walker.php'; ?>
 
   <div class="shell">
     <main>
