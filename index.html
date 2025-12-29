@@ -1,37 +1,38 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SafeWalk - דף בית</title>
-  <link rel="stylesheet" href="css/index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeWalk - דף בית</title>
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
 
-  <header class="header">
-    <img src="images/logo.png" alt="SafeWalk Logo" class="logo">
-  </header>
+    <header class="header">
+        <img src="images/logo.png" alt="SafeWalk Logo" class="logo">
+    </header>
 
-  <main class="main-content">
-    <div class="intro-box">
-      <h2>ברוכה הבאה!</h2>
-      <p>בחרי כיצד ברצונך להיכנס או להירשם</p>
-    </div>
+    <main class="main-content">
+        <div class="intro-box">
+            <h2>ברוכה הבאה!</h2>
+            <p>בחרי כיצד ברצונך להיכנס או להירשם</p>
+        </div>
 
-    <div class="buttons">
-      <button class="role-button walker" onclick="loginAsWalker()">התחברות כהולכת רגל</button>
-      <button class="role-button volunteer" onclick="loginAsVolunteer()">התחברות כמתנדבת</button>
-      <P></P>
-      <button class="register-btn" onclick="goToRegister('walker')">הרשמה כהולכת רגל</button>     
-      <button class="register-btn" onclick="goToRegister('volunteer')">הרשמה כמתנדבת</button>
+        <div class="button-container">
+            <button class="btn btn-walker" onclick="loginAsWalker()">התחברות כהולכת רגל</button>
+            <button class="btn btn-volunteer" onclick="loginAsVolunteer()">התחברות כמתנדבת</button>
+            
+            <div style="height: 10px;"></div>
+            
+            <button class="btn btn-outline" onclick="goToRegister('walker')">הרשמה כהולכת רגל</button>     
+            <button class="btn btn-outline" onclick="goToRegister('volunteer')">הרשמה כמתנדבת</button>
+        </div>
+    </main>
 
-    </div>
-  </main>
+    <footer class="footer">
+        <p>© 2025 SafeWalk</p>
+    </footer>
 
-  <footer class="footer">
-    <p>© 2025 SafeWalk</p>
-  </footer>
-
-  <script src="js/index.js"></script>
+    <script src="js/index.js"></script>
 </body>
 </html>
