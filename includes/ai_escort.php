@@ -22,8 +22,8 @@ $walkerName = $_SESSION['walkerName'] ?? $_SESSION['walker_name'] ?? $_SESSION['
 
   <!-- Header -->
   <header class="header-dashboard">
-    <a href="../home_walker.php" class="back-btn">חזרה לדף הבית</a>
-    <a href="../logout_walker.php" class="logout-btn">התנתקות</a>
+    <a href="home_walker.php" class="back-btn">חזרה לדף הבית</a>
+    <a href="logout_walker.php" class="logout-btn">התנתקות</a>
 
     <div class="dashboard-content-wrapper">
       <img src="../images/logo.png" alt="SafeWalk Logo" class="logo">
