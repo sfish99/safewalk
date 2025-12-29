@@ -89,4 +89,26 @@ html, body {
 }
 
 .btn-volunteer {
-    background-color: #c0
+    background-color: #c084fc;
+    color: white;
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 2px solid #f9a8d4;
+    color: #a855f7;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+.footer {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    color: #777;
+    font-size: 14px;
+    margin-top: auto;
+}
