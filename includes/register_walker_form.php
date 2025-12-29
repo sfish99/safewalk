@@ -11,6 +11,7 @@ $email = $_POST['email'];
 $phone = $_POST['phone'];
 $password = $_POST['password'];
 
+// Hash the password using the default algorithm for secure storage
 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
 
@@ -31,7 +32,7 @@ if (isset($_FILES['id_card']) && $_FILES['id_card']['error'] === 0) { // isset()
 }
 
 
-// בדיקה אם האימייל כבר קיים
+// Check if email already exist in the table 
 $check = $conn->prepare("SELECT id FROM walkers WHERE email = ?");
 $check->bind_param("s", $email);
 $check->execute();
@@ -42,7 +43,7 @@ if ($check->num_rows > 0) {
     exit();
 }
 
-// הוספת המשתמש לטבלה
+// Added user to the table
 $stmt = $conn->prepare("
     INSERT INTO walkers (first_name, last_name, email, phone, password_hash, id_card_image)
     VALUES (?, ?, ?, ?, ?, ?)
@@ -57,6 +58,7 @@ $stmt->bind_param("ssssss",
     $idCardPath
 );
 
+//Check if register succuced or faild
 if ($stmt->execute()) {
     header("Location: register_success.php");
     exit();

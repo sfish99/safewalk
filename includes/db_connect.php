@@ -1,4 +1,5 @@
 <?php
+// Database connection settings and initialization
 //Configuration Parameters
 $host = "localhost";
 $dbUsername = "isshaharshi_safewalk_user";
