@@ -11,8 +11,8 @@ $email = $_POST['email'];
 $phone = $_POST['phone'];
 $password = $_POST['password'];
 
+// Hash the password using the default algorithm for secure storage
 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
 
 //get image from user
 $idCardPath = NULL; // Default - image not uploaded
@@ -31,7 +31,7 @@ if (isset($_FILES['id_card']) && $_FILES['id_card']['error'] === 0) { // isset()
 }
 
 
-// בדיקה אם האימייל כבר קיים
+// Check if email already exist
 $check = $conn->prepare("SELECT id FROM volunteers WHERE email = ?");
 $check->bind_param("s", $email);
 $check->execute();
@@ -42,7 +42,7 @@ if ($check->num_rows > 0) {
     exit();
 }
 
-// הוספת המשתמש לטבלה
+// Add user to the data base table
 $stmt = $conn->prepare("
     INSERT INTO volunteers (first_name, last_name, email, phone, password_hash, id_card_image)
     VALUES (?, ?, ?, ?, ?, ?)
