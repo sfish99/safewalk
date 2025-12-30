@@ -81,12 +81,11 @@ while ($row = $result->fetch_assoc()) {
 
         <?php endif; ?>
     </div>
+</div>
     <!-- SOS button -->
     <div class="sos-wrap">
         <a href="tel:100" class="sos-btn">S.O.S</a>
     </div>
-</div>
-
 </main>
 <footer class="footer">
     <p>© 2025 SafeWalk</p>
