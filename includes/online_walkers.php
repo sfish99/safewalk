@@ -21,6 +21,9 @@ $walkers = [];
 while ($row = $result->fetch_assoc()) {
     $walkers[] = $row;
 }
+
+$volName = $_SESSION['volunteer_name'];
+
 ?>
 
 <!DOCTYPE html>
@@ -29,16 +32,18 @@ while ($row = $result->fetch_assoc()) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>הולכות רגל מחוברות - SafeWalk</title>
+    <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/online_walkers.css">
 </head>
 <body>
 
-<header class="header">
-    <img src="../images/logo.png" alt="SafeWalk Logo" class="logo">
-    <h1>הולכות רגל מחוברות</h1>
-</header>
+<!--Loading header-->
+<div id="header-container">
+    <?php include 'header_volunteer.php'; ?>
+</div>
 
 <div class="container">
+    <h1>הולכות רגל מחוברות</h1>
     <h2 class="subtitle">בחרי הולכת רגל לצפייה במיקום</h2>
 
     <div class="volunteer-list">
@@ -69,11 +74,6 @@ while ($row = $result->fetch_assoc()) {
         <?php endif; ?>
     </div>
 </div>
-
-<button class="back-home-btn" onclick="window.location.href='home_volunteer.php'">
-    חזרה לדף הבית
-</button>
-
 
 <footer class="footer">
     <p>© 2025 SafeWalk</p>
