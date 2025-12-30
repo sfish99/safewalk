@@ -100,8 +100,7 @@ $walkerName = $_SESSION['walker_name'] ?? '';
 
       <!-- SOS button -->
       <div class="sos-wrap">
-        <button type="button" class="sos" id="sosBtn">
-          SOS
+        <a href="tel:100" class="sos">S.O.S</a>
         </button>
       </div>
     </main>
