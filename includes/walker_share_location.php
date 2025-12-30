@@ -12,6 +12,7 @@ if (!isset($_SESSION['walker_id'])) {
 }
 // Get walker id from session
 $walkerId = $_SESSION['walker_id'];
+$walkerName = $_SESSION['walker_name'] ?? '';
 
 
 ?>
