@@ -1,13 +1,12 @@
 <?php
+// Start the session to access logged-in user data
 session_start();
 
-// אם אין סשן – שלח להתחברות
+// If the walker is not logged in, redirect to login page
 if (!isset($_SESSION['walker_id'])) {
     header("Location: login_walker.php");
     exit;
 }
-
-$walkerName = $_SESSION['walker_name'];
 ?>
 
 <!DOCTYPE html>

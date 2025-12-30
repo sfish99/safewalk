@@ -1,3 +1,16 @@
+<?php
+// Start the session to access logged-in user data
+session_start();
+
+// If the volunteer is not logged in, redirect to login page
+if (!isset($_SESSION['walker_id'])) {
+    header("Location: login_walker.php");
+    exit;
+}
+
+?>
+
+
 <!doctype html>
 <html lang="he" dir="rtl">
 <head>

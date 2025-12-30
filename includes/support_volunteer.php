@@ -1,13 +1,13 @@
 <?php
+// Start the session to access logged-in user data
 session_start();
 
-
+// If the volunteer is not logged in, redirect to login page
 if (!isset($_SESSION['volunteer_id'])) {
     header("Location: login_volunteer.php");
     exit;
 }
 
-$volunteerName = $_SESSION['volunteer_name'];
 ?>
 
 <!DOCTYPE html>
@@ -23,8 +23,7 @@ $volunteerName = $_SESSION['volunteer_name'];
 <header class="header-dashboard">
     <div class="dashboard-content-wrapper">
         <img src="../images/logo.png" alt="SafeWalk Logo" class="logo">
-        <h2 class="welcome-text">תמיכה ושאלות נפוצות - מתנדבת</h2>
-        <p class="subtext">שלום <?php echo htmlspecialchars($volunteerName); ?> 🌟</p>
+        <h2 class="welcome-text">תמיכה ושאלות נפוצות </h2>
     </div>
 </header>
 
@@ -74,7 +73,7 @@ $volunteerName = $_SESSION['volunteer_name'];
             </div>
         </div>
 
-              <div class="faq-item">
+        <div class="faq-item">
             <button class="faq-question"> האם הפרטים שלי גלויים למשתמשות? 🔒</button>
             <div class="faq-answer">
                 <p>רק מידע בסיסי ורלוונטי לליווי.
@@ -82,18 +81,18 @@ $volunteerName = $_SESSION['volunteer_name'];
             </div>
         </div>
 
-                    <div class="faq-item">
+        <div class="faq-item">
             <button class="faq-question">  צריכה עוד עזרה? 💬</button>
             <div class="faq-answer">
                 <p>בכל שאלה, התלבטות או מצב חריג, ניתן לפנות לרכזת הקהילתית האזורית שלך לקבלת ליווי והכוונה./p>
             </div>
         </div>
 
-            <div class="bottom-actions">
-        <button class="back-home-btn" onclick="window.location.href='home_volunteer.php'">
-            ⬅ חזרה לדף הבית
-        </button>
-    </div>
+        <div class="bottom-actions">
+            <button class="back-home-btn" onclick="window.location.href='home_volunteer.php'">
+                 ⬅ חזרה לדף הבית
+            </button>
+        </div>
 
   
     </main>
