@@ -22,47 +22,6 @@ html, body {
     font-family: "Calibri", sans-serif;
 }
 
-
-
-.header {
-    background: linear-gradient(90deg, #f9a8d4, #c084fc);
-    width: 100%;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 65px 15px 25px 15px; 
-    border-radius: 0 0 25px 25px;
-    margin: 0;
-}
-
-.dashboard-content-wrapper {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.logo {
-    height: 80px;
-    width: auto;
-    margin-bottom: 15px;
-    display: block;
-}
-
-.welcome-text {
-    width: 100%;
-    margin: 0;
-    font-family: "Calibri", sans-serif;
-    font-size: 22px; 
-    font-weight: bold;
-    color: white; 
-    text-align: center;
-}
-
-
 .support-options {
   flex: 1;
   display: flex;
@@ -148,27 +107,6 @@ html, body {
   padding: 15px 0; 
   width: 100%; 
 }
-
-.back-home-btn {
-  width: 100%;
-  max-width: 300px; 
-  margin-top: 30px;
-  padding: 15px;
-  background-color: #c084fc; 
-  color: white;
-  border: none;
-  border-radius: 15px;
-  font-size: 1.1rem;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(192, 132, 252, 0.2);
-  transition: opacity 0.2s;
-}
-
-.back-home-btn:hover {
-  opacity: 0.9;
-}
-
 
 @media (max-width: 480px) {
   .options-grid {

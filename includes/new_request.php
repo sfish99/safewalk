@@ -8,6 +8,7 @@ if (!isset($_SESSION['walker_id'])) {
 }
 ?>
 
+$walkerName = $_SESSION['walker_name'] ?? '';
 
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
@@ -15,16 +16,15 @@ if (!isset($_SESSION['walker_id'])) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>בחירת סוג ליווי - SafeWalk</title>
+  <link rel="stylesheet" href="../css/header.css">
   <link rel="stylesheet" href="../css/new_request.css">
 </head>
 <body>
 
-<header class="header">
-    <div class="dashboard-content-wrapper">
-        <img src="../images/logo.png" alt="SafeWalk Logo" class="logo">
-        <h2 class="welcome-text">בחירת סוג ליווי</h2>
-    </div>
-</header>
+<!--Loading header-->
+<div id="header-container">
+    <?php include 'header_walker.php'; ?>
+</div>
 
 <main class="support-options">
 
@@ -57,10 +57,6 @@ if (!isset($_SESSION['walker_id'])) {
    <div class="sos-wrap">
     <a href="tel:100" class="sos-btn">S.O.S</a>
    </div>
-
-   <button class="back-home-btn" onclick="window.location.href='home_walker.php'">
-     חזרה לדף הבית
-   </button>
 
 </main>
 
