@@ -17,19 +17,15 @@ $walkerName = $_SESSION['walker_name'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SafeWalk - דף ראשי הולכת רגל </title>
+    <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/home_walker.css">
 </head>
 
 <body>
-
-    <header class="header-dashboard">
-            <a href="logout_walker.php" class="logout-btn">התנתקות</a>
-        <div class="dashboard-content-wrapper">
-                <img src="../images/logo.png" alt="SafeWalk Logo" class="logo">
-
-                 <h2 class="welcome-text">שלום <?php echo htmlspecialchars($walkerName); ?> 🌟</h2>
-        </div>
-    </header>
+    <!--Loading header-->
+    <div id="header-container">
+        <?php include 'header_walker.php'; ?>
+    </div>
 
     <div class="shell">
         <main class="main-dashboard-content">

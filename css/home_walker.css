@@ -14,58 +14,6 @@ html, body {
     overflow-x: hidden; 
 }
 
-.header-dashboard {
-    background: linear-gradient(90deg, #f9a8d4, #c084fc);
-    width: 100%;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    padding: 65px 15px 25px 15px;
-    border-radius: 0 0 25px 25px;
-    margin: 0;
-}
-
-.dashboard-content-wrapper {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.logo {
-    height: 80px;
-    width: auto;
-    margin-bottom: 15px;
-    display: block;
-}
-
-.welcome-text {
-    width: 100%;
-    margin: 0;
-    font-size: 22px;
-    font-weight: bold;
-    color: #07213a;
-    text-align: center;
-}
-
-.logout-btn {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    padding: 8px 16px;
-    background-color: #c0392b;
-    color: white;
-    text-decoration: none;
-    border-radius: 20px;
-    font-size: 14px;
-    font-weight: bold;
-    z-index: 100;
-}
-
 .shell {
     width: 100%;
     max-width: 420px;
