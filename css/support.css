@@ -19,43 +19,6 @@ html, body {
     box-sizing: border-box;
 }
 
-
-.header-dashboard {
-background: linear-gradient(90deg, #f9a8d4, #c084fc);
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    justify-content: center;
-    border-radius: 0 0 25px 25px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    margin: 0;
-    position: relative; 
-}
-
-.dashboard-content-wrapper {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.logo {
-    height: 20vw;
-    max-height: 120px;
-    margin-bottom: 12px;
-}
-
-.welcome-text {
-    margin: 0;
-    font-size: 24px;
-    font-weight: bold;
-    color: #4a3d8f; 
-    text-align: center;
-    width: 100%;
-}
-
 .subtext {
     margin-top: 4px;
     font-size: 16px;
@@ -111,21 +74,6 @@ background: linear-gradient(90deg, #f9a8d4, #c084fc);
     font-size: 16px;
     color: #444;
 }
-
-.back-home-btn {
-    width: 100%;
-    padding: 15px;
-    background: #c084fc; 
-    color: white;
-    border: none;
-    border-radius: 12px;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 20px;
-}
-
-
 
 .footer {
     margin-top: 20px;

@@ -7,6 +7,8 @@ if (!isset($_SESSION['walker_id'])) {
     header("Location: login_walker.php");
     exit;
 }
+
+$walkerName = $_SESSION['walker_name'] ?? '';
 ?>
 
 <!DOCTYPE html>
@@ -15,21 +17,19 @@ if (!isset($_SESSION['walker_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">    
     <title>SafeWalk - תמיכה ושאלות נפוצות</title>
+    <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/support.css">
 </head>
 <body>
-
-<header class="header-dashboard">
-    <div class="dashboard-content-wrapper">
-        <img src="../images/logo.png" alt="SafeWalk Logo" class="logo">
-        <h2 class="welcome-text">תמיכה ושאלות נפוצות</h2>
-    </div>
-</header>
+<!--Loading header-->
+<div id="header-container">
+    <?php include 'header_walker.php'; ?>
+</div>
 
 <div class="shell">
     <main class="support-content">
 
-        <h3 class="section-title">❓ שאלות נפוצות</h3>
+        <h3 class="section-title"> תמיכה ושאלות נפוצות ❓</h3>
 
              <div class="faq-item">
                 <button class="faq-question">מה הוא אתר <span dir="ltr">SafeWalk</span>? ℹ️</button>            <div class="faq-answer">
@@ -71,12 +71,6 @@ if (!isset($_SESSION['walker_id'])) {
                 <p>לא. השירות ניתן בהתנדבות מלאה ע"י קהילת SafeWalk.</p>
             </div>
         </div>
-
-        <div class="bottom-actions">
-        <button class="back-home-btn" onclick="window.location.href='home_walker.php'">
-            ⬅ חזרה לדף הבית
-        </button>
-    </div>
 
     </main>
 </div>
