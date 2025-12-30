@@ -23,12 +23,10 @@ $volName = $_SESSION['volunteer_name'];
 </head>
 <body>
 
-<header class="header-dashboard">
-    <div class="dashboard-content-wrapper">
-        <img src="../images/logo.png" alt="SafeWalk Logo" class="logo">
-        <h2 class="welcome-text">תמיכה ושאלות נפוצות </h2>
-    </div>
-</header>
+<!--Loading header-->
+<div id="header-container">
+    <?php include 'header_volunteer.php'; ?>
+</div>
 
 <div class="shell">
     <main class="support-content">
