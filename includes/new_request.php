@@ -6,9 +6,8 @@ if (!isset($_SESSION['walker_id'])) {
     header("Location: login_walker.php");
     exit;
 }
-?>
-
 $walkerName = $_SESSION['walker_name'] ?? '';
+?>
 
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
