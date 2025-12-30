@@ -51,10 +51,10 @@ while ($row = $result->fetch_assoc()) {
 <body>
 
 
-<header class="header">
-    <img src="../images/logo.png" alt="SafeWalk Logo" class="logo">
-    <h1>ליווי בוואטסאפ</h1>
-</header>
+  <!--loading header-->
+  <div id="header-container">
+    <?php include 'header_walker.php'; ?>
+  </div>
 <main>
 <div class="container">
     <h1>ליווי בוואטסאפ</h1>
