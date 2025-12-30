@@ -1,5 +1,3 @@
-<?php include 'walker_connected.php'; ?>
-
 <!doctype html>
 <html lang="he" dir="rtl">
 <head>
@@ -7,15 +5,19 @@
   <title>SafeWalk – ליווי AI</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- CSS file for designing AI escorting page -->
+  <!-- CSS file for designing AI escorting page-->
+  <link rel="stylesheet" href="../css/header.css"/>
   <link rel="stylesheet" href="../css/ai.css"/>
 </head>
 
 <body>
+  <!-- כאן ייטען ה-header -->
+  <div id="header-container">
+    <?php include 'header_walker.php'; ?>
 
-<?php include '../includes/header.php'; ?>
-
+  </div>
   <div class="shell">
+
     <main>
       <!-- כרטיס: זיהוי מילות מצוקה -->
       <section class="card">
@@ -48,7 +50,7 @@
           המלווה מבוססת הבינה המלאכותית מדברת איתך בטון רגוע, מחזקת ומעודדת בזמן ההליכה.
         </p>
         <p>
-          לצורך התחלת הליווי, אנא לחצי על כפתור ״התחלי ליווי AI״.
+          לצורך התחלת הליווי, אנא לחצי על כפתור ״התחלי ליווי AI".
         </p>
 
         <div class="buttons">
@@ -61,7 +63,7 @@
           ליווי AI כבוי כרגע.
         </div>
 
-        <!-- הודעות צ'אט -->
+                <!-- הודעות צ'אט -->
         <div id="aiMessages" class="log">
           <div class="msg msg-ai">
             <strong>המלווה:</strong> שלום, אני איתך. נתחיל ליווי עכשיו 💗
@@ -79,14 +81,17 @@
           <button type="submit">שלחי</button>
           <button type="button" id="voiceInputBtn" title="דיבור למלל">🎤</button>
         </form>
+
       </section>
 
       <!-- SOS button -->
       <div class="sos-wrap">
-        <button type="button" class="sos" id="sosBtn">SOS</button>
+        <button type="button" class="sos" id="sosBtn">
+          SOS
+        </button>
       </div>
-
     </main>
+
   </div>
 
   <!-- JS for AI escort -->
