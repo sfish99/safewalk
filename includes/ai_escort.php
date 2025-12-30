@@ -8,6 +8,8 @@ if (!isset($_SESSION['walker_id'])) {
     exit;
 }
 
+$walkerName = $_SESSION['walker_name'] ?? '';
+
 ?>
 
 
