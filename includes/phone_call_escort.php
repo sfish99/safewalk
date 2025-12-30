@@ -61,8 +61,11 @@ while ($row = $result->fetch_assoc()) {
         <?php endif; ?>
     </div>
 
-    <a href="home_walker.php" class="back">חזרה לדף הבית</a>
 </div>
+
+   <div class="sos-wrap">
+    <a href="tel:100" class="sos-btn">S.O.S</a>
+   </div>
 
 <footer class="footer">
     <p>© 2025 SafeWalk</p>
