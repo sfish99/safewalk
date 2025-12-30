@@ -17,15 +17,19 @@ $walkerName = $_SESSION['walker_name'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SafeWalk - דף ראשי הולכת רגל </title>
-    <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/home_walker.css">
 </head>
 
 <body>
-    <!--Loading header-->
-    <div id="header-container">
-        <?php include 'header_walker.php'; ?>
-    </div>
+
+    <header class="header-dashboard">
+            <a href="logout_walker.php" class="logout-btn">התנתקות</a>
+        <div class="dashboard-content-wrapper">
+                <img src="../images/logo.png" alt="SafeWalk Logo" class="logo">
+
+                 <h2 class="welcome-text">שלום <?php echo htmlspecialchars($walkerName); ?> 🌟</h2>
+        </div>
+    </header>
 
     <div class="shell">
         <main class="main-dashboard-content">
@@ -34,7 +38,7 @@ $walkerName = $_SESSION['walker_name'];
                     <div class="card-icon">✋</div>
                     <p>פתיחת קריאה</p>
                     <small>התחל קריאה חדשה</small>
-                </button>               
+                </button>
                 <button class="card"><div class="card-icon">📋</div><p>היסטוריית קריאות</p><small>צפה בקריאות קודמות</small></button>
                 <button class="card" onclick="window.location.href='support_walker.php'">
                     <div class="card-icon">🤝</div>
@@ -54,12 +58,12 @@ $walkerName = $_SESSION['walker_name'];
         </main>
 
     </div>
-    
+
     <footer class="footer">
       <p>© 2025 SafeWalk</p>
       </footer>
 
-    
+
 
 </body>
 </html>
