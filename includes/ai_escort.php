@@ -29,7 +29,6 @@ $walkerName = $_SESSION['walker_name'] ?? '';
   <!-- כאן ייטען ה-header -->
   <div id="header-container">
     <?php include 'header_walker.php'; ?>
-
   </div>
   <div class="shell">
 
