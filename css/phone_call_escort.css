@@ -61,18 +61,6 @@ body {
   background: #2563eb;
 }
 
-.back {
-  display: block;
-  margin-top: 25px;
-  text-decoration: none;
-  color: #2563eb;
-  font-size: 1rem;
-}
-
-.back:hover {
-  text-decoration: underline;
-}
-
 .mini-profile {
     width: 40px;             
     height: 40px;
@@ -106,5 +94,22 @@ body {
   .call-btn {
     width: 100%;
   }
+}
+
+.sos-btn {
+    margin: 35px auto 0;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    font-weight: 800;
+    font-size: 24px;
+    color: white;
+    background: radial-gradient(circle at 40% 35%, #ff287a, #ff4b4b);
+    box-shadow: 0 0 0 10px rgba(255, 75, 75, 0.2), 0 8px 30px rgba(255, 75, 75, 0.5);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
