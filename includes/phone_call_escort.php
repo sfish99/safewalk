@@ -30,19 +30,16 @@ while ($row = $result->fetch_assoc()) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>שיחת טלפון - SafeWalk</title>
+    <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/phone_call_escort.css">
 </head>
 <body>
-
-<header class="header">
-    <img src="../images/logo.png" alt="SafeWalk Logo" class="logo">
-    <h1>שיחת טלפון עם מתנדבת</h1>
-</header>
+    <div id="header-container">
+        <?php include 'header_walker.php'; ?>
+    </div>
 
 <div class="container">
-    <h1>שלום <?php echo htmlspecialchars($walkerName); ?> 🌟</h1>
-    <h2>בחרי מתנדבת זמינה לשיחת טלפון</h2>
-
+    <h1>בחרי מתנדבת זמינה לשיחת טלפון</h1>
     <p>התקשרי למתנדבות הזמינות דרך הכפתורים הבאים:</p>
 
     <div class="volunteer-list">
@@ -64,8 +61,11 @@ while ($row = $result->fetch_assoc()) {
         <?php endif; ?>
     </div>
 
-    <a href="home_walker.php" class="back">חזרה לדף הבית</a>
 </div>
+
+   <div class="sos-wrap">
+    <a href="tel:100" class="sos-btn">S.O.S</a>
+   </div>
 
 <footer class="footer">
     <p>© 2025 SafeWalk</p>

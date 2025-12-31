@@ -41,6 +41,7 @@ $stmt->bind_param("i", $walkerId);
 $stmt->execute();
 $res = $stmt->get_result();
 $location = $res->fetch_assoc();
+$volName = $_SESSION['volunteer_name'];
 ?>
 
 
@@ -50,17 +51,20 @@ $location = $res->fetch_assoc();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>מיקום הולכת רגל - SafeWalk</title>
+    <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/view_walker_location.css">
     <!-- Google Maps JavaScript API -->
     <script src="https://maps.googleapis.com/maps/api/js?key=<?php echo GOOGLE_MAPS_API_KEY; ?>" async defer></script>
 </head>
 <body>
-<header class="header">
-    <img src="../images/logo.png" class="logo" alt="logo">
-    <h1>מיקום: <?= htmlspecialchars($walker['first_name'] . ' ' . $walker['last_name']); ?></h1>
-</header>
+
+<!--Loading header-->
+<div id="header-container">
+    <?php include 'header_volunteer.php'; ?>
+</div>
 
 <div class="container">
+    <h1>מיקום: <?= htmlspecialchars($walker['first_name'] . ' ' . $walker['last_name']); ?></h1>
     <?php if (!$location): ?>
         <p>אין מיקום זמין כרגע להולכת הרגל הזאת.</p>
     <?php else: ?>

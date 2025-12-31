@@ -8,6 +8,8 @@ if (!isset($_SESSION['volunteer_id'])) {
     exit;
 }
 
+$volName = $_SESSION['volunteer_name'];
+
 ?>
 
 <!DOCTYPE html>
@@ -16,21 +18,20 @@ if (!isset($_SESSION['volunteer_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SafeWalk - תמיכה ושאלות נפוצות למתנדבת</title>
+    <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/support.css">
 </head>
 <body>
 
-<header class="header-dashboard">
-    <div class="dashboard-content-wrapper">
-        <img src="../images/logo.png" alt="SafeWalk Logo" class="logo">
-        <h2 class="welcome-text">תמיכה ושאלות נפוצות </h2>
-    </div>
-</header>
+<!--Loading header-->
+<div id="header-container">
+    <?php include 'header_volunteer.php'; ?>
+</div>
 
 <div class="shell">
     <main class="support-content">
 
-        <h3 class="section-title">❓ שאלות נפוצות למתנדבות</h3>
+        <h3 class="section-title">תמיכה ושאלות נפוצות למתנדבות❓</h3>
 
         <div class="faq-item">
             <button class="faq-question">איך אני מקבלת קריאה חדשה לליווי? 📲</button>
@@ -86,12 +87,6 @@ if (!isset($_SESSION['volunteer_id'])) {
             <div class="faq-answer">
                 <p>בכל שאלה, התלבטות או מצב חריג, ניתן לפנות לרכזת הקהילתית האזורית שלך לקבלת ליווי והכוונה./p>
             </div>
-        </div>
-
-        <div class="bottom-actions">
-            <button class="back-home-btn" onclick="window.location.href='home_volunteer.php'">
-                 ⬅ חזרה לדף הבית
-            </button>
         </div>
 
   

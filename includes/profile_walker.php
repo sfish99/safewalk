@@ -8,6 +8,7 @@ if (!isset($_SESSION['walker_id'])) {
 }
 
 $id = $_SESSION['walker_id'];
+ $walkerName = $_SESSION['walker_name'] ?? '';
 
 $stmt = $conn->prepare("SELECT first_name, last_name, email, phone, profile_image FROM walkers WHERE id = ?");
 $stmt->bind_param("i", $id);
@@ -21,16 +22,16 @@ $result = $stmt->get_result()->fetch_assoc();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>הפרופיל שלי - SafeWalk</title>
+    <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/profile.css">
 </head>
 
 <body>
 
-    <header class="header-dashboard">
-        <div class="dashboard-content-wrapper">
-            <img src="../images/logo.png" alt="SafeWalk Logo" class="logo">
-        </div>
-    </header>
+    <!--Loading header-->
+    <div id="header-container">
+        <?php include 'header_walker.php'; ?>
+    </div>
 
     <div class="shell">
         <div class="profile-container">
@@ -70,8 +71,6 @@ $result = $stmt->get_result()->fetch_assoc();
 
                 <button class="save-btn" type="submit">שמירת שינויים</button>
                 </form>
-
-                <button class="back-btn" onclick="window.location.href='home_walker.php'">חזרה לדף הבית</button>
             </div>
         </div>
     </div>

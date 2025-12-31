@@ -38,7 +38,7 @@ $walkerName = $_SESSION['walker_name'];
                     <div class="card-icon">✋</div>
                     <p>פתיחת קריאה</p>
                     <small>התחל קריאה חדשה</small>
-                </button>               
+                </button>
                 <button class="card"><div class="card-icon">📋</div><p>היסטוריית קריאות</p><small>צפה בקריאות קודמות</small></button>
                 <button class="card" onclick="window.location.href='support_walker.php'">
                     <div class="card-icon">🤝</div>
@@ -58,12 +58,12 @@ $walkerName = $_SESSION['walker_name'];
         </main>
 
     </div>
-    
+
     <footer class="footer">
       <p>© 2025 SafeWalk</p>
       </footer>
 
-    
+
 
 </body>
 </html>

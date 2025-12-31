@@ -44,6 +44,11 @@ $walkerName = $_SESSION['walker_name'] ?? '';
     <button id="stopBtn" disabled>הפסיקי שיתוף</button>
     <p class="note">המערכת תשלח את המיקום לשרת כל 5 שניות.</p>
   </div>
+
+   <!-- SOS button -->
+   <div class="sos-wrap">
+       <a href="tel:100" class="sos-btn">S.O.S</a>
+  </div>
 </main>
 
 <footer class="footer">© SafeWalk</footer>

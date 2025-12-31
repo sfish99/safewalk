@@ -74,3 +74,20 @@ button:disabled {
         max-width: 800px;
     }
 }
+
+.sos-btn {
+    margin: 35px auto 0;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    font-weight: 800;
+    font-size: 24px;
+    color: white;
+    background: radial-gradient(circle at 40% 35%, #ff287a, #ff4b4b);
+    box-shadow: 0 0 0 10px rgba(255, 75, 75, 0.2), 0 8px 30px rgba(255, 75, 75, 0.5);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

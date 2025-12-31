@@ -13,25 +13,10 @@ body {
   min-height: 100vh;
 }
 
-.header {
-  background: linear-gradient(90deg, #f9a8d4, #c084fc);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px 0;
-  border-bottom-left-radius: 25px;
-  border-bottom-right-radius: 25px;
-  gap: 8px;
-}
-
-.logo {
-  height: 80px;
-}
-
-.header h1 {
-  color: white;
+h1 {
+  color: #c084fc;
   font-size: 1.9rem;
+  margin-bottom: 20px;
 }
 
 .container {
@@ -114,28 +99,6 @@ body {
   font-size: 14px;
 }
 
-.back-home-btn {
-    display: block;      
-    margin: 30px auto;   
-    width: 90%;          
-    max-width: 300px;    
-    padding: 15px;
-    background-color: #c084fc;
-    color: white;
-    border: none;
-    border-radius: 15px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(192, 132, 252, 0.2);
-    text-align: center; 
-}
-
-.back-home-btn:hover {
-  opacity: 0.9;
-}
-
-
 @media (max-width: 480px) {
   .volunteer-box {
     flex-direction: column;
@@ -143,9 +106,5 @@ body {
 
   .btn {
     width: 100%;
-  }
-  
-  .back-home-btn {
-    width: 90%;
   }
 }

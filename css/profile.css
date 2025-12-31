@@ -10,21 +10,6 @@ html, body {
     direction: rtl;
 }
 
-.header-dashboard {
-    background: linear-gradient(90deg, #f9a8d4, #c084fc);
-    width: 100%;
-    padding: 25px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 0 0 25px 25px;
-}
-
-.logo {
-    height: 60px;
-    width: auto;
-}
-
 .shell {
     width: 100%;
     max-width: 500px;
@@ -99,8 +84,7 @@ html, body {
     background-color: #f9fafb;
 }
 
-
-.save-btn, .back-btn {
+.save-btn {
     width: 100%;
     padding: 16px;
     border-radius: 12px;
@@ -115,12 +99,6 @@ html, body {
     background-color: #c084fc;
     color: white;
     margin-top: 10px;
-}
-
-.back-btn {
-    background-color: #f9a8d4;
-    color: white;
-    margin-top: 12px;
 }
 
 .footer {

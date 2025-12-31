@@ -14,6 +14,15 @@ html, body {
     overflow-x: hidden; 
 }
 
+.welcome-text {
+    width: 100%;
+    margin: 0;
+    font-size: 22px;
+    font-weight: bold;
+    color: #07213a;
+    text-align: center;
+}
+
 .header-dashboard {
     background: linear-gradient(90deg, #f9a8d4, #c084fc);
     width: 100%;
