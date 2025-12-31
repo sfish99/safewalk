@@ -125,10 +125,4 @@ body {
     width: 100%;
 }
 
-/* ===== מובייל ===== */
-@media (max-width: 480px) {
-    .options-grid {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-}
+

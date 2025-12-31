@@ -63,6 +63,5 @@ $walkerName = $_SESSION['walker_name'] ?? '';
       <p>© 2025 SafeWalk</p>
   </footer>
 
-<script src="new_request.js"></script>
 </body>
 </html>
