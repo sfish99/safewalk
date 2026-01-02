@@ -6,6 +6,8 @@ if (!isset($_SESSION['walker_id'])) {
     header("Location: login_walker.php");
     exit;
 }
+
+//Get walker name from session
 $walkerName = $_SESSION['walker_name'] ?? '';
 ?>
 

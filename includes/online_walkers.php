@@ -1,14 +1,16 @@
 <?php
 session_start();
+
+//connect to DB
 require "db_connect.php";
 
-// הגנה – רק מתנדבת
+// if there is no session - send to log in page
 if (!isset($_SESSION['volunteer_id'])) {
     header("Location: login_volunteer.php");
     exit;
 }
 
-// שליפת הולכות רגל מחוברות
+// Fetch only walkers who are currently online 
 $stmt = $conn->prepare("
     SELECT id, first_name, last_name, profile_image 
     FROM walkers 
@@ -17,11 +19,12 @@ $stmt = $conn->prepare("
 $stmt->execute();
 $result = $stmt->get_result();
 
+// Store the results in an array 
 $walkers = [];
 while ($row = $result->fetch_assoc()) {
     $walkers[] = $row;
 }
-
+// Get the volunteer name 
 $volName = $_SESSION['volunteer_name'];
 
 ?>
@@ -53,21 +56,13 @@ $volName = $_SESSION['volunteer_name'];
             <?php foreach ($walkers as $walker): ?>
                 <div class="volunteer-box">
 
-                    <img 
-                        src="../uploads/profile_images/<?= $walker['profile_image'] ?: 'default.png' ?>" 
-                        class="mini-profile"
-                    >
+                    <img src="../uploads/profile_images/<?= $walker['profile_image'] ?: 'default.png' ?>" class="mini-profile">
 
                     <span class="name">
                         <?= htmlspecialchars($walker['first_name'] . ' ' . $walker['last_name']); ?>
                     </span>
 
-                    <a 
-                        href="view_walker_location.php?walker_id=<?= $walker['id']; ?>" 
-                        class="btn"
-                    >
-                        צפייה במיקום
-                    </a>
+                    <a href="view_walker_location.php?walker_id=<?= $walker['id']; ?>" class="btn"> צפייה במיקום</a>
 
                 </div>
             <?php endforeach; ?>
