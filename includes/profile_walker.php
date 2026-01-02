@@ -1,15 +1,19 @@
 <?php
+// Start the session to access logged-in user data
 session_start();
-require "../includes/db_connect.php";
+// Connect to the database
+require "db_connect.php";
 
+// If the walker is not logged in, redirect to login page
 if (!isset($_SESSION['walker_id'])) {
     header("Location: login_walker.php");
     exit;
 }
-
+// Get walker ID & name from session
 $id = $_SESSION['walker_id'];
- $walkerName = $_SESSION['walker_name'] ?? '';
+$walkerName = $_SESSION['walker_name'] ?? '';
 
+//SQL query to fetch walker profile details
 $stmt = $conn->prepare("SELECT first_name, last_name, email, phone, profile_image FROM walkers WHERE id = ?");
 $stmt->bind_param("i", $id);
 $stmt->execute();

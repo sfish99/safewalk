@@ -43,7 +43,7 @@ if ($check->num_rows > 0) {
     exit();
 }
 
-// Added user to the table
+// Added user to the table in DB
 $stmt = $conn->prepare("
     INSERT INTO walkers (first_name, last_name, email, phone, password_hash, id_card_image)
     VALUES (?, ?, ?, ?, ?, ?)

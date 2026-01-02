@@ -1,9 +1,9 @@
 // Select all FAQ question buttons
 const questions = document.querySelectorAll(".faq-question");
 // Loop through each question button
-questions.forEach(q => {
+questions.forEach(function (q) {
     // Add a click event listener to each question
-    q.addEventListener("click", () => {
+    q.addEventListener("click", function () {
         // Toggle the "active" class
         q.classList.toggle("active");
         // Get the answer element (the next sibling after the question)
