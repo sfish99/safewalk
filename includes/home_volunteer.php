@@ -7,6 +7,7 @@ if (!isset($_SESSION['volunteer_id'])) {
     exit;
 }
 
+//Get the volunteer name
 $volName = $_SESSION['volunteer_name']; 
 ?>
 
@@ -40,7 +41,7 @@ $volName = $_SESSION['volunteer_name'];
                     <small>צפייה במיקום הולכות רגל</small>
                 </button>
                 
-                <button class="card"><div class="card-icon">📋</div><p>היסטוריית קריאות</p><small>צפה בקריאות קודמות</small></button>
+                <button class="card"><div class="card-icon">📋</div><p>היסטוריית קריאות</p><small>צפה בקריאות קודמות</small><small>*לטובת פיתוח עתידי*</small></button>
                
                 <button class="card" onclick="window.location.href='support_volunteer.php'">
                     <div class="card-icon">🤝</div>

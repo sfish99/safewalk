@@ -7,6 +7,7 @@ if (!isset($_SESSION['walker_id'])) {
     exit;
 }
 
+//Get the walker name
 $walkerName = $_SESSION['walker_name'];
 ?>
 
@@ -39,7 +40,7 @@ $walkerName = $_SESSION['walker_name'];
                     <p>פתיחת קריאה</p>
                     <small>התחל קריאה חדשה</small>
                 </button>
-                <button class="card"><div class="card-icon">📋</div><p>היסטוריית קריאות</p><small>צפה בקריאות קודמות</small></button>
+                <button class="card"><div class="card-icon">📋</div><p>היסטוריית קריאות</p><small>צפה בקריאות קודמות</small><small>*לטובת פיתוח עתידי*</small></button>
                 <button class="card" onclick="window.location.href='support_walker.php'">
                     <div class="card-icon">🤝</div>
                     <p>תמיכה </p>
