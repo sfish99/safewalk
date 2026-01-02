@@ -1,15 +1,19 @@
 <?php
+// Start the session to access logged-in user data
 session_start();
+// Connect to the database
 require "../includes/db_connect.php";
 
+// If the volunteer is not logged in, redirect to login page
 if (!isset($_SESSION['volunteer_id'])) {
     header("Location: login_volunteer.php");
     exit;
 }
-
+// Get volunteer ID & name from session
 $id = $_SESSION['volunteer_id'];
 $volName = $_SESSION['volunteer_name'];
 
+//SQL query to fetch volunteer profile details
 $stmt = $conn->prepare("SELECT first_name, last_name, email, phone, profile_image FROM volunteers WHERE id = ?");
 $stmt->bind_param("i", $id);
 $stmt->execute();

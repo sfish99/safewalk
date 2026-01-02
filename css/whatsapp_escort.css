@@ -120,17 +120,6 @@ body {
   font-size: 14px;
 }
 
-@media (max-width: 480px) {
-  .volunteer-box {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .btn {
-    width: 100%;
-  }
-}
-
 .sos-btn {
     margin: 35px auto 0;
     width: 120px;
@@ -146,4 +135,30 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.ai-offer {
+    margin-top: 20px;
+    padding: 15px;
+    background: #fff0f5;
+    border: 2px dashed #e91e63;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.ai-btn {
+    background: #e91e63;
+    color: white;
+    font-weight: bold;
+}
+
+@media (max-width: 480px) {
+  .volunteer-box {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn {
+    width: 100%;
+  }
 }
