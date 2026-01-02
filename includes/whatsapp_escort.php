@@ -66,7 +66,7 @@ while ($row = $result->fetch_assoc()) {
         <?php if (count($volunteers) === 0): ?>
             <p>אין מתנדבות זמינות כרגע.</p>
             <div class="ai-offer">
-                <p>רוצה להתחיל ליווי מיידי עם ליווי AI?</p>
+                <p class = "ai-text">רוצה להתחיל ליווי מיידי עם ליווי AI?</p>
                 <a href="ai_escort.php" class="btn ai-btn">התחילי ליווי AI</a>
             </div>
             <?php else: ?>

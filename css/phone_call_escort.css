@@ -98,18 +98,33 @@ body {
 }
 
 .ai-offer {
-    margin-top: 20px;
-    padding: 15px;
-    background: #fff0f5;
-    border: 2px dashed #e91e63;
-    border-radius: 12px;
-    text-align: center;
+  margin-top: 20px;
+  padding: 20px;
+  background: #fdf2f8; 
+  border: 2px dashed #ff4b82;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.ai-text {
+    font-size: 1.1rem;
+    color: #444;
+    margin-bottom: 5px;
 }
 
 .ai-btn {
-    background: #e91e63;
+    background: #ee2489; 
     color: white;
     font-weight: bold;
+    padding: 12px 25px;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: transform 0.2s;
+    display: inline-block;
+    width: auto; 
 }
 
 @media (max-width: 480px) {
