@@ -11,6 +11,7 @@ html, body {
 }
 
 .shell {
+    width: 100%;
     max-width: 500px;
     margin: 0 auto;
     padding: 15px;
@@ -57,14 +58,13 @@ html, body {
     cursor: pointer;
 }
 
-.file-input { 
-    display: none; 
-}
+.file-input { display: none; }
 
 .profile-form {
     display: flex;
     flex-direction: column;
     gap: 18px;
+    text-align: right;
 }
 
 .input-group label {
@@ -93,6 +93,9 @@ html, body {
     font-weight: bold;
     cursor: pointer;
     transition: 0.2s;
+}
+
+.save-btn {
     background-color: #c084fc;
     color: white;
     margin-top: 10px;
