@@ -19,13 +19,11 @@
         </div>
 
         <div class="button-container">
-            <button class="btn btn-walker" onclick="loginAsWalker()">התחברות כהולכת רגל</button>
-            <button class="btn btn-volunteer" onclick="loginAsVolunteer()">התחברות כמתנדבת</button>
+            <button class="btn btn-walker" onclick="window.location.href = 'includes/login_walker.php'">התחברות כהולכת רגל</button>
+            <button class="btn btn-volunteer" onclick="window.location.href = 'includes/login_volunteer.php'">התחברות כמתנדבת</button>
             
-            <div style="height: 10px;"></div>
-            
-            <button class="btn btn-outline" onclick="goToRegister('walker')">הרשמה כהולכת רגל</button>     
-            <button class="btn btn-outline" onclick="goToRegister('volunteer')">הרשמה כמתנדבת</button>
+            <button class="btn btn-outline" onclick="window.location.href = 'includes/register_walker.html'">הרשמה כהולכת רגל</button>     
+            <button class="btn btn-outline" onclick="window.location.href = 'includes/register_volunteer.html'">הרשמה כמתנדבת</button>
         </div>
     </main>
 
@@ -33,6 +31,5 @@
         <p>© 2025 SafeWalk</p>
     </footer>
 
-    <script src="js/index.js"></script>
 </body>
 </html>
