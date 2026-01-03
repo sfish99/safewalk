@@ -91,6 +91,7 @@ html, body {
 .btn-volunteer {
     background-color: #c084fc;
     color: white;
+    margin-bottom: 10px;
 }
 
 .btn-outline {
