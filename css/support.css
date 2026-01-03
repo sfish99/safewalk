@@ -1,6 +1,5 @@
 html, body {
     height: 100%;
-    width: 100%;
     margin: 0;
     font-family: "Calibri", sans-serif;
     background-color: #fff7fa;
@@ -25,7 +24,6 @@ html, body {
     color: #555;
 }
 
-
 .support-content {
     padding: 20px 0;
 }
@@ -36,7 +34,6 @@ html, body {
     color: #5a4fa3;
     font-weight: 800;
 }
-
 
 .faq-item {
     background: #ffffff;
@@ -56,6 +53,7 @@ html, body {
     font-size: 18px;
     font-weight: 700;
     cursor: pointer;
+    font-family: inherit; /* מבטיח שהפונט יעבור מה-body לכפתור */
 }
 
 .faq-question:hover {
@@ -79,8 +77,8 @@ html, body {
     margin-top: 20px;
     color: #777;
     font-size: 14px;
+    padding-bottom: 15px; /* תוספת קטנה למניעת הצמדה לקצה המסך */
 }
-
 
 @media (min-width: 768px) {
     .shell {
@@ -94,9 +92,5 @@ html, body {
     .faq-answer p {
         font-size: 18px;
     }
-
-    .support-action-btn {
-        font-size: 20px;
-        padding: 18px;
-    }
+    
 }
