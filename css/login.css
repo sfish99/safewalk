@@ -1,22 +1,16 @@
 body {
-    font-family: 'Assistant', Arial, sans-serif;
+    font-family: "Calibri", sans-serif;
     background: #fff7fa;
-  display: flex;
-  flex-direction: column;
     direction: rtl;
+    margin: 0;
 }
 
 .header {
-  background: linear-gradient(90deg, #f9a8d4, #c084fc);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  display: flex;
-  flex-direction: column; 
-  justify-content: center;
-  align-items: center;
-  padding: 20px 0;
-  border-bottom-left-radius: 25px;
-  border-bottom-right-radius: 25px;
-  gap: 10px;
+    background: linear-gradient(to right, #f9a8d4, #c084fc);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    padding: 20px;
+    border-radius: 0 0 25px 25px;
 }
 
 .header a {
@@ -29,16 +23,14 @@ body {
 }
 
 .logo {
-  height: 80px;
-  width: auto;
+    height: 80px;
+    width: auto;
 }
 
 .header h2 {
-  font-family: "Calibri", sans-serif;
-  font-size: 2rem;
-  color: white;
-  text-align: center;
-  margin: 0;
+    font-size: 30px;
+    color: white;
+    margin: 0;
 }
 
 .login-box {
@@ -50,6 +42,7 @@ body {
     margin: 50px auto;
     box-shadow: 0 0 12px rgba(0,0,0,0.08);
     text-align: center;
+    box-sizing: border-box;
 }
 
 .login-box h2 {
@@ -58,11 +51,10 @@ body {
     font-size: 24px;
 }
 
-
 .login-box label {
     font-size: 14px;
     color: #333;
-    font-weight: 600;
+    font-weight: bold;
 }
 
 
@@ -80,14 +72,12 @@ body {
     transition: 0.2s;
 }
 
-
 .login-box input:focus {
     border-color: #c084fc;
     outline: none;
     background: #fff;
 }
 
-/* Button */
 .login-box button {
     width: 100%;
     padding: 14px;
@@ -117,11 +107,11 @@ body {
 }
 
 .footer {
-  margin-top: 0;
-  color: #777;
-  font-size: 14px;
-  text-align: center;
-  align-self: center;
+    margin-top: 0;
+    color: #777;
+    font-size: 14px;
+    text-align: center;
+    align-self: center;
 }
 
 
