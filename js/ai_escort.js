@@ -1,7 +1,7 @@
-// Voice over escort + speach to text (if browser supports it) + AI escorting chat
+// AI escort chat + optional speech-to-text + optional text-to-speech
 
 const API_URL = "../includes/ai_chat.php"; // PHP talks to chatGPT
-const TTS_URL = "../includes/tts.php";
+const TTS_URL = "../includes/tts.php"; //TTS endpoint
 
 let chatHistory = [];
 let voiceEnabled = true;
@@ -9,25 +9,24 @@ let currentAudio = null;
 let recognition = null;
 let recognizing = false;
 
-// DOM
+// DOM elements (must match IDs in ai_escort.php)
 const messagesEl = document.getElementById("aiMessages");
 const chatForm = document.getElementById("chatForm");
 const userInput = document.getElementById("userMessage");
 const voiceInputBtn = document.getElementById("voiceInputBtn");
-const toggleVoiceBtn = document.getElementById("toggleVoiceBtn");
-const voiceStatusEl = document.getElementById("voiceStatus");
 const aiStatusEl = document.getElementById("aiStatus");
 const startBtn = document.getElementById("startAiBtn");
 const stopBtn = document.getElementById("stopAiBtn");
 const muteBtn = document.getElementById("muteAiBtn");
 const simulateKeywordBtn = document.getElementById("simulateKeywordBtn");
-const emergencyStatusEl = document.getElementById("emergencyStatus");
 
-// Adds message to the chat
+// Adds message to the AI chat
 function addMessage(role, text) {
   if (!messagesEl) return;
+
   const div = document.createElement("div");
   div.classList.add("msg");
+
   if (role === "user") {
     div.classList.add("msg-user");
     div.innerHTML = `<strong>את:</strong> ${escapeHtml(text)}`;
@@ -35,20 +34,23 @@ function addMessage(role, text) {
     div.classList.add("msg-ai");
     div.innerHTML = `<strong>המלווה:</strong> ${escapeHtml(text)}`;
   }
+
   messagesEl.appendChild(div);
   messagesEl.scrollTop = messagesEl.scrollHeight;
 
+// Keep a short history (helps the AI keep context, but not too long)
   chatHistory.push({ role, text });
   if (chatHistory.length > 6) {
     chatHistory = chatHistory.slice(chatHistory.length - 6);
   }
 
+  // Speak AI messages if voice is enabled
   if (role === "ai" && voiceEnabled) {
     speak(text);
   }
 }
 
-// הגנה בסיסית מ-XSS
+// Basic XSS protection for user/AI text
 function escapeHtml(str) {
   return str
     .replace(/&/g, "&amp;")
@@ -56,6 +58,7 @@ function escapeHtml(str) {
     .replace(/>/g, "&gt;");
 }
 
+// Request TTS audio and play it
 async function speak(text) {
   if (!voiceEnabled) return;
 
@@ -89,15 +92,13 @@ async function sendToServer(message, meta = {}) {
       }),
     });
 
-    // לא זורקים שגיאה על !res.ok – כי גם במצב כזה יש לנו reply מה-PHP
+
     const data = await res.json();
     console.log("📩 Server response:", data);
 
     if (data.reply) {
-      // תמיד משתמשות ב-reply – גם אם יש error / http_code 429 וכו'
       addMessage("ai", data.reply);
     } else if (data.error) {
-      // במקרה קיצון: יש error אבל אין reply
       addMessage("ai", "נראה שיש בעיה בצד השרת (" + data.error + "). נסי שוב עוד מעט.");
     } else {
       addMessage("ai", "יש לי קצת בעיה להתחבר כרגע, נסי שוב עוד רגע.");
@@ -108,35 +109,20 @@ async function sendToServer(message, meta = {}) {
   }
 }
 
-// Chat handeling
+// Chat handling
 if (chatForm && userInput) {
   chatForm.addEventListener("submit", (e) => {
     e.preventDefault();
     const text = userInput.value.trim();
     if (!text) return;
+
     addMessage("user", text);
     userInput.value = "";
     sendToServer(text);
   });
 }
 
-// on/off button switch
-if (toggleVoiceBtn && voiceStatusEl) {
-  // מצב התחלתי
-  voiceStatusEl.classList.toggle("voice-on", voiceEnabled);
-  voiceStatusEl.classList.toggle("voice-off", !voiceEnabled);
-
-  toggleVoiceBtn.addEventListener("click", () => {
-    voiceEnabled = !voiceEnabled;
-
-    voiceStatusEl.textContent = voiceEnabled ? "פעיל" : "כבוי";
-    voiceStatusEl.classList.toggle("voice-on", voiceEnabled);
-    voiceStatusEl.classList.toggle("voice-off", !voiceEnabled);
-  });
-}
-
-
-// הפעלת ליווי AI
+// AI escort controls (start/stop/mute)
 if (startBtn && stopBtn && muteBtn && aiStatusEl) {
   startBtn.addEventListener("click", () => {
     aiStatusEl.textContent = "ליווי AI פעיל. אני איתך.";
@@ -157,26 +143,22 @@ if (startBtn && stopBtn && muteBtn && aiStatusEl) {
   muteBtn.addEventListener("click", () => {
     voiceEnabled = !voiceEnabled;
     muteBtn.textContent = voiceEnabled ? "השתקה" : "בטלי השתקה";
-    if (voiceStatusEl) {
-      voiceStatusEl.textContent = voiceEnabled ? "פעיל" : "כבוי";
-      voiceStatusEl.classList.toggle("voice-on", voiceEnabled);
-      voiceStatusEl.classList.toggle("voice-off", !voiceEnabled);
-    }
   });
 }
 
-// סימולציית זיהוי מילת מצוקה
-if (simulateKeywordBtn && emergencyStatusEl) {
+// Simulate “distress keyword detected”
+if (simulateKeywordBtn) {
   simulateKeywordBtn.addEventListener("click", () => {
-    emergencyStatusEl.textContent = 'זוהתה מילת מצוקה ("עזרה"). מומלץ ליצור קשר עם מוקד חירום.';
+    aiStatusEl.textContent = 'זוהתה מילת מצוקה ("עזרה"). מומלץ ליצור קשר עם מוקד חירום.';
     sendToServer("המשתמשת ביקשה עזרה או נשמעת במצוקה.", { simulatedEmergency: true });
   });
 }
 
-// זיהוי דיבור (אם הדפדפן תומך)
+// Speech-to-text (if the browser supports it)
 function initSpeechRecognition() {
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
   if (!SR) return null;
+
   const rec = new SR();
   rec.lang = "he-IL";
   rec.continuous = false;

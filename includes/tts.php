@@ -1,7 +1,13 @@
 <?php
+
+/*
+  Receives JSON: { "text": "..." }
+  Returns: mp3 audio (OpenAI TTS)
+*/
+
 header('Content-Type: audio/mpeg');
 
-require_once __DIR__ . '/../../config.php'; // config מחוץ ל-public_html
+require_once __DIR__ . '/../../config.php';
 
 $raw = file_get_contents('php://input');
 $data = json_decode($raw, true) ?: [];

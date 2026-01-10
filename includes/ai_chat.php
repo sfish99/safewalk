@@ -1,25 +1,20 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
 
-// אפשרי: קובץ config רק במכונה שלך (לא ב-GitHub!)
-// מכיל define('OPENAI_API_KEY', 'XXXX');
+//Loads OPENAI_API_KEY from a config file
 $configPath = __DIR__ . '/../../config.php';
 if (file_exists($configPath)) {
     require_once $configPath;
 }
-//בדיקה, למחוק אחר כך
-if (!defined('OPENAI_API_KEY')) {
-    echo json_encode(['error' => 'OPENAI_API_KEY not loaded']);
-    exit;
-}
 
+// Only allow POST
 $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
 if ($method !== 'POST') {
     echo json_encode(['error' => 'invalid_method'], JSON_UNESCAPED_UNICODE);
     exit;
 }
 
-// נקרא את ה-JSON שהגיע מה-JS
+// Read JSON body from the browser
 $raw = file_get_contents('php://input');
 $data = json_decode($raw, true) ?: [];
 
@@ -32,30 +27,29 @@ if (!$userMessage) {
     exit;
 }
 
-// נוודא שיש לנו API key
+// if API key is missing, return a fallback so the app still works
 $apiKey = defined('OPENAI_API_KEY') ? OPENAI_API_KEY : '';
 
-// אם אין מפתח – מחזירים תשובה מדומיינת כדי שלא יישבר בקורס
 if (!$apiKey) {
     $fallback = "אני מלווה אותך כאן, גם בלי חיבור מלא 😊 אם את מרגישה חוסר ביטחון, נשמי עמוק, הסתכלי סביבך, ואם צריך – תפני למישהי קרובה או למוקד חירום.";
     echo json_encode(['reply' => $fallback], JSON_UNESCAPED_UNICODE);
     exit;
 }
 
-// נבנה את ההקשר לשיחה:
+// Build chat messages for OpenAI
 $messages = [];
 
-// system – מגדיר את אופי המלווה
+// System prompt: defines assistant behavior
 $messages[] = [
     'role' => 'system',
     'content' =>
 "את מלווה לילה לנשים ההולכות לבד בסביבה לא בטוחה.
-דברי בעברית, בטון רגוע, קצר ואמפתי.
+דברי בעברית, בתור אישה, בטון רגוע, קצר ואמפתי.
 אל תתני עצות מסוכנות. אם נראה שיש מצוקה – המליצי לפנות לעזרה אנושית (משפחה/חברה/מוקד חירום).
 המטרה שלך היא לחזק, להרגיע ולהיות נוכחת, לא לתת ייעוץ רפואי או משפטי."
 ];
 
-// היסטוריה קודמת
+// Add previous history
 foreach ($history as $h) {
     if (!isset($h['role'], $h['text'])) continue;
     $role = $h['role'] === 'user' ? 'user' : 'assistant';
@@ -65,13 +59,13 @@ foreach ($history as $h) {
     ];
 }
 
-// הודעה נוכחית
+// Current user message
 $messages[] = [
     'role' => 'user',
     'content' => $userMessage
 ];
 
-// אם הגיע meta של "מצוקה מדומה"
+ֿֿ// simulate “distress detected”
 if (!empty($meta['simulatedEmergency'])) {
     $messages[] = [
         'role' => 'user',
@@ -79,14 +73,14 @@ if (!empty($meta['simulatedEmergency'])) {
     ];
 }
 
-// קריאה ל-OpenAI
 $payload = [
-    'model' => 'gpt-4o-mini', // אפשר לשנות לפי מה שיש בחשבון
+    'model' => 'gpt-4o-mini',
     'messages' => $messages,
     'temperature' => 0.6,
     'max_tokens' => 120,
 ];
 
+// Call OpenAI Chat Completions
 $ch = curl_init("https://api.openai.com/v1/chat/completions");
 curl_setopt_array($ch, [
     CURLOPT_POST => true,
@@ -101,10 +95,8 @@ curl_setopt_array($ch, [
 $response = curl_exec($ch);
 $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 $curlError = curl_error($ch);
+curl_close($ch);
 
-// אין צורך יותר ב-curl_close ב-PHP 8.0+
-// ואם את רוצה, אפשר לכתוב עם @ כדי לא לראות אזהרה:
-// @curl_close($ch);
 
 if ($httpCode !== 200 || $response === false) {
     $fallbackReply = 'אני פה איתך, גם אם כרגע יש בעיה בחיבור ל-AI. '

@@ -17,20 +17,19 @@
     <meta charset="utf-8" />
     <title>SafeWalk – ליווי AI</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <!-- CSS file for designing AI escorting page-->
+    <!-- CSS file for designing AI escorting page -->
     <link rel="stylesheet" href="../css/header.css"/>
     <link rel="stylesheet" href="../css/ai.css"/>
 </head>
 
 <body>
-<!--Loading header-->
+    <!--Loading header-->
     <div id="header-container">
         <?php include 'header_walker.php'; ?>
     </div>
 
     <div class="shell">
         <main>
-            <!-- כרטיס: זיהוי מילות מצוקה -->
             <section class="card">
                 <h2>זיהוי מצוקה אוטומטי</h2>
                 <p>

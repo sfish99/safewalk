@@ -28,7 +28,7 @@ $walkerName = $_SESSION['walker_name'] ?? '';
   <script src="https://maps.googleapis.com/maps/api/js?key=<?php echo GOOGLE_MAPS_API_KEY; ?>" async defer></script>
 </head>
 <body>
-  <!-- כאן ייטען ה-header -->
+  <!-- Load header -->
   <div id="header-container">
     <?php include 'header_walker.php'; ?>
   </div>
