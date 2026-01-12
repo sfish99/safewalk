@@ -71,7 +71,7 @@
 
                 <div class="buttons">
                     <button id="startAiBtn" type="button">התחלי ליווי AI</button>
-                    <button id="stopAiBtn" type="button" disabled>עצורי ליווי</button>
+                    <button id="stopAiBtn" type="button" disabled>עצרי ליווי</button>
                     <button id="muteAiBtn" type="button" disabled>השתקה</button>
                 </div>
 
