@@ -1,184 +1,121 @@
 // AI escort chat + optional speech-to-text + optional text-to-speech
 
-const API_URL = "../includes/ai_chat.php"; // PHP talks to chatGPT
-const TTS_URL = "../includes/tts.php"; //TTS endpoint
+const CHAT_ENDPOINT = "../includes/ai_chat.php";
+const VOICE_ENDPOINT = "../includes/tts.php";
 
 let chatHistory = [];
-let voiceEnabled = true;
-let currentAudio = null;
-let recognition = null;
-let recognizing = false;
+let isVoiceActive = true;
+let currentAudioPlayer = null;
 
-// DOM elements (must match IDs in ai_escort.php)
-const messagesEl = document.getElementById("aiMessages");
-const chatForm = document.getElementById("chatForm");
-const userInput = document.getElementById("userMessage");
-const voiceInputBtn = document.getElementById("voiceInputBtn");
-const toggleVoiceBtn = document.getElementById("toggleVoiceBtn");
-const voiceStatusEl = document.getElementById("voiceStatus");
-const aiStatusEl = document.getElementById("aiStatus");
-const startBtn = document.getElementById("startAiBtn");
-const stopBtn = document.getElementById("stopAiBtn");
-const muteBtn = document.getElementById("muteAiBtn");
-const simulateKeywordBtn = document.getElementById("simulateKeywordBtn");
-const emergencyStatusEl = document.getElementById("emergencyStatus");
+const messagesDisplay = document.getElementById("aiMessages");
+const mainForm = document.getElementById("chatForm");
+const textInput = document.getElementById("userMessage");
+const statusLabel = document.getElementById("aiStatus");
 
-// Adds message to the AI chat
-function addMessage(role, text) {
+//Adding messages to the chat section
+function addMessage(sender, content) {
+    if (!messagesDisplay) return;
 
-  //Main div for creating the message element
-  const div = document.createElement("div");
-  div.classList.add("msg");
-  // Creating name tag for the message bubble (you / AI)
-  const nameLabel = document.createElement("strong");
-  nameLabel.textContent = (role === "user" ? "את: " : "המלווה: ");
+    // Creation of the message elment
+    const messageRow = document.createElement("div");
+    messageRow.className = "msg " + (sender === "user" ? "msg-user" : "msg-ai");
 
-  // Protection from XSS using textContent
-  const textContainer = document.createElement("span");
-  textContainer.textContent = text;
+    // Adding the label (you/escort) to the message header in the UI
+    const nameTag = document.createElement("strong");
+    nameTag.textContent = (sender === "user" ? "את: " : "המלווה: ");
 
-  // Appending all elements
-  messageDiv.appendChild(nameLabel);
-  messageDiv.appendChild(textContainer);
-  messagesContainer.appendChild(messageDiv);
+    //Using textContent to protect from XSS
+    const textSpan = document.createElement("span");
+    textSpan.textContent = content;
 
-  //Scrolling down
-  messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    // Appending elements
+    messageRow.appendChild(nameTag);
+    messageRow.appendChild(textSpan);
+    messagesDisplay.appendChild(messageRow);
+
+    // Auto scroll down
+    messagesDisplay.scrollTop = messagesDisplay.scrollHeight;
+
+    // Saving chat history for further context
+    chatHistory.push({ role: sender, text: content });
+    if (chatHistory.length > 6) {
+        chatHistory.shift();
+    }
+
+    // Activating AI voice
+    if (sender === "ai" && isVoiceActive) {
+        handleVoiceSynthesis(content);
+    }
 }
 
-// sending message to the server
-async function sendToServer(message, meta = {}) {
-  try {
-    const res = await fetch(API_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        message,
-        history: chatHistory,
-        meta
-      }),
+// Sending info to PHP server
+async function processUserRequest(userText, isUrgent = false) {
+    try {
+        const payload = {
+            message: userText,
+            history: chatHistory,
+            meta: { simulatedEmergency: isUrgent }
+        };
+
+        const response = await fetch(CHAT_ENDPOINT, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+
+        if (result.reply) {
+            addMessage("ai", result.reply);
+        } else {
+            addMessage("ai", "מצטערת, משהו השתבש בחיבור. אני עדיין כאן איתך.");
+        }
+    } catch (error) {
+        console.error("Communication Error:", error);
+        addMessage("ai", "שגיאת תקשורת. אנא ודאי שיש לך חיבור לאינטרנט.");
+    }
+}
+
+// TTS convertion using PHP server
+async function handleVoiceSynthesis(txt) {
+    try {
+        const res = await fetch(VOICE_ENDPOINT, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ text: txt })
+        });
+
+        if (!res.ok) throw new Error("Voice failed");
+
+        const audioBlob = await res.blob();
+        const audioUrl = URL.createObjectURL(audioBlob);
+
+        if (currentAudioPlayer) currentAudioPlayer.pause();
+        currentAudioPlayer = new Audio(audioUrl);
+        currentAudioPlayer.play();
+    } catch (err) {
+        console.warn("שגיאה בהשמעת קול:", err);
+    }
+}
+
+// Lister form
+if (mainForm) {
+    mainForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const val = textInput.value.trim();
+        if (!val) return;
+
+        addMessage("user", val);
+        textInput.value = "";
+        processUserRequest(val);
     });
-
-
-    const data = await res.json();
-    console.log("📩 Server response:", data);
-
-    if (data.reply) {
-      addMessage("ai", data.reply);
-    } else if (data.error) {
-      addMessage("ai", "נראה שיש בעיה בצד השרת (" + data.error + "). נסי שוב עוד מעט.");
-    } else {
-      addMessage("ai", "יש לי קצת בעיה להתחבר כרגע, נסי שוב עוד רגע.");
-    }
-  } catch (err) {
-    console.error("❌ ERROR:", err);
-    addMessage("ai", "נראה שיש בעיית חיבור, נסי שוב.");
-  }
 }
 
-// Chat handling
-if (chatForm && userInput) {
-  chatForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const text = userInput.value.trim();
-    if (!text) return;
-    addMessage("user", text);
-    userInput.value = "";
-    sendToServer(text);
-  });
-}
-
-// AI on/off button switch
-if (toggleVoiceBtn && voiceStatusEl) {
-  voiceStatusEl.classList.toggle("voice-on", voiceEnabled);
-  voiceStatusEl.classList.toggle("voice-off", !voiceEnabled);
-
-  toggleVoiceBtn.addEventListener("click", () => {
-    voiceEnabled = !voiceEnabled;
-
-    voiceStatusEl.textContent = voiceEnabled ? "פעיל" : "כבוי";
-    voiceStatusEl.classList.toggle("voice-on", voiceEnabled);
-    voiceStatusEl.classList.toggle("voice-off", !voiceEnabled);
-  });
-}
-
-// Starting AI escort
-if (startBtn && stopBtn && muteBtn && aiStatusEl) {
-  startBtn.addEventListener("click", () => {
-    aiStatusEl.textContent = "ליווי AI פעיל. אני איתך.";
-    startBtn.disabled = true;
-    stopBtn.disabled = false;
-    muteBtn.disabled = false;
-    addMessage("ai", "היי, אני כאן איתך. את לא לבד.");
-  });
-
-  stopBtn.addEventListener("click", () => {
-    aiStatusEl.textContent = "ליווי AI כבוי כרגע.";
-    startBtn.disabled = false;
-    stopBtn.disabled = true;
-    muteBtn.disabled = true;
-    addMessage("ai", "סיימנו את הליווי כרגע. תוכלי להפעיל אותי שוב בכל רגע.");
-  });
-
-  muteBtn.addEventListener("click", () => {
-    voiceEnabled = !voiceEnabled;
-    muteBtn.textContent = voiceEnabled ? "השתקה" : "בטלי השתקה";
-    if (voiceStatusEl) {
-      voiceStatusEl.textContent = voiceEnabled ? "פעיל" : "כבוי";
-      voiceStatusEl.classList.toggle("voice-on", voiceEnabled);
-      voiceStatusEl.classList.toggle("voice-off", !voiceEnabled);
-    }
-  });
-}
-
-// Simulate “distress keyword detected”
-if (simulateKeywordBtn) {
-  simulateKeywordBtn.addEventListener("click", () => {
-    emergencyStatusEl.textContent = 'זוהתה מילת מצוקה ("עזרה"). מומלץ ליצור קשר עם מוקד חירום.';
-    sendToServer("המשתמשת ביקשה עזרה או נשמעת במצוקה.", { simulatedEmergency: true });
-  });
-}
-
-// Speech-to-text (if the browser supports it)
-function initSpeechRecognition() {
-  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-  if (!SR) return null;
-  const rec = new SR();
-  rec.lang = "he-IL";
-  rec.continuous = false;
-  rec.interimResults = false;
-
-  rec.onresult = (e) => {
-    const text = e.results[0][0].transcript;
-    if (userInput) {
-      userInput.value = text;
-    }
-  };
-
-  rec.onerror = () => {
-    recognizing = false;
-  };
-
-  rec.onend = () => {
-    recognizing = false;
-  };
-
-  return rec;
-}
-
-recognition = initSpeechRecognition();
-
-if (voiceInputBtn && recognition) {
-  voiceInputBtn.addEventListener("click", () => {
-    if (!recognizing) {
-      recognizing = true;
-      recognition.start();
-    } else {
-      recognizing = false;
-      recognition.stop();
-    }
-  });
-} else if (voiceInputBtn) {
-  voiceInputBtn.disabled = true;
-  voiceInputBtn.title = "הדפדפן לא תומך בדיבור למלל";
+// Start/Stop AI escort buttons
+const startBtn = document.getElementById("startAiBtn");
+if (startBtn) {
+    startBtn.addEventListener("click", () => {
+        statusLabel.textContent = "ליווי AI פעיל";
+        addMessage("ai", "אני כאן, בואי נתחיל ללכת יחד.");
+    });
 }
