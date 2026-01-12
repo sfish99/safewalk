@@ -111,6 +111,6 @@ if ($httpStatus === 200) {
     $reply = $resData['choices'][0]['message']['content'] ?? '';
     echo json_encode(['reply' => $reply], JSON_UNESCAPED_UNICODE);
 } else {
-    echo json_encode(['reply' => "'אני פה איתך, גם אם כרגע יש בעיה בחיבור ל-AI. '
-        . 'תזכרי שאת לא לבד, ואם את מרגישה לא בטוח – אפשר לפנות לחברה קרובה או למוקד חירום."]);
+    echo json_encode(['reply' => "אני פה איתך, גם אם כרגע יש בעיה בחיבור ל-AI.
+        . תזכרי שאת לא לבד, ואם את מרגישה לא בטוח – אפשר לפנות לחברה קרובה או למוקד חירום."]);
 }
