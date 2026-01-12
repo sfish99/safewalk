@@ -82,7 +82,7 @@ async function sendToServer(userText, isUrgent = false) {
 
         const response = await fetch(CHAT_ENDPOINT, {
             method: "POST",
-            headers: { "Content-Type": "application/json" }, // תוקן מ-text-Type
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload)
         });
 
