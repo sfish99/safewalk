@@ -57,7 +57,7 @@ $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 curl_close($ch);
 
 // Play the audio
-if ($code === 200 &&& $audio !== false) {
+if ($code === 200 && $audio !== false) {
 
     // If everything is OK, send the audio back to JS
     echo $audio;
