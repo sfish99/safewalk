@@ -1,4 +1,4 @@
-// AI escort chat + optional speech-to-text + optional text-to-speech
+// This script handles the chat UI, sending messages to PHP, and playing voice replies.
 
 const CHAT_ENDPOINT = "../includes/ai_chat.php";
 const VOICE_ENDPOINT = "../includes/tts.php";
@@ -7,33 +7,34 @@ let chatHistory = [];
 let isVoiceActive = true;
 let currentAudioPlayer = null;
 
+// Get elements from the HTML page
 const messagesDisplay = document.getElementById("aiMessages");
 const mainForm = document.getElementById("chatForm");
 const textInput = document.getElementById("userMessage");
 const statusLabel = document.getElementById("aiStatus");
 
-//Adding messages to the chat section
+// Add a new message bubble to the screen
 function addMessage(sender, content) {
     if (!messagesDisplay) return;
 
-    // Creation of the message elment
+    // Create the main 'div' of the message element
     const messageRow = document.createElement("div");
     messageRow.className = "msg " + (sender === "user" ? "msg-user" : "msg-ai");
 
-    // Adding the label (you/escort) to the message header in the UI
+    // Add the name tag (You/escort) to the message bubble to the screen
     const nameTag = document.createElement("strong");
     nameTag.textContent = (sender === "user" ? "את: " : "המלווה: ");
 
-    //Using textContent to protect from XSS
+    // Using textContent to protect from XSS
     const textSpan = document.createElement("span");
     textSpan.textContent = content;
 
-    // Appending elements
+    // Append all elements
     messageRow.appendChild(nameTag);
     messageRow.appendChild(textSpan);
     messagesDisplay.appendChild(messageRow);
 
-    // Auto scroll down
+    // Auto scroll down to the latest message
     messagesDisplay.scrollTop = messagesDisplay.scrollHeight;
 
     // Saving chat history for further context
@@ -48,7 +49,7 @@ function addMessage(sender, content) {
     }
 }
 
-// Sending info to PHP server
+// Send user's text to our PHP server
 async function processUserRequest(userText, isUrgent = false) {
     try {
         const payload = {
@@ -57,6 +58,7 @@ async function processUserRequest(userText, isUrgent = false) {
             meta: { simulatedEmergency: isUrgent }
         };
 
+        // Get response from the PHP server
         const response = await fetch(CHAT_ENDPOINT, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -65,6 +67,7 @@ async function processUserRequest(userText, isUrgent = false) {
 
         const result = await response.json();
 
+        // If we got a reply, show it on screen
         if (result.reply) {
             addMessage("ai", result.reply);
         } else {
@@ -87,6 +90,7 @@ async function handleVoiceSynthesis(txt) {
 
         if (!res.ok) throw new Error("Voice failed");
 
+        // Convert the response to an audio file and play it
         const audioBlob = await res.blob();
         const audioUrl = URL.createObjectURL(audioBlob);
 
@@ -98,7 +102,7 @@ async function handleVoiceSynthesis(txt) {
     }
 }
 
-// Lister form
+// Listen for when the user clicks 'Send' or presses Enter
 if (mainForm) {
     mainForm.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -111,7 +115,7 @@ if (mainForm) {
     });
 }
 
-// Start/Stop AI escort buttons
+// Start/Stop AI escort buttons to begin the AI escort session
 const startBtn = document.getElementById("startAiBtn");
 if (startBtn) {
     startBtn.addEventListener("click", () => {

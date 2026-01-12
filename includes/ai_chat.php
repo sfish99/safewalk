@@ -7,107 +7,78 @@ if (file_exists($configPath)) {
     require_once $configPath;
 }
 
-$method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
-if ($method !== 'POST') {
-    echo json_encode(['error' => 'invalid_method'], JSON_UNESCAPED_UNICODE);
-    exit;
-}
-
-// Read JSON body from the browser
-$raw = file_get_contents('php://input');
-$data = json_decode($raw, true) ?: [];
-
-$userMessage = $data['message'] ?? '';
-$history     = $data['history'] ?? [];
-$meta        = $data['meta'] ?? [];
-
-if (!$userMessage) {
-    echo json_encode(['error' => 'no_message'], JSON_UNESCAPED_UNICODE);
-    exit;
-}
-
-// if API key is missing, return a fallback so the app still works
+// Check if we have the API key. If not, show a message to the user about a connection error.
 $apiKey = defined('OPENAI_API_KEY') ? OPENAI_API_KEY : '';
-
 if (!$apiKey) {
-    $fallback = "אני מלווה אותך כאן, גם בלי חיבור מלא 😊 אם את מרגישה חוסר ביטחון, נשמי עמוק, הסתכלי סביבך, ואם צריך – תפני למישהי קרובה או למוקד חירום.";
-    echo json_encode(['reply' => $fallback], JSON_UNESCAPED_UNICODE);
+    echo json_encode(['reply' => "אני איתך, פשוט יש לי תקלה קטנה בחיבור כרגע. אל תדאגי."], JSON_UNESCAPED_UNICODE);
     exit;
 }
 
-// Build chat messages for OpenAI
+// Get the JSON data sent from the 'ai_escort.js' file
+$inputJSON = file_get_contents('php://input');
+$inputData = json_decode($inputJSON, true);
+
+$userMsg = $inputData['message'] ?? '';
+$chatHistory = $inputData['history'] ?? [];
+
+// Create an array to hold the messages for the OpenAI
 $messages = [];
 
-// System prompt: defines assistant behavior
+// Prompt for defining AI assistant behavior
 $messages[] = [
     'role' => 'system',
     'content' =>
-"את מלווה לילה לנשים ההולכות לבד בסביבה לא בטוחה.
-דברי בעברית, בתור אישה, בטון רגוע, קצר ואמפתי.
-אל תתני עצות מסוכנות. אם נראה שיש מצוקה – המליצי לפנות לעזרה אנושית (משפחה/חברה/מוקד חירום).
-המטרה שלך היא לחזק, להרגיע ולהיות נוכחת, לא לתת ייעוץ רפואי או משפטי."
-];
+    "את מלווה לילה לנשים ההולכות לבד בסביבה לא בטוחה.
+    דברי בעברית, בתור אישה, בטון רגוע, קצר ואמפתי.
+    אל תתני עצות מסוכנות. אם נראה שיש מצוקה – המליצי לפנות לעזרה אנושית (משפחה/חברה/מוקד חירום).
+    המטרה שלך היא לחזק, להרגיע ולהיות נוכחת, לא לתת ייעוץ רפואי או משפטי."
+    ];
 
-// Add previous history
-foreach ($history as $h) {
-    if (!isset($h['role'], $h['text'])) continue;
-    $role = $h['role'] === 'user' ? 'user' : 'assistant';
+// Add previous history to add context to the AI assistant
+foreach ($chatHistory as $msg) {
     $messages[] = [
-        'role' => $role,
-        'content' => $h['text']
+        'role' => ($msg['role'] === 'user' ? 'user' : 'assistant'),
+        'content' => $msg['text']
     ];
 }
 
-// Current user message
-$messages[] = [
-    'role' => 'user',
-    'content' => $userMessage
-];
+// Add the current messafe from the user
+$messages[] = ['role' => 'user', 'content' => $userMsg];
 
-// Simulate “distress detected” mode
-if (!empty($meta['simulatedEmergency'])) {
-    $messages[] = [
-        'role' => 'user',
-        'content' => "המשתמשת נשמעת במצוקה או ביקשה עזרה ('עזרה', 'מפחיד', 'תתקשרו למישהו')."
-    ];
-}
-
+// Preparing the data to be sent to OpenAI in the following payload structure
 $payload = [
     'model' => 'gpt-4o-mini',
     'messages' => $messages,
-    'temperature' => 0.6,
-    'max_tokens' => 120
+    'temperature' => 0.7
 ];
 
-// Call OpenAI Chat Completions
+// Start CURL request to the OpenAI API
 $ch = curl_init("https://api.openai.com/v1/chat/completions");
-curl_setopt_array($ch, [
-    CURLOPT_POST => true,
-    CURLOPT_HTTPHEADER => [
-        "Authorization: Bearer " . $apiKey,
-        "Content-Type: application/json"
-    ],
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_POSTFIELDS => json_encode($payload, JSON_UNESCAPED_UNICODE)
-]);
 
+// Set CURL options
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_POST, true);
+
+// Add headers for security and content type
+$headers = [
+    "Content-Type: application/json",
+    "Authorization: Bearer " . $apiKey
+];
+curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+// Ingestion of the data to the payload
+curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
+
+// Send the request and save the response
 $response = curl_exec($ch);
 $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-$curlError = curl_error($ch);
+curl_close($ch);
 
-if ($httpCode !== 200 || $response === false) {
-    $fallbackReply = 'אני פה איתך, גם אם כרגע יש בעיה בחיבור ל-AI. '
-        . 'תזכרי שאת לא לבד, ואם את מרגישה לא בטוח – אפשר לפנות לחברה קרובה או למוקד חירום.';
-    echo json_encode([
-        'error'      => 'api_error',
-        'http_code'  => $httpCode,
-        'curl_error' => $curlError,
-        'reply'      => $fallbackReply
-    ], JSON_UNESCAPED_UNICODE);
-    exit;
-}
+// Process the outcome from OpenAI
+$result = json_decode($response, true);
 
-$respData = json_decode($response, true);
-$reply = $respData['choices'][0]['message']['content'] ?? '';
+// Get the AI's reply text or show an error message if something failed
+$aiReply = $result['choices'][0]['message']['content'] ?? 'סליחה, לא הבנתי. תוכלי לחזור על זה?';
 
-echo json_encode(['reply' => $reply], JSON_UNESCAPED_UNICODE);
+// Send the reply back to the 'ai_escort.js' file
+echo json_encode(['reply' => $aiReply], JSON_UNESCAPED_UNICODE);
