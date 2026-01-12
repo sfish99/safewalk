@@ -6,11 +6,6 @@ $configPath = __DIR__ . '/../../config.php';
 if (file_exists($configPath)) {
     require_once $configPath;
 }
-//בדיקה, למחוק אחר כך
-if (!defined('OPENAI_API_KEY')) {
-    echo json_encode(['error' => 'OPENAI_API_KEY not loaded']);
-    exit;
-}
 
 $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
 if ($method !== 'POST') {
