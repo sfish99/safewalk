@@ -4,53 +4,75 @@ const CHAT_ENDPOINT = "../includes/ai_chat.php";
 const VOICE_ENDPOINT = "../includes/tts.php";
 
 let chatHistory = [];
-let isVoiceActive = true;
-let currentAudioPlayer = null;
+let voiceEnabled = true;
+let currentAudio = null;
+let recognition = null;
+let recognizing = false;
 
-// Get elements from the HTML page
-const messagesDisplay = document.getElementById("aiMessages");
-const mainForm = document.getElementById("chatForm");
-const textInput = document.getElementById("userMessage");
-const statusLabel = document.getElementById("aiStatus");
+// Get elements from the PHP page
+const messagesEl = document.getElementById("aiMessages");
+const chatForm = document.getElementById("chatForm");
+const userInput = document.getElementById("userMessage");
+const voiceInputBtn = document.getElementById("voiceInputBtn");
+const aiStatusEl = document.getElementById("aiStatus");
+const startBtn = document.getElementById("startAiBtn");
+const stopBtn = document.getElementById("stopAiBtn");
+const muteBtn = document.getElementById("muteAiBtn");
+const simulateKeywordBtn = document.getElementById("simulateKeywordBtn");
 
 // Add a new message bubble to the screen
-function addMessage(sender, content) {
-    if (!messagesDisplay) return;
+function addMessage(role, text) {
+    if (!messagesEl) return;
 
-    // Create the main 'div' of the message element
-    const messageRow = document.createElement("div");
-    messageRow.className = "msg " + (sender === "user" ? "msg-user" : "msg-ai");
+    const div = document.createElement("div");
+    div.className = "msg " + (role === "user" ? "msg-user" : "msg-ai");
 
-    // Add the name tag (You/escort) to the message bubble to the screen
     const nameTag = document.createElement("strong");
-    nameTag.textContent = (sender === "user" ? "את: " : "המלווה: ");
+    nameTag.textContent = (role === "user" ? "את: " : "המלווה: ");
 
-    // Using textContent to protect from XSS
     const textSpan = document.createElement("span");
-    textSpan.textContent = content;
+    textSpan.textContent = text;
 
-    // Append all elements
-    messageRow.appendChild(nameTag);
-    messageRow.appendChild(textSpan);
-    messagesDisplay.appendChild(messageRow);
+    div.appendChild(nameTag);
+    div.appendChild(textSpan);
+    messagesEl.appendChild(div);
 
-    // Auto scroll down to the latest message
-    messagesDisplay.scrollTop = messagesDisplay.scrollHeight;
+    messagesEl.scrollTop = messagesEl.scrollHeight;
 
-    // Saving chat history for further context
-    chatHistory.push({ role: sender, text: content });
+    chatHistory.push({ role: role, text: text });
     if (chatHistory.length > 6) {
         chatHistory.shift();
     }
 
-    // Activating AI voice
-    if (sender === "ai" && isVoiceActive) {
-        handleVoiceSynthesis(content);
+    if (role === "ai" && voiceEnabled) {
+        speak(text);
     }
 }
 
-// Send user's text to our PHP server
-async function processUserRequest(userText, isUrgent = false) {
+// Request TTS audio and play it
+async function speak(text) {
+    try {
+        const res = await fetch(VOICE_ENDPOINT, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ text })
+        });
+
+        if (!res.ok) return;
+
+        const blob = await res.blob();
+        const url = URL.createObjectURL(blob);
+
+        if (currentAudio) currentAudio.pause();
+        currentAudio = new Audio(url);
+        currentAudio.play();
+    } catch (err) {
+        console.warn("שגיאה בהשמעת קול:", err);
+    }
+}
+
+// Send users text to the PHP server
+async function sendToServer(userText, isUrgent = false) {
     try {
         const payload = {
             message: userText,
@@ -58,68 +80,108 @@ async function processUserRequest(userText, isUrgent = false) {
             meta: { simulatedEmergency: isUrgent }
         };
 
-        // Get response from the PHP server
         const response = await fetch(CHAT_ENDPOINT, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: { "Content-Type": "application/json" }, // תוקן מ-text-Type
             body: JSON.stringify(payload)
         });
 
         const result = await response.json();
 
-        // If we got a reply, show it on screen
         if (result.reply) {
             addMessage("ai", result.reply);
         } else {
-            addMessage("ai", "מצטערת, משהו השתבש בחיבור. אני עדיין כאן איתך.");
+            addMessage("ai", "מצטערת, משהו השתבש בחיבור.");
         }
     } catch (error) {
         console.error("Communication Error:", error);
-        addMessage("ai", "שגיאת תקשורת. אנא ודאי שיש לך חיבור לאינטרנט.");
+        addMessage("ai", "שגיאת תקשורת.");
     }
 }
 
-// TTS convertion using PHP server
-async function handleVoiceSynthesis(txt) {
-    try {
-        const res = await fetch(VOICE_ENDPOINT, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ text: txt })
-        });
-
-        if (!res.ok) throw new Error("Voice failed");
-
-        // Convert the response to an audio file and play it
-        const audioBlob = await res.blob();
-        const audioUrl = URL.createObjectURL(audioBlob);
-
-        if (currentAudioPlayer) currentAudioPlayer.pause();
-        currentAudioPlayer = new Audio(audioUrl);
-        currentAudioPlayer.play();
-    } catch (err) {
-        console.warn("שגיאה בהשמעת קול:", err);
-    }
-}
-
-// Listen for when the user clicks 'Send' or presses Enter
-if (mainForm) {
-    mainForm.addEventListener("submit", (e) => {
+// Listen for chat form submission
+if (chatForm && userInput) {
+    chatForm.addEventListener("submit", (e) => {
         e.preventDefault();
-        const val = textInput.value.trim();
-        if (!val) return;
+        const text = userInput.value.trim();
+        if (!text) return;
 
-        addMessage("user", val);
-        textInput.value = "";
-        processUserRequest(val);
+        addMessage("user", text);
+        userInput.value = "";
+        sendToServer(text);
     });
 }
 
-// Start/Stop AI escort buttons to begin the AI escort session
-const startBtn = document.getElementById("startAiBtn");
-if (startBtn) {
+// AI escort controls (start/stop/mute)
+if (startBtn && stopBtn && muteBtn && aiStatusEl) {
     startBtn.addEventListener("click", () => {
-        statusLabel.textContent = "ליווי AI פעיל";
+        aiStatusEl.textContent = "ליווי AI פעיל. אני איתך.";
+        startBtn.disabled = true;
+        stopBtn.disabled = false;
+        muteBtn.disabled = false;
         addMessage("ai", "היי, אני כאן איתך. את לא לבד.");
+    });
+
+    stopBtn.addEventListener("click", () => {
+        aiStatusEl.textContent = "ליווי AI כבוי כרגע.";
+        startBtn.disabled = false;
+        stopBtn.disabled = true;
+        muteBtn.disabled = true;
+        addMessage("ai", "סיימנו את הליווי כרגע. תוכלי להפעיל אותי שוב בכל רגע.");
+    });
+
+    muteBtn.addEventListener("click", () => {
+        voiceEnabled = !voiceEnabled;
+        muteBtn.textContent = voiceEnabled ? "השתקה" : "בטלי השתקה";
+    });
+}
+
+// Simulate emergency
+if (simulateKeywordBtn) {
+    simulateKeywordBtn.addEventListener("click", () => {
+        aiStatusEl.textContent = 'זוהתה מילת מצוקה ("עזרה"). מומלץ ליצור קשר עם מוקד חירום.';
+        sendToServer("המשתמשת ביקשה עזרה או נשמעת במצוקה.", { simulatedEmergency: true });
+    });
+}
+
+// Speech-to-text
+function initSpeechRecognition() {
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SR) return null;
+
+    const rec = new SR();
+    rec.lang = "he-IL";
+    rec.continuous = false;
+    rec.interimResults = false;
+
+    rec.onresult = (e) => {
+        const text = e.results[0][0].transcript;
+        if (userInput){
+            userInput.value = text;
+        }
+    };
+
+  rec.onerror = () => {
+    recognizing = false;
+  };
+
+  rec.onend = () => {
+    recognizing = false;
+  };
+
+    return rec;
+}
+
+recognition = initSpeechRecognition();
+
+if (voiceInputBtn && recognition) {
+    voiceInputBtn.addEventListener("click", () => {
+        if (!recognizing) {
+            recognizing = true;
+            recognition.start();
+        } else {
+            recognizing = false;
+            recognition.stop();
+        }
     });
 }
