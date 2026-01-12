@@ -25,56 +25,25 @@ const emergencyStatusEl = document.getElementById("emergencyStatus");
 
 // Adds message to the AI chat
 function addMessage(role, text) {
-  if (!messagesEl) return;
+
+  //Main div for creating the message element
   const div = document.createElement("div");
   div.classList.add("msg");
-  if (role === "user") {
-    div.classList.add("msg-user");
-    div.innerHTML = `<strong>את:</strong> ${escapeHtml(text)}`;
-  } else {
-    div.classList.add("msg-ai");
-    div.innerHTML = `<strong>המלווה:</strong> ${escapeHtml(text)}`;
-  }
-  messagesEl.appendChild(div);
-  messagesEl.scrollTop = messagesEl.scrollHeight;
+  // Creating name tag for the message bubble (you / AI)
+  const nameLabel = document.createElement("strong");
+  nameLabel.textContent = (role === "user" ? "את: " : "המלווה: ");
 
-  chatHistory.push({ role, text });
-  if (chatHistory.length > 6) {
-    chatHistory = chatHistory.slice(chatHistory.length - 6);
-  }
+  // Protection from XSS using textContent
+  const textContainer = document.createElement("span");
+  textContainer.textContent = text;
 
-  if (role === "ai" && voiceEnabled) {
-    speak(text);
-  }
-}
+  // Appending all elements
+  messageDiv.appendChild(nameLabel);
+  messageDiv.appendChild(textContainer);
+  messagesContainer.appendChild(messageDiv);
 
-// Basic XSS protection for user/AI text
-function escapeHtml(str) {
-  return str
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;");
-}
-
-// Request TTS audio and play it
-async function speak(text) {
-  if (!voiceEnabled) return;
-
-  const res = await fetch(TTS_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ text }),
-  });
-
-  if (!res.ok) return;
-
-  const blob = await res.blob();
-  const url = URL.createObjectURL(blob);
-
-  if (currentAudio) currentAudio.pause();
-  currentAudio = new Audio(url);
-  currentAudio.onended = () => URL.revokeObjectURL(url);
-  currentAudio.play();
+  //Scrolling down
+  messagesContainer.scrollTop = messagesContainer.scrollHeight;
 }
 
 // sending message to the server
