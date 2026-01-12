@@ -7,16 +7,20 @@
 
 header('Content-Type: audio/mpeg');
 
-require_once __DIR__ . '/../../config.php';
-
+$configPath = __DIR__ . '/../../config.php';
+if (file_exists($configPath)) {
+    require_once $configPath;
+}
 $raw = file_get_contents('php://input');
-$data = json_decode($raw, true) ?: [];
+$data = json_decode($raw, true);
+if (!is_array($data)) $data = [];
+
 $text = trim($data['text'] ?? '');
 
 if ($text === '') {
   http_response_code(400);
   header('Content-Type: application/json; charset=utf-8');
-  echo json_encode(['error' => 'no_text'], JSON_UNESCAPED_UNICODE);
+  echo json_encode(['error' => 'no_text']);
   exit;
 }
 
@@ -24,7 +28,7 @@ $apiKey = OPENAI_API_KEY ?? '';
 if (!$apiKey) {
   http_response_code(500);
   header('Content-Type: application/json; charset=utf-8');
-  echo json_encode(['error' => 'no_api_key'], JSON_UNESCAPED_UNICODE);
+  echo json_encode(['error' => 'no_api_key']);
   exit;
 }
 
@@ -43,7 +47,7 @@ curl_setopt_array($ch, [
     "Content-Type: application/json"
   ],
   CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_POSTFIELDS => json_encode($payload, JSON_UNESCAPED_UNICODE)
+  CURLOPT_POSTFIELDS => json_encode($payload)
 ]);
 
 $audio = curl_exec($ch);
@@ -53,7 +57,7 @@ curl_close($ch);
 if ($code !== 200 || $audio === false) {
   http_response_code($code ?: 500);
   header('Content-Type: application/json; charset=utf-8');
-  echo json_encode(['error' => 'tts_failed', 'http_code' => $code], JSON_UNESCAPED_UNICODE);
+  echo json_encode(['error' => 'tts_failed']);
   exit;
 }
 
