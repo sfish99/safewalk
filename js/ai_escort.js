@@ -116,6 +116,6 @@ const startBtn = document.getElementById("startAiBtn");
 if (startBtn) {
     startBtn.addEventListener("click", () => {
         statusLabel.textContent = "ליווי AI פעיל";
-        addMessage("ai", "אני כאן, בואי נתחיל ללכת יחד.");
+        addMessage("ai", "היי, אני כאן איתך. את לא לבד.");
     });
 }
