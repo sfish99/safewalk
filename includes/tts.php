@@ -1,10 +1,4 @@
 <?php
-
-/*
-  Receives JSON: { "text": "..." }
-  Returns: mp3 audio (OpenAI TTS)
-*/
-
 header('Content-Type: audio/mpeg');
 
 require_once __DIR__ . '/../../config.php';

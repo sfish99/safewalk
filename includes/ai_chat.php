@@ -6,8 +6,12 @@ $configPath = __DIR__ . '/../../config.php';
 if (file_exists($configPath)) {
     require_once $configPath;
 }
+//בדיקה, למחוק אחר כך
+if (!defined('OPENAI_API_KEY')) {
+    echo json_encode(['error' => 'OPENAI_API_KEY not loaded']);
+    exit;
+}
 
-// Only allow POST
 $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
 if ($method !== 'POST') {
     echo json_encode(['error' => 'invalid_method'], JSON_UNESCAPED_UNICODE);
@@ -65,7 +69,7 @@ $messages[] = [
     'content' => $userMessage
 ];
 
-ֿֿ// simulate “distress detected”
+// Simulate “distress detected” mode
 if (!empty($meta['simulatedEmergency'])) {
     $messages[] = [
         'role' => 'user',
@@ -77,7 +81,7 @@ $payload = [
     'model' => 'gpt-4o-mini',
     'messages' => $messages,
     'temperature' => 0.6,
-    'max_tokens' => 120,
+    'max_tokens' => 120
 ];
 
 // Call OpenAI Chat Completions
@@ -95,8 +99,6 @@ curl_setopt_array($ch, [
 $response = curl_exec($ch);
 $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 $curlError = curl_error($ch);
-curl_close($ch);
-
 
 if ($httpCode !== 200 || $response === false) {
     $fallbackReply = 'אני פה איתך, גם אם כרגע יש בעיה בחיבור ל-AI. '

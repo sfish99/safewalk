@@ -14,19 +14,20 @@ const messagesEl = document.getElementById("aiMessages");
 const chatForm = document.getElementById("chatForm");
 const userInput = document.getElementById("userMessage");
 const voiceInputBtn = document.getElementById("voiceInputBtn");
+const toggleVoiceBtn = document.getElementById("toggleVoiceBtn");
+const voiceStatusEl = document.getElementById("voiceStatus");
 const aiStatusEl = document.getElementById("aiStatus");
 const startBtn = document.getElementById("startAiBtn");
 const stopBtn = document.getElementById("stopAiBtn");
 const muteBtn = document.getElementById("muteAiBtn");
 const simulateKeywordBtn = document.getElementById("simulateKeywordBtn");
+const emergencyStatusEl = document.getElementById("emergencyStatus");
 
 // Adds message to the AI chat
 function addMessage(role, text) {
   if (!messagesEl) return;
-
   const div = document.createElement("div");
   div.classList.add("msg");
-
   if (role === "user") {
     div.classList.add("msg-user");
     div.innerHTML = `<strong>את:</strong> ${escapeHtml(text)}`;
@@ -34,17 +35,14 @@ function addMessage(role, text) {
     div.classList.add("msg-ai");
     div.innerHTML = `<strong>המלווה:</strong> ${escapeHtml(text)}`;
   }
-
   messagesEl.appendChild(div);
   messagesEl.scrollTop = messagesEl.scrollHeight;
 
-// Keep a short history (helps the AI keep context, but not too long)
   chatHistory.push({ role, text });
   if (chatHistory.length > 6) {
     chatHistory = chatHistory.slice(chatHistory.length - 6);
   }
 
-  // Speak AI messages if voice is enabled
   if (role === "ai" && voiceEnabled) {
     speak(text);
   }
@@ -115,14 +113,27 @@ if (chatForm && userInput) {
     e.preventDefault();
     const text = userInput.value.trim();
     if (!text) return;
-
     addMessage("user", text);
     userInput.value = "";
     sendToServer(text);
   });
 }
 
-// AI escort controls (start/stop/mute)
+// AI on/off button switch
+if (toggleVoiceBtn && voiceStatusEl) {
+  voiceStatusEl.classList.toggle("voice-on", voiceEnabled);
+  voiceStatusEl.classList.toggle("voice-off", !voiceEnabled);
+
+  toggleVoiceBtn.addEventListener("click", () => {
+    voiceEnabled = !voiceEnabled;
+
+    voiceStatusEl.textContent = voiceEnabled ? "פעיל" : "כבוי";
+    voiceStatusEl.classList.toggle("voice-on", voiceEnabled);
+    voiceStatusEl.classList.toggle("voice-off", !voiceEnabled);
+  });
+}
+
+// Starting AI escort
 if (startBtn && stopBtn && muteBtn && aiStatusEl) {
   startBtn.addEventListener("click", () => {
     aiStatusEl.textContent = "ליווי AI פעיל. אני איתך.";
@@ -143,13 +154,18 @@ if (startBtn && stopBtn && muteBtn && aiStatusEl) {
   muteBtn.addEventListener("click", () => {
     voiceEnabled = !voiceEnabled;
     muteBtn.textContent = voiceEnabled ? "השתקה" : "בטלי השתקה";
+    if (voiceStatusEl) {
+      voiceStatusEl.textContent = voiceEnabled ? "פעיל" : "כבוי";
+      voiceStatusEl.classList.toggle("voice-on", voiceEnabled);
+      voiceStatusEl.classList.toggle("voice-off", !voiceEnabled);
+    }
   });
 }
 
 // Simulate “distress keyword detected”
 if (simulateKeywordBtn) {
   simulateKeywordBtn.addEventListener("click", () => {
-    aiStatusEl.textContent = 'זוהתה מילת מצוקה ("עזרה"). מומלץ ליצור קשר עם מוקד חירום.';
+    emergencyStatusEl.textContent = 'זוהתה מילת מצוקה ("עזרה"). מומלץ ליצור קשר עם מוקד חירום.';
     sendToServer("המשתמשת ביקשה עזרה או נשמעת במצוקה.", { simulatedEmergency: true });
   });
 }
@@ -158,7 +174,6 @@ if (simulateKeywordBtn) {
 function initSpeechRecognition() {
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
   if (!SR) return null;
-
   const rec = new SR();
   rec.lang = "he-IL";
   rec.continuous = false;
