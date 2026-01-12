@@ -1,4 +1,4 @@
-// This script handles the chat UI, sending messages to PHP, and playing voice replies.
+// Handles the chat UI, sending messages to PHP, and playing voice replies.
 
 const CHAT_ENDPOINT = "../includes/ai_chat.php";
 const VOICE_ENDPOINT = "../includes/tts.php";

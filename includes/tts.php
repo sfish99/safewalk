@@ -1,5 +1,5 @@
 <?php
-// This script takes text from JS and returns an MP3 audio stream.
+// Takes text from 'ai_escort.js' file and returns an MP3 audio stream
 
 // Set the header to tell the browser we are sending audio
 header('Content-Type: audio/mpeg');

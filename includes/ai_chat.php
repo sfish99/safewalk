@@ -1,4 +1,7 @@
 <?php
+
+// This file sends user messages to OpenAI and returns the AI's response.
+
 header('Content-Type: application/json; charset=utf-8');
 
 //Loads OPENAI_API_KEY from a config file

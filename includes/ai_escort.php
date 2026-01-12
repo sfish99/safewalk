@@ -1,13 +1,16 @@
 <?php
+// AI Escort Page
+
 // Start the session to access logged-in user data
     session_start();
 
-// If the volunteer is not logged in, redirect to login page
+// If the user is not logged in, redirect to login page
     if (!isset($_SESSION['walker_id'])) {
     header("Location: login_walker.php");
     exit;
     }
 
+    // Display walker_name
     $walkerName = $_SESSION['walker_name'] ?? '';
 ?>
 
@@ -17,7 +20,8 @@
     <meta charset="utf-8" />
     <title>SafeWalk – ליווי AI</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <!-- CSS file for designing AI escorting page -->
+
+    <!-- CSS file for designing AI escort page -->
     <link rel="stylesheet" href="../css/header.css"/>
     <link rel="stylesheet" href="../css/ai.css"/>
 </head>
